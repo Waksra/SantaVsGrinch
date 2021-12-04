@@ -6,7 +6,7 @@ using UnityEngine.Events;
 
 public class Damageable : MonoBehaviour
 {
-    [SerializeField] private UnityEvent deathEvent;
+    [SerializeField] private UnityEvent<int> deathEvent;
     
     [SerializeField] private float maxHealth = 1f;
     private float health;
@@ -33,6 +33,6 @@ public class Damageable : MonoBehaviour
     private void Die()
     {
         Debug.Log($"{gameObject.name} died.");
-        deathEvent.Invoke();
+        deathEvent.Invoke(GetComponent<PlayerController>().GetPlayerId());
     }
 }

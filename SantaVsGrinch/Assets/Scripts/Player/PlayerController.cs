@@ -8,6 +8,9 @@ public class PlayerController : MonoBehaviour
 {
     private Rigidbody body;
     private Camera cam;
+
+    private PlayerInput playerInput;
+    public int GetPlayerId() { return playerInput.playerIndex; }
     
     [SerializeField] private float maxRotationSpeed = 10f;
     [SerializeField] private LayerMask groundLayerMask = default;
@@ -21,26 +24,35 @@ public class PlayerController : MonoBehaviour
 
     private float timeLastFired;
 
+    private Vector3 mouseWorldPosition;
+    
     private void Awake()
     {
         body = GetComponent<Rigidbody>();
         cam = Camera.main;
+        playerInput = GetComponent<PlayerInput>();
     }
 
     #region Input
 
     public void SetAimInput(InputAction.CallbackContext context)
     {
-        //TODO: Figure out which device is being used and set aimInput accordingly
-
-        Vector3 mouseInput = context.ReadValue<Vector2>();
-        if (Physics.Raycast(cam.ScreenPointToRay(mouseInput), out RaycastHit hit, Mathf.Infinity, groundLayerMask))
+        if (context.control.device.description.deviceClass.Equals("Mouse"))
         {
-            mouseInput.z = hit.distance;
+            Vector3 mouseInput = context.ReadValue<Vector2>();
+            if (Physics.Raycast(cam.ScreenPointToRay(mouseInput), out RaycastHit hit, Mathf.Infinity, groundLayerMask.value))
+            {
+                mouseWorldPosition = hit.point;
+            }
+            aimInput = mouseWorldPosition - transform.position;
+            aimInput.y = 0f;
+            aimInput.Normalize();
         }
-        aimInput = cam.ScreenToWorldPoint(mouseInput) - transform.position;
-        aimInput.y = 0f;
-        aimInput.Normalize();
+        else
+        {
+            Vector2 joystickInput = context.ReadValue<Vector2>();
+            aimInput = new Vector3(joystickInput.x, 0f, joystickInput.y).normalized;
+        }
     }
 
     public void SetFireInput(InputAction.CallbackContext context)
@@ -53,6 +65,16 @@ public class PlayerController : MonoBehaviour
     private void Update()
     {
         Fire();
+        Rotate();
+    }
+
+    private void Rotate()
+    {
+        if (mouseWorldPosition == Vector3.zero) return;
+        
+        aimInput = mouseWorldPosition - transform.position;
+        aimInput.y = 0f;
+        aimInput.Normalize();
     }
 
     private void FixedUpdate()
@@ -71,7 +93,16 @@ public class PlayerController : MonoBehaviour
         {
             timeLastFired = Time.time;
             GameObject go = Instantiate(projectilePrefab, transform.position + aimInput, Quaternion.Euler(transform.forward));
+            go.GetComponent<Projectile>().SetInstigator(playerInput.playerIndex);
             go.GetComponent<Projectile>().Fire(transform.forward * firePower);
+            
+            float selfKnockback = 1f;
+            GetComponent<Knockbackable>().Knockback(-transform.forward * selfKnockback);
         }
+    }
+
+    private void OnDrawGizmos()
+    {
+        Gizmos.DrawWireSphere(mouseWorldPosition, 1f);
     }
 }
