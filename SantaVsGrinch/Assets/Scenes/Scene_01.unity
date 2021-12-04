@@ -178,6 +178,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1647139824798315773, guid: 20f97c324a5075f49aa5c0dd3632fd43, type: 3}
+      propertyPath: deathEvent.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 749393778}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 20f97c324a5075f49aa5c0dd3632fd43, type: 3}
 --- !u!1 &705507993

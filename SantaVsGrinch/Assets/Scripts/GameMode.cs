@@ -11,8 +11,8 @@ public class GameMode : MonoBehaviour
 
     private void Start()
     {
-        playerScores.Add(new PlayerScore(0));
-        playerScores.Add(new PlayerScore(1));
+        playerScores.Add(new PlayerScore(0, maxLives));
+        playerScores.Add(new PlayerScore(1, maxLives));
     }
 
     private void CheckGameState()
@@ -29,25 +29,23 @@ public class GameMode : MonoBehaviour
 
     private void AddPlayer(int playerIndex)
     {
-        playerScores.Add(new PlayerScore(playerIndex));
+        playerScores.Add(new PlayerScore(playerIndex, maxLives));
     }
 
     public void LoseLife(int playerIndex)
     {
-        PlayerScore playerScore = FindPlayerScoreByIndex(playerIndex);
-        playerScore.lives--;
-        
-        CheckGameState();
-    }
-
-    private PlayerScore FindPlayerScoreByIndex(int playerIndex)
-    {
-        foreach (var playerScore in playerScores)
+        Debug.Log($"player {playerIndex} lost a life.");
+        for (int i = 0; i < playerScores.Count; i++)
         {
-            if (playerIndex == playerScore.playerId)
-                return playerScore;
+            if (playerScores[i].playerId == playerIndex)
+            {
+                PlayerScore playerScore = playerScores[i];
+                playerScore.lives--;
+                playerScores[i] = playerScore;
+            }
         }
-        return default;
+
+        CheckGameState();
     }
 }
 
@@ -56,9 +54,9 @@ public struct PlayerScore
     public int playerId;
     public int lives;
 
-    public PlayerScore(int playerId)
+    public PlayerScore(int playerId, int lives)
     {
         this.playerId = playerId;
-        lives = default;
+        this.lives = lives;
     }
 }

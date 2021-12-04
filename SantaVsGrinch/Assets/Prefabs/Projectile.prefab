@@ -161,6 +161,7 @@ MonoBehaviour:
   knockback: 5
   dieAfterTime: 5
   onHitParticlesPrefab: {fileID: 2711238035710250997, guid: 7e0de05009fab5146bbeac274526a1d2, type: 3}
+  ignoreInstigator: 1
 --- !u!1 &8308177975595350285
 GameObject:
   m_ObjectHideFlags: 0
