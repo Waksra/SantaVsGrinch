@@ -194,7 +194,19 @@ MonoBehaviour:
     m_ActionId: 4543b7c0-2c21-4ea9-8703-fae477293d04
     m_ActionName: Game/Fire[/Mouse/leftButton]
   - m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1647139824798315744}
+        m_TargetAssemblyTypeName: Player.Movement, Assembly-CSharp
+        m_MethodName: RequestDash
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_ActionId: 03ce2753-b652-4ba4-9c5e-641fff4885b1
     m_ActionName: Game/Dash[/Keyboard/space]
   m_NeverAutoSwitchControlSchemes: 0
