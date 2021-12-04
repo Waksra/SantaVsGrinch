@@ -20,6 +20,7 @@ namespace Player
 
         private Rigidbody body;
         private Vector2 inputVector;
+        private Vector2 lastInput;
 
         private Vector3 velocity;
 
@@ -121,7 +122,7 @@ namespace Player
             {
                 dashTime += Time.deltaTime;
             
-                if (dashTime < dashCurve[dashCurve.length - 1].time)
+                if (dashTime <= dashCurve[dashCurve.length - 1].time)
                     return;
 
                 isDashing = false;
@@ -132,7 +133,8 @@ namespace Player
             {
                 isDashing = true;
                 dashRequested = false;
-                dashDirection = ProjectDirectionGround(new Vector3(inputVector.x, 0, inputVector.y));
+                Vector2 direction = inputVector.sqrMagnitude != 0 ? inputVector : lastInput;
+                dashDirection = ProjectDirectionGround(new Vector3(direction.x, 0, direction.y));
                 dashTime = 0f;
             }
             else if (dashRequested && dashRequestEnd >= Time.time)
@@ -145,6 +147,9 @@ namespace Player
         {
             groundNormal = Vector3.zero;
             contactCount = 0;
+            
+            if (inputVector.sqrMagnitude != 0)
+                lastInput = inputVector;
         }
 
         private void HandleCollision(Collision collision)
