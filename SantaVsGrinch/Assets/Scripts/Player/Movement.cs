@@ -1,4 +1,3 @@
-using System;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -19,6 +18,7 @@ namespace Player
         [SerializeField] private AnimationCurve dashCurve;
 
         private Rigidbody body;
+
         private Vector2 inputVector;
         private Vector2 lastInput;
 
@@ -37,6 +37,8 @@ namespace Player
 
         private bool IsGround => contactCount > 0;
 
+        #region Input
+
         public void SetMove(InputAction.CallbackContext context)
         {
             inputVector = context.ReadValue<Vector2>();
@@ -50,6 +52,8 @@ namespace Player
                 dashRequestEnd = dashRequestBuffer + Time.time;
             }
         }
+
+        #endregion
 
         private void OnValidate()
         {
@@ -68,6 +72,7 @@ namespace Player
         private void FixedUpdate()
         {
             UpdateState();
+
             if (isDashing)
                 Dash();
             else

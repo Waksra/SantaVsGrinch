@@ -94,6 +94,7 @@ GameObject:
   - component: {fileID: 1647139824798315746}
   - component: {fileID: 1647139824798315747}
   - component: {fileID: 1647139824798315744}
+  - component: {fileID: 9055373115926828474}
   - component: {fileID: 1647139824798315745}
   - component: {fileID: 1647139824798315772}
   - component: {fileID: 1647139824798315773}
@@ -163,8 +164,8 @@ MonoBehaviour:
     m_ActionName: Game/Move[/Keyboard/w,/Keyboard/s,/Keyboard/a,/Keyboard/d]
   - m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1647139824798315745}
-        m_TargetAssemblyTypeName: PlayerController, Assembly-CSharp
+      - m_Target: {fileID: 9055373115926828474}
+        m_TargetAssemblyTypeName: Player.PlayerAim, Assembly-CSharp
         m_MethodName: SetAimInput
         m_Mode: 0
         m_Arguments:
@@ -296,6 +297,22 @@ MonoBehaviour:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &9055373115926828474
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1647139824798315748}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d12e1dc8d2a64426b63543e54673da3f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxRotationSpeed: 50
+  aimLayer:
+    serializedVersion: 2
+    m_Bits: 64
 --- !u!114 &1647139824798315745
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -308,10 +325,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 51480da120a8508408b219efd880e19b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxRotationSpeed: 10
-  groundLayerMask:
-    serializedVersion: 2
-    m_Bits: 64
   projectilePrefab: {fileID: 5203613507369053277, guid: 55debfb8f7b5ae547a05e113be8e5c20, type: 3}
   fireRate: 2
   firePower: 40
