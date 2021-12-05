@@ -7,7 +7,6 @@ using UnityEngine.InputSystem;
 
 public class PlayerController : MonoBehaviour
 {
-
     private PlayerInput playerInput;
     public int GetPlayerId() { return playerInput.playerIndex; }
     

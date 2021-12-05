@@ -238,15 +238,6 @@ public partial class @Controls : IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
-                },
-                {
-                    ""name"": ""Start"",
-                    ""type"": ""Button"",
-                    ""id"": ""d161e962-e89f-4bc2-90fe-430a579a5fef"",
-                    ""expectedControlType"": ""Button"",
-                    ""processors"": """",
-                    ""interactions"": """",
-                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -274,11 +265,55 @@ public partial class @Controls : IInputActionCollection2, IDisposable
                 },
                 {
                     ""name"": """",
+                    ""id"": ""b632a89f-9bbd-4717-b7ca-e6518862a374"",
+                    ""path"": ""<Keyboard>/d"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""KB/M"",
+                    ""action"": ""MoveRight"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""6122747b-af37-4f1e-9436-03b829d7c490"",
+                    ""path"": ""<Keyboard>/rightArrow"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""KB/M"",
+                    ""action"": ""MoveRight"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
                     ""id"": ""700e2a8f-d4e8-489a-ae30-8feaaaa60684"",
                     ""path"": ""<Gamepad>/buttonEast"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": ""Gamepad"",
+                    ""action"": ""Cancel"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""604fe415-baae-4ee0-9226-7f6df2c66180"",
+                    ""path"": ""<Keyboard>/escape"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""KB/M"",
+                    ""action"": ""Cancel"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""aedd90ee-f312-4a87-be28-de53cef2bbc9"",
+                    ""path"": ""<Mouse>/rightButton"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""KB/M"",
                     ""action"": ""Cancel"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
@@ -307,6 +342,28 @@ public partial class @Controls : IInputActionCollection2, IDisposable
                 },
                 {
                     ""name"": """",
+                    ""id"": ""fb6aa4f7-7b14-4cab-a3fd-c010dbf3b361"",
+                    ""path"": ""<Keyboard>/a"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""KB/M"",
+                    ""action"": ""MoveLeft"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""81a70429-7667-4299-9184-31d909b3b515"",
+                    ""path"": ""<Keyboard>/leftArrow"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""KB/M"",
+                    ""action"": ""MoveLeft"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
                     ""id"": ""93c283b8-1c14-4bb1-85d2-710cbfd37e94"",
                     ""path"": ""<Gamepad>/buttonSouth"",
                     ""interactions"": """",
@@ -318,12 +375,34 @@ public partial class @Controls : IInputActionCollection2, IDisposable
                 },
                 {
                     ""name"": """",
-                    ""id"": ""c9659692-07c0-438a-bc62-20f338e8713a"",
-                    ""path"": ""<Gamepad>/start"",
+                    ""id"": ""459bdedd-b31b-4657-b302-5a3285815772"",
+                    ""path"": ""<Keyboard>/space"",
                     ""interactions"": """",
                     ""processors"": """",
-                    ""groups"": ""Gamepad"",
-                    ""action"": ""Start"",
+                    ""groups"": ""KB/M"",
+                    ""action"": ""Confirm"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""2d717e9b-7f25-4a7b-b617-537e65f15ef0"",
+                    ""path"": ""<Keyboard>/enter"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""KB/M"",
+                    ""action"": ""Confirm"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""1d2bca48-d143-481d-bd0c-c6b02391172d"",
+                    ""path"": ""<Mouse>/leftButton"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""KB/M"",
+                    ""action"": ""Confirm"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -372,7 +451,6 @@ public partial class @Controls : IInputActionCollection2, IDisposable
         m_CharSelection_MoveRight = m_CharSelection.FindAction("MoveRight", throwIfNotFound: true);
         m_CharSelection_Confirm = m_CharSelection.FindAction("Confirm", throwIfNotFound: true);
         m_CharSelection_Cancel = m_CharSelection.FindAction("Cancel", throwIfNotFound: true);
-        m_CharSelection_Start = m_CharSelection.FindAction("Start", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -493,7 +571,6 @@ public partial class @Controls : IInputActionCollection2, IDisposable
     private readonly InputAction m_CharSelection_MoveRight;
     private readonly InputAction m_CharSelection_Confirm;
     private readonly InputAction m_CharSelection_Cancel;
-    private readonly InputAction m_CharSelection_Start;
     public struct CharSelectionActions
     {
         private @Controls m_Wrapper;
@@ -502,7 +579,6 @@ public partial class @Controls : IInputActionCollection2, IDisposable
         public InputAction @MoveRight => m_Wrapper.m_CharSelection_MoveRight;
         public InputAction @Confirm => m_Wrapper.m_CharSelection_Confirm;
         public InputAction @Cancel => m_Wrapper.m_CharSelection_Cancel;
-        public InputAction @Start => m_Wrapper.m_CharSelection_Start;
         public InputActionMap Get() { return m_Wrapper.m_CharSelection; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -524,9 +600,6 @@ public partial class @Controls : IInputActionCollection2, IDisposable
                 @Cancel.started -= m_Wrapper.m_CharSelectionActionsCallbackInterface.OnCancel;
                 @Cancel.performed -= m_Wrapper.m_CharSelectionActionsCallbackInterface.OnCancel;
                 @Cancel.canceled -= m_Wrapper.m_CharSelectionActionsCallbackInterface.OnCancel;
-                @Start.started -= m_Wrapper.m_CharSelectionActionsCallbackInterface.OnStart;
-                @Start.performed -= m_Wrapper.m_CharSelectionActionsCallbackInterface.OnStart;
-                @Start.canceled -= m_Wrapper.m_CharSelectionActionsCallbackInterface.OnStart;
             }
             m_Wrapper.m_CharSelectionActionsCallbackInterface = instance;
             if (instance != null)
@@ -543,9 +616,6 @@ public partial class @Controls : IInputActionCollection2, IDisposable
                 @Cancel.started += instance.OnCancel;
                 @Cancel.performed += instance.OnCancel;
                 @Cancel.canceled += instance.OnCancel;
-                @Start.started += instance.OnStart;
-                @Start.performed += instance.OnStart;
-                @Start.canceled += instance.OnStart;
             }
         }
     }
@@ -581,6 +651,5 @@ public partial class @Controls : IInputActionCollection2, IDisposable
         void OnMoveRight(InputAction.CallbackContext context);
         void OnConfirm(InputAction.CallbackContext context);
         void OnCancel(InputAction.CallbackContext context);
-        void OnStart(InputAction.CallbackContext context);
     }
 }

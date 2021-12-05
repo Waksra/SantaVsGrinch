@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class PlayerCharSelector : MonoBehaviour
 {
@@ -33,27 +34,31 @@ public class PlayerCharSelector : MonoBehaviour
         audioSource = GetComponent<AudioSource>();
     }
 
-    private void OnConfirm()
+    public void OnConfirm(InputAction.CallbackContext context)
     {
-        audioSource.PlayOneShot(buttonConfirmClip);
+        if (!context.performed) return;
+        // audioSource.PlayOneShot(buttonConfirmClip);
         ConfirmEvent.Invoke(this);
     }
     
-    private void OnCancel()
+    public void OnCancel(InputAction.CallbackContext context)
     {
-        audioSource.PlayOneShot(buttonCancelClip);
+        if (!context.performed) return;
+        // audioSource.PlayOneShot(buttonCancelClip);
         CancelEvent.Invoke(this);
     }
 
-    private void OnMoveLeft()
+    public void OnMoveLeft(InputAction.CallbackContext context)
     {
-        audioSource.PlayOneShot(moveButtonClip);
+        if (!context.performed) return;
+        // audioSource.PlayOneShot(moveButtonClip);
         MovedLeftEvent.Invoke(this);
     }
 
-    private void OnMoveRight()
+    public void OnMoveRight(InputAction.CallbackContext context)
     {
-        audioSource.PlayOneShot(moveButtonClip);
+        if (!context.performed) return;
+        // audioSource.PlayOneShot(moveButtonClip);
         MovedRightEvent.Invoke(this);
     }
 }

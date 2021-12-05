@@ -13,6 +13,9 @@ public class GameMode : MonoBehaviour
     {
         playerScores.Add(new PlayerScore(0, maxLives));
         playerScores.Add(new PlayerScore(1, maxLives));
+        
+        
+        GameObject.FindGameObjectWithTag("GameController").GetComponent<CharSelectionManager>().JoinPlayers();
     }
 
     private void CheckGameState()

@@ -210,7 +210,23 @@ MonoBehaviour:
         m_CallState: 2
     m_ActionId: 03ce2753-b652-4ba4-9c5e-641fff4885b1
     m_ActionName: Game/Dash[/Keyboard/space]
-  m_NeverAutoSwitchControlSchemes: 0
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: fb0fc48f-c3f4-4642-a7b5-f7d5fdfbb666
+    m_ActionName: CharSelection/MoveLeft
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 53f57a55-efaa-437e-a6ef-945884e8b8ee
+    m_ActionName: CharSelection/MoveRight
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: aed6034b-b7ea-4dd6-a23e-b0dc474916c7
+    m_ActionName: CharSelection/Confirm
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 8754ec2f-b67f-46b4-9b7f-0f5492b0780d
+    m_ActionName: CharSelection/Cancel
+  m_NeverAutoSwitchControlSchemes: 1
   m_DefaultControlScheme: 
   m_DefaultActionMap: Game
   m_SplitScreenIndex: -1
@@ -325,7 +341,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 51480da120a8508408b219efd880e19b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  projectilePrefab: {fileID: 5203613507369053277, guid: 55debfb8f7b5ae547a05e113be8e5c20, type: 3}
+  projectilePrefab: {fileID: 5203613507369053277, guid: f2a3c870ad5406149891257f66df5421, type: 3}
   fireRate: 2
   firePower: 40
 --- !u!114 &1647139824798315772
@@ -575,7 +591,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: 177f794ca38b3e147bef3f3a75fe1cd0, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0

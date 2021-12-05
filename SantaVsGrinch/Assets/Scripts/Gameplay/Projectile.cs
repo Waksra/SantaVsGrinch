@@ -35,22 +35,6 @@ namespace Gameplay
             body.AddForce(initialVelocity * transform.forward, ForceMode.VelocityChange);
         }
 
-        // private void OnTriggerEnter(Collider other)
-        // {
-        //     if (other.CompareTag("Player"))
-        //     {
-        //         if (ignoreInstigator && other.GetComponent<PlayerController>().GetPlayerId() == instigatorPlayerId) return;
-        //     
-        //         other.GetComponent<Damageable>().TakeDamage(damage);
-        //         Vector3 knockbackDir = new Vector3(body.velocity.x, 0f, body.velocity.z).normalized;
-        //         other.GetComponent<Knockbackable>().Knockback(knockbackDir * knockback);
-        //     }
-        //     else
-        //     {
-        //         Die();
-        //     }
-        // }
-
         private void OnCollisionEnter(Collision collision)
         {
             onHitEvent?.Invoke(collision);
@@ -80,3 +64,19 @@ namespace Gameplay
         }
     }
 }
+
+// private void OnTriggerEnter(Collider other)
+// {
+//     if (other.CompareTag("Player"))
+//     {
+//         if (ignoreInstigator && other.GetComponent<PlayerController>().GetPlayerId() == instigatorPlayerId) return;
+//     
+//         other.GetComponent<Damageable>().TakeDamage(damage);
+//         Vector3 knockbackDir = new Vector3(body.velocity.x, 0f, body.velocity.z).normalized;
+//         other.GetComponent<Knockbackable>().Knockback(knockbackDir * knockback);
+//     }
+//     else
+//     {
+//         Die();
+//     }
+// }

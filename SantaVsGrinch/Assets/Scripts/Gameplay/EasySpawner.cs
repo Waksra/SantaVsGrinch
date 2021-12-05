@@ -10,5 +10,10 @@ namespace Gameplay
         {
             Instantiate(objectToSpawn, transform.position, Quaternion.identity);
         }
+        
+        public void ProjectileSpawnObject(Collision collision)
+        {
+            Instantiate(objectToSpawn, transform.position, Quaternion.identity);
+        }
     }
 }

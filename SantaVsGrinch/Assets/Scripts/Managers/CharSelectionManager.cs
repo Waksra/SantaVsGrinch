@@ -7,19 +7,19 @@ using UnityEngine.UI;
 public class CharSelectionManager : MonoBehaviour
 {
     private PlayerInputManager pim;
-    private List<PlayerProfile> playerProfiles = default;
+    private List<PlayerProfile> playerProfiles = new List<PlayerProfile>();
 
-    private List<PlayerCharSelector> playerCharSelectors = new List<PlayerCharSelector>();
-    private List<PlayerCharSelectionProfile> playerCharSelectionProfiles = new List<PlayerCharSelectionProfile>();
+    private List<PlayerCharSelector> playerCharSelectors = new List<PlayerCharSelector>(); // Player input class in Character Selection Scene
+    private List<PlayerStateProfile> playerStateProfiles = new List<PlayerStateProfile>(); // Player device and character selection data
     
     [SerializeField] private int maxPlayerAmount = 2;
     [SerializeField] private Transform canvas = default;
     [SerializeField] private GameObject[] deviceIcons = default;
     [SerializeField] private Sprite[] deviceSprite = default;
+    [SerializeField] private GameObject[] helpTexts = default;
 
     [SerializeField] private GameObject[] characters = default;
-    
-    private int deviceIconsIndex = 0;
+    [SerializeField] private float deviceIconOffset = 100f;
 
     private void Start()
     {
@@ -50,7 +50,7 @@ public class CharSelectionManager : MonoBehaviour
 
     private void JoinPlayerInCharSelection(PlayerInput playerInput)
     {
-        if (pim.playerCount > maxPlayerAmount)
+        if (pim.playerCount >= maxPlayerAmount)
             pim.joinBehavior = PlayerJoinBehavior.JoinPlayersManually;
 
         PlayerProfile playerProfile = new PlayerProfile()
@@ -59,13 +59,22 @@ public class CharSelectionManager : MonoBehaviour
             devices = playerInput.devices.ToArray(),
         };
         
-        PlayerCharSelectionProfile playerCharSelectionProfiles = new PlayerCharSelectionProfile()
+        PlayerStateProfile playerStateProfile = new PlayerStateProfile()
         {
             id = playerInput.playerIndex,
         };
         
         playerProfiles.Add(playerProfile);
         playerCharSelectors.Add(playerInput.GetComponent<PlayerCharSelector>());
+        playerStateProfiles.Add(playerStateProfile);
+
+        AddSubscriberToAll(playerInput.playerIndex);
+
+        int deviceIndex = 0;
+        string deviceClass = playerInput.devices[0].device.description.deviceClass;
+        if (deviceClass == "Keyboard" || deviceClass == "Mouse")
+            deviceIndex = 1;
+        SetDeviceIcon(playerInput.playerIndex, deviceIndex);
     }
 
     private void JoinPlayerInMatch(PlayerInput playerInput)
@@ -73,11 +82,12 @@ public class CharSelectionManager : MonoBehaviour
         Debug.LogWarning("Trying to join player in match but no logic is executed.");
     }
     
-    private void SetDeviceIcon()
+    private void SetDeviceIcon(int playerIndex, int deviceIndex)
     {
-        // deviceIcons[deviceIconsIndex].GetComponent<Image>().sprite = deviceSprite[i];
+        deviceIcons[playerIndex].GetComponent<Image>().sprite = deviceSprite[deviceIndex];
+        helpTexts[playerIndex].SetActive(false);
     }
-    
+
     private void AddSubscriberToAll(int i)
     {
         playerCharSelectors[i].MovedLeftEvent += OnMovedLeft;
@@ -88,30 +98,48 @@ public class CharSelectionManager : MonoBehaviour
 
     private void OnReadyCheck()
     {
-        bool allReady = true;
-        foreach (PlayerCharSelectionProfile profile in playerCharSelectionProfiles)
+        if (playerStateProfiles.Count <= 1) return;
+        
+        int[] teamSelected = new int[3];
+        foreach (PlayerStateProfile player in playerStateProfiles)
         {
-            if (!profile.isReady)
+            if (!player.isReady)
             {
-                allReady = false;
+                Debug.Log("ReadyCheck failed, a player is not ready.");
+                return;
             }
+
+            teamSelected[player.teamIndex]++;
         }
 
-        if (allReady)
-        {
-            StartMatch();
+        if (teamSelected[0] > 0 || teamSelected[1] > 1 || teamSelected[2] > 1){
+            Debug.Log("ReadyCheck failed, players on the same team or teams not selected.");
+            return;
         }
+
+        // Set characterId to setup for JoinPlayers when match starts
+        foreach (PlayerProfile player in playerProfiles)
+        {
+            player.characterId = playerStateProfiles[player.id].teamIndex - 1;
+        }
+
+        StartMatch();
     }
 
     private void StartMatch()
     {
+        for (int i = playerCharSelectors.Count - 1; i >= 0; i--)
+        {
+            Destroy(playerCharSelectors[i].gameObject);
+        }
         Debug.Log("Starting Match.");
+        SceneManager.LoadScene(3);
     }
 
     private void OnConfirm(PlayerCharSelector playerCharSelector)
     {
         int index = playerCharSelectors.IndexOf(playerCharSelector);
-        playerCharSelectionProfiles[index].isReady = true;
+        playerStateProfiles[index].isReady = true;
 
         OnReadyCheck();
     }
@@ -119,29 +147,39 @@ public class CharSelectionManager : MonoBehaviour
     private void OnCancel(PlayerCharSelector playerCharSelector)
     {
         int index = playerCharSelectors.IndexOf(playerCharSelector);
-        playerCharSelectionProfiles[index].isReady = false;
+        playerStateProfiles[index].isReady = false;
     }
     
     private void OnMovedLeft(PlayerCharSelector playerCharSelector)
     {
-        int index = playerCharSelectors.IndexOf(playerCharSelector);
-        int teamIndex = playerCharSelectionProfiles[index].teamIndex;
+        int playerIndex = playerCharSelectors.IndexOf(playerCharSelector);
+        int teamIndex = playerStateProfiles[playerIndex].teamIndex;
 
         if (teamIndex == (int) TeamSelectionIndex.Neutral)
             teamIndex = (int) TeamSelectionIndex.Team1;
-        else if (teamIndex == (int)TeamSelectionIndex.Team2) 
+        else if (teamIndex == (int) TeamSelectionIndex.Team2)
             teamIndex = (int) TeamSelectionIndex.Neutral;
+        else 
+            return;
+        
+        playerStateProfiles[playerIndex].teamIndex = teamIndex;
+        deviceIcons[playerIndex].transform.localPosition += deviceIconOffset * Vector3.left;
     }
 
     private void OnMovedRight(PlayerCharSelector playerCharSelector)
     {
-        int index = playerCharSelectors.IndexOf(playerCharSelector);
-        int teamIndex = playerCharSelectionProfiles[index].teamIndex;
+        int playerIndex = playerCharSelectors.IndexOf(playerCharSelector);
+        int teamIndex = playerStateProfiles[playerIndex].teamIndex;
 
         if (teamIndex == (int) TeamSelectionIndex.Neutral)
             teamIndex = (int) TeamSelectionIndex.Team2;
-        else if (teamIndex == (int)TeamSelectionIndex.Team1) 
+        else if (teamIndex == (int) TeamSelectionIndex.Team1)
             teamIndex = (int) TeamSelectionIndex.Neutral;
+        else
+            return;
+        
+        playerStateProfiles[playerIndex].teamIndex = teamIndex;
+        deviceIcons[playerIndex].transform.localPosition += deviceIconOffset * Vector3.right;
     }
 
     // When match starts (once the scene is loaded and players are ready to play)
@@ -149,6 +187,7 @@ public class CharSelectionManager : MonoBehaviour
     {
         foreach (PlayerProfile p in playerProfiles)
         {
+            Debug.Log("CharacterId: " + p.characterId);
             pim.playerPrefab = characters[p.characterId];
             pim.JoinPlayer(p.id, p.id, null, p.devices);
         }
@@ -169,7 +208,7 @@ public class PlayerProfile
     public int characterId { get; set; }
 }
 
-public class PlayerCharSelectionProfile
+public class PlayerStateProfile
 {
     public int id { get; set; }
     public int teamIndex { get; set; }
