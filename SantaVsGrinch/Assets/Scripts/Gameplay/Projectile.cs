@@ -1,62 +1,82 @@
 using System.Collections;
 using UnityEngine;
+using UnityEngine.Events;
 
-public class Projectile : MonoBehaviour
+namespace Gameplay
 {
-    private Rigidbody body;
-    [SerializeField] private float damage = 1f;
-    [SerializeField] private float knockback = 1f;
-    [SerializeField] private float dieAfterTime = 5f;
-    [SerializeField] private GameObject onHitParticlesPrefab;
-    [SerializeField] private bool ignoreInstigator = true;
-    
-    private int instigatorPlayerId;
-    
-    private void Awake()
+    public class Projectile : MonoBehaviour
     {
-        body = GetComponent<Rigidbody>();
-        StartCoroutine(DieAfterTime());
-    }
+        [SerializeField, Range(0, 50)] private float initialVelocity = 20f;
+        [SerializeField, Range(0, 5)] private float deathDelay = 0f;
+        [SerializeField] private bool ignoreInstigator = true;
+        [SerializeField, Range(-1, 60)] private float lifeTime = -1;
+        [SerializeField] private UnityEvent<Collision> onHitEvent;
+        [SerializeField] private UnityEvent onDeathEvent;
 
-    private void OnTriggerEnter(Collider other)
-    {
-        if (other.CompareTag("Player"))
+        private Rigidbody body;
+
+        private int instigatorPlayerId;
+    
+        private void Awake()
         {
-            if (ignoreInstigator && other.GetComponent<PlayerController>().GetPlayerId() == instigatorPlayerId) return;
-            
-            other.GetComponent<Damageable>().TakeDamage(damage);
-            Vector3 knockbackDir = new Vector3(body.velocity.x, 0f, body.velocity.z).normalized;
-            other.GetComponent<Knockbackable>().Knockback(knockbackDir * knockback);
+            body = GetComponent<Rigidbody>();
+
+            if (lifeTime >= 0)
+                StartCoroutine(DieAfterTime(lifeTime));
         }
-        else
+
+        public void Fire()
         {
+            body.AddForce(initialVelocity * transform.forward, ForceMode.VelocityChange);
+        }
+        
+        public void Fire(float initialVelocity)
+        {
+            body.AddForce(initialVelocity * transform.forward, ForceMode.VelocityChange);
+        }
+
+        // private void OnTriggerEnter(Collider other)
+        // {
+        //     if (other.CompareTag("Player"))
+        //     {
+        //         if (ignoreInstigator && other.GetComponent<PlayerController>().GetPlayerId() == instigatorPlayerId) return;
+        //     
+        //         other.GetComponent<Damageable>().TakeDamage(damage);
+        //         Vector3 knockbackDir = new Vector3(body.velocity.x, 0f, body.velocity.z).normalized;
+        //         other.GetComponent<Knockbackable>().Knockback(knockbackDir * knockback);
+        //     }
+        //     else
+        //     {
+        //         Die();
+        //     }
+        // }
+
+        private void OnCollisionEnter(Collision collision)
+        {
+            onHitEvent?.Invoke(collision);
+            if (deathDelay > 0)
+            {
+                StartCoroutine(DieAfterTime(deathDelay));
+            }
+            else
+                Die();
+        }
+
+        public void SetInstigator(int playerId)
+        {
+            instigatorPlayerId = playerId;
+        }
+
+        private IEnumerator DieAfterTime(float time)
+        {
+            yield return new WaitForSeconds(time);
             Die();
         }
-    }
 
-    public void Fire(Vector3 force)
-    {
-        body.AddForce(force, ForceMode.Impulse);
-    }
-
-    public void SetInstigator(int playerId)
-    {
-        instigatorPlayerId = playerId;
-    }
-
-    private IEnumerator DieAfterTime()
-    {
-        yield return new WaitForSeconds(dieAfterTime);
-        Die();
-    }
-
-    private void Die()
-    {
-        if (onHitParticlesPrefab != null)
-            Instantiate(onHitParticlesPrefab, transform.position, Quaternion.identity);
-        else 
-            Debug.LogWarning("OnHitParticles not selected.");
-        
-        Destroy(gameObject);
+        private void Die()
+        {
+            onDeathEvent?.Invoke();
+            Destroy(gameObject);
+        }
     }
 }

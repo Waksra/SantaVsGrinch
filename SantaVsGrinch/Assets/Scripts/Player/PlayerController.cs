@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using Gameplay;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -44,13 +45,14 @@ public class PlayerController : MonoBehaviour
         if (!isFiring) return;
         if (timeLastFired + 1f / fireRate <= Time.time)
         {
+            Vector3 forward = transform.forward;
             timeLastFired = Time.time;
-            GameObject go = Instantiate(projectilePrefab, transform.position + aimInput, Quaternion.Euler(transform.forward));
+            GameObject go = Instantiate(projectilePrefab, transform.position + transform.forward * 1.5f, Quaternion.LookRotation(forward));
             go.GetComponent<Projectile>().SetInstigator(playerInput.playerIndex);
-            go.GetComponent<Projectile>().Fire(transform.forward * firePower);
+            go.GetComponent<Projectile>().Fire();
             
             float selfKnockback = 1f;
-            GetComponent<Knockbackable>().Knockback(-transform.forward * selfKnockback);
+            GetComponent<Knockbackable>().Knockback(-forward * selfKnockback);
         }
     }
 }

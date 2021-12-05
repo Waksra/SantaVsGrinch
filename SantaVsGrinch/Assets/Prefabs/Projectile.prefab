@@ -93,6 +93,9 @@ GameObject:
   - component: {fileID: 5203613507369053278}
   - component: {fileID: 5203613507369053279}
   - component: {fileID: 5203613507369053276}
+  - component: {fileID: 6780594736950524374}
+  - component: {fileID: 4753150519862638354}
+  - component: {fileID: 5213915107234778786}
   m_Layer: 0
   m_Name: Projectile
   m_TagString: Untagged
@@ -124,7 +127,7 @@ SphereCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5203613507369053277}
   m_Material: {fileID: 0}
-  m_IsTrigger: 1
+  m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
   m_Radius: 0.25
@@ -157,11 +160,90 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5c559cddc8e5c5843ba8ceb781c24966, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  damage: 1
-  knockback: 5
-  dieAfterTime: 5
-  onHitParticlesPrefab: {fileID: 2711238035710250997, guid: 7e0de05009fab5146bbeac274526a1d2, type: 3}
+  initialVelocity: 20
+  dieAfterTime: 0
   ignoreInstigator: 1
+  onHitEvent:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 6780594736950524374}
+        m_TargetAssemblyTypeName: Gameplay.Damager, Assembly-CSharp
+        m_MethodName: ProjectileDealDamage
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 4753150519862638354}
+        m_TargetAssemblyTypeName: Gameplay.Knockbacker, Assembly-CSharp
+        m_MethodName: ProjectileKnockback
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  onDeathEvent:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 5213915107234778786}
+        m_TargetAssemblyTypeName: Gameplay.EasySpawner, Assembly-CSharp
+        m_MethodName: ProjectileSpawnObject
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+--- !u!114 &6780594736950524374
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5203613507369053277}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e6540466065e4c1dad131b9a3f204cda, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  damage: 1
+--- !u!114 &4753150519862638354
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5203613507369053277}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 85f0e71e0aa14c759c276e2fc6b4eb5c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  knockback: 10
+--- !u!114 &5213915107234778786
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5203613507369053277}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 72f690090bc84bf2982ad64b19cca7cf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  objectToSpawn: {fileID: 2711238035710250997, guid: 7e0de05009fab5146bbeac274526a1d2, type: 3}
 --- !u!1 &8308177975595350285
 GameObject:
   m_ObjectHideFlags: 0
