@@ -198,6 +198,136 @@ public partial class @Controls : IInputActionCollection2, IDisposable
                     ""isPartOfComposite"": false
                 }
             ]
+        },
+        {
+            ""name"": ""CharSelection"",
+            ""id"": ""809455ca-aa4e-44e0-a2df-215c74eafd12"",
+            ""actions"": [
+                {
+                    ""name"": ""MoveLeft"",
+                    ""type"": ""Button"",
+                    ""id"": ""fb0fc48f-c3f4-4642-a7b5-f7d5fdfbb666"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""MoveRight"",
+                    ""type"": ""Button"",
+                    ""id"": ""53f57a55-efaa-437e-a6ef-945884e8b8ee"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Confirm"",
+                    ""type"": ""Button"",
+                    ""id"": ""aed6034b-b7ea-4dd6-a23e-b0dc474916c7"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Cancel"",
+                    ""type"": ""Button"",
+                    ""id"": ""8754ec2f-b67f-46b4-9b7f-0f5492b0780d"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Start"",
+                    ""type"": ""Button"",
+                    ""id"": ""d161e962-e89f-4bc2-90fe-430a579a5fef"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                }
+            ],
+            ""bindings"": [
+                {
+                    ""name"": """",
+                    ""id"": ""91d94614-30a1-4f2b-af1c-9decd49a7e18"",
+                    ""path"": ""<Gamepad>/dpad/right"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Gamepad"",
+                    ""action"": ""MoveRight"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""573c1e8b-0cd6-4b0f-a3f3-11bf54e84522"",
+                    ""path"": ""<Gamepad>/leftStick/right"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Gamepad"",
+                    ""action"": ""MoveRight"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""700e2a8f-d4e8-489a-ae30-8feaaaa60684"",
+                    ""path"": ""<Gamepad>/buttonEast"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Gamepad"",
+                    ""action"": ""Cancel"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""137352ac-b5b3-4cdd-a09f-c4c775d2ffaf"",
+                    ""path"": ""<Gamepad>/dpad/left"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Gamepad"",
+                    ""action"": ""MoveLeft"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""dd6c0bdf-2042-416b-b1db-81d2dfdea463"",
+                    ""path"": ""<Gamepad>/leftStick/left"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Gamepad"",
+                    ""action"": ""MoveLeft"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""93c283b8-1c14-4bb1-85d2-710cbfd37e94"",
+                    ""path"": ""<Gamepad>/buttonSouth"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Gamepad"",
+                    ""action"": ""Confirm"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""c9659692-07c0-438a-bc62-20f338e8713a"",
+                    ""path"": ""<Gamepad>/start"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Gamepad"",
+                    ""action"": ""Start"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                }
+            ]
         }
     ],
     ""controlSchemes"": [
@@ -236,6 +366,13 @@ public partial class @Controls : IInputActionCollection2, IDisposable
         m_Game_Aim = m_Game.FindAction("Aim", throwIfNotFound: true);
         m_Game_Fire = m_Game.FindAction("Fire", throwIfNotFound: true);
         m_Game_Dash = m_Game.FindAction("Dash", throwIfNotFound: true);
+        // CharSelection
+        m_CharSelection = asset.FindActionMap("CharSelection", throwIfNotFound: true);
+        m_CharSelection_MoveLeft = m_CharSelection.FindAction("MoveLeft", throwIfNotFound: true);
+        m_CharSelection_MoveRight = m_CharSelection.FindAction("MoveRight", throwIfNotFound: true);
+        m_CharSelection_Confirm = m_CharSelection.FindAction("Confirm", throwIfNotFound: true);
+        m_CharSelection_Cancel = m_CharSelection.FindAction("Cancel", throwIfNotFound: true);
+        m_CharSelection_Start = m_CharSelection.FindAction("Start", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -348,6 +485,71 @@ public partial class @Controls : IInputActionCollection2, IDisposable
         }
     }
     public GameActions @Game => new GameActions(this);
+
+    // CharSelection
+    private readonly InputActionMap m_CharSelection;
+    private ICharSelectionActions m_CharSelectionActionsCallbackInterface;
+    private readonly InputAction m_CharSelection_MoveLeft;
+    private readonly InputAction m_CharSelection_MoveRight;
+    private readonly InputAction m_CharSelection_Confirm;
+    private readonly InputAction m_CharSelection_Cancel;
+    private readonly InputAction m_CharSelection_Start;
+    public struct CharSelectionActions
+    {
+        private @Controls m_Wrapper;
+        public CharSelectionActions(@Controls wrapper) { m_Wrapper = wrapper; }
+        public InputAction @MoveLeft => m_Wrapper.m_CharSelection_MoveLeft;
+        public InputAction @MoveRight => m_Wrapper.m_CharSelection_MoveRight;
+        public InputAction @Confirm => m_Wrapper.m_CharSelection_Confirm;
+        public InputAction @Cancel => m_Wrapper.m_CharSelection_Cancel;
+        public InputAction @Start => m_Wrapper.m_CharSelection_Start;
+        public InputActionMap Get() { return m_Wrapper.m_CharSelection; }
+        public void Enable() { Get().Enable(); }
+        public void Disable() { Get().Disable(); }
+        public bool enabled => Get().enabled;
+        public static implicit operator InputActionMap(CharSelectionActions set) { return set.Get(); }
+        public void SetCallbacks(ICharSelectionActions instance)
+        {
+            if (m_Wrapper.m_CharSelectionActionsCallbackInterface != null)
+            {
+                @MoveLeft.started -= m_Wrapper.m_CharSelectionActionsCallbackInterface.OnMoveLeft;
+                @MoveLeft.performed -= m_Wrapper.m_CharSelectionActionsCallbackInterface.OnMoveLeft;
+                @MoveLeft.canceled -= m_Wrapper.m_CharSelectionActionsCallbackInterface.OnMoveLeft;
+                @MoveRight.started -= m_Wrapper.m_CharSelectionActionsCallbackInterface.OnMoveRight;
+                @MoveRight.performed -= m_Wrapper.m_CharSelectionActionsCallbackInterface.OnMoveRight;
+                @MoveRight.canceled -= m_Wrapper.m_CharSelectionActionsCallbackInterface.OnMoveRight;
+                @Confirm.started -= m_Wrapper.m_CharSelectionActionsCallbackInterface.OnConfirm;
+                @Confirm.performed -= m_Wrapper.m_CharSelectionActionsCallbackInterface.OnConfirm;
+                @Confirm.canceled -= m_Wrapper.m_CharSelectionActionsCallbackInterface.OnConfirm;
+                @Cancel.started -= m_Wrapper.m_CharSelectionActionsCallbackInterface.OnCancel;
+                @Cancel.performed -= m_Wrapper.m_CharSelectionActionsCallbackInterface.OnCancel;
+                @Cancel.canceled -= m_Wrapper.m_CharSelectionActionsCallbackInterface.OnCancel;
+                @Start.started -= m_Wrapper.m_CharSelectionActionsCallbackInterface.OnStart;
+                @Start.performed -= m_Wrapper.m_CharSelectionActionsCallbackInterface.OnStart;
+                @Start.canceled -= m_Wrapper.m_CharSelectionActionsCallbackInterface.OnStart;
+            }
+            m_Wrapper.m_CharSelectionActionsCallbackInterface = instance;
+            if (instance != null)
+            {
+                @MoveLeft.started += instance.OnMoveLeft;
+                @MoveLeft.performed += instance.OnMoveLeft;
+                @MoveLeft.canceled += instance.OnMoveLeft;
+                @MoveRight.started += instance.OnMoveRight;
+                @MoveRight.performed += instance.OnMoveRight;
+                @MoveRight.canceled += instance.OnMoveRight;
+                @Confirm.started += instance.OnConfirm;
+                @Confirm.performed += instance.OnConfirm;
+                @Confirm.canceled += instance.OnConfirm;
+                @Cancel.started += instance.OnCancel;
+                @Cancel.performed += instance.OnCancel;
+                @Cancel.canceled += instance.OnCancel;
+                @Start.started += instance.OnStart;
+                @Start.performed += instance.OnStart;
+                @Start.canceled += instance.OnStart;
+            }
+        }
+    }
+    public CharSelectionActions @CharSelection => new CharSelectionActions(this);
     private int m_KBMSchemeIndex = -1;
     public InputControlScheme KBMScheme
     {
@@ -372,5 +574,13 @@ public partial class @Controls : IInputActionCollection2, IDisposable
         void OnAim(InputAction.CallbackContext context);
         void OnFire(InputAction.CallbackContext context);
         void OnDash(InputAction.CallbackContext context);
+    }
+    public interface ICharSelectionActions
+    {
+        void OnMoveLeft(InputAction.CallbackContext context);
+        void OnMoveRight(InputAction.CallbackContext context);
+        void OnConfirm(InputAction.CallbackContext context);
+        void OnCancel(InputAction.CallbackContext context);
+        void OnStart(InputAction.CallbackContext context);
     }
 }
