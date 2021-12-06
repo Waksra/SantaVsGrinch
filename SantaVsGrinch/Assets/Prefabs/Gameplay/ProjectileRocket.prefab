@@ -97,7 +97,7 @@ GameObject:
   - component: {fileID: 4753150519862638354}
   - component: {fileID: 5213915107234778786}
   m_Layer: 0
-  m_Name: Projectile
+  m_Name: ProjectileRocket
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -181,8 +181,8 @@ MonoBehaviour:
         m_CallState: 2
       - m_Target: {fileID: 4753150519862638354}
         m_TargetAssemblyTypeName: Gameplay.Knockbacker, Assembly-CSharp
-        m_MethodName: KnockbackAlongVelocity
-        m_Mode: 0
+        m_MethodName: KnockbackRadial
+        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -218,29 +218,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e6540466065e4c1dad131b9a3f204cda, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  damage: 20
+  damage: 1
   radius: 10
   radialDamageCurve:
     serializedVersion: 2
-    m_Curve:
-    - serializedVersion: 3
-      time: 0
-      value: 1
-      inSlope: 0
-      outSlope: -1
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0
-      outWeight: 0
-    - serializedVersion: 3
-      time: 1
-      value: 0
-      inSlope: -1
-      outSlope: 0
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0
-      outWeight: 0
+    m_Curve: []
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
@@ -260,34 +242,34 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   knockback: 10
-  radius: 10
+  radius: 5
   radialKnockbackCurve:
     serializedVersion: 2
     m_Curve:
     - serializedVersion: 3
       time: 0
       value: 1
-      inSlope: 0
+      inSlope: -1
       outSlope: -1
-      tangentMode: 0
+      tangentMode: 34
       weightedMode: 0
       inWeight: 0
-      outWeight: 0
+      outWeight: 0.33333334
     - serializedVersion: 3
       time: 1
       value: 0
       inSlope: -1
-      outSlope: 0
-      tangentMode: 0
+      outSlope: -1
+      tangentMode: 34
       weightedMode: 0
-      inWeight: 0
+      inWeight: 0.33333334
       outWeight: 0
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
   layerMask:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 128
 --- !u!114 &5213915107234778786
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -300,7 +282,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 72f690090bc84bf2982ad64b19cca7cf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  objectToSpawn: {fileID: 2711238035710250997, guid: 7e0de05009fab5146bbeac274526a1d2, type: 3}
+  objectToSpawn: {fileID: 7416750430319858421, guid: 6b4dae50d401fcb41bfef3bdc09865f4, type: 3}
 --- !u!1 &8308177975595350285
 GameObject:
   m_ObjectHideFlags: 0

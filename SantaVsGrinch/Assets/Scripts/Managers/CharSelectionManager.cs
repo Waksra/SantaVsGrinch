@@ -70,16 +70,18 @@ public class CharSelectionManager : MonoBehaviour
 
         AddSubscriberToAll(playerInput.playerIndex);
 
-        int deviceIndex = 0;
-        string deviceClass = playerInput.devices[0].device.description.deviceClass;
-        if (deviceClass == "Keyboard" || deviceClass == "Mouse")
+        int deviceIndex = -1;
+        string controlScheme = playerInput.currentControlScheme;
+        if (controlScheme == "KB/M")
+            deviceIndex = 0;
+        else if (controlScheme == "Gamepad")
             deviceIndex = 1;
         SetDeviceIcon(playerInput.playerIndex, deviceIndex);
     }
 
     private void JoinPlayerInMatch(PlayerInput playerInput)
     {
-        Debug.LogWarning("Trying to join player in match but no logic is executed.");
+        
     }
     
     private void SetDeviceIcon(int playerIndex, int deviceIndex)
@@ -187,7 +189,6 @@ public class CharSelectionManager : MonoBehaviour
     {
         foreach (PlayerProfile p in playerProfiles)
         {
-            Debug.Log("CharacterId: " + p.characterId);
             pim.playerPrefab = characters[p.characterId];
             pim.JoinPlayer(p.id, p.id, null, p.devices);
         }

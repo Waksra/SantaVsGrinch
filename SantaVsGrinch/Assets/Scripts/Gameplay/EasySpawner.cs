@@ -6,12 +6,12 @@ namespace Gameplay
     {
         [SerializeField] private GameObject objectToSpawn;
 
-        public void ProjectileSpawnObject()
+        public void SpawnObject()
         {
             Instantiate(objectToSpawn, transform.position, Quaternion.identity);
         }
         
-        public void ProjectileSpawnObject(Collision collision)
+        public void SpawnObject(Collision collision)
         {
             Instantiate(objectToSpawn, transform.position, Quaternion.identity);
         }

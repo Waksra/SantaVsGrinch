@@ -3,6 +3,8 @@ using UnityEngine.Events;
 
 public class Damageable : MonoBehaviour
 {
+    [SerializeField] private bool smashMode = false;
+    
     [SerializeField] private UnityEvent<int> deathEvent;
     
     [SerializeField] private float maxHealth = 1f;
@@ -15,21 +17,32 @@ public class Damageable : MonoBehaviour
 
     private void Start()
     {
-        Health = maxHealth;
+        if (smashMode)
+            Health = 0;
+        else
+            Health = maxHealth;
     }
     
     public void TakeDamage(float damage)
     {
-        Health -= damage;
-        if (Health <= 0f)
+        if (smashMode)
         {
-            Die();
+            Health += damage;
+        }
+        else
+        {
+            Health -= damage;
+            if (Health <= 0f)
+            {
+                Die();
+            }
         }
     }
 
-    private void Die()
+    public void Die()
     {
         Debug.Log($"{gameObject.name} died.");
         deathEvent.Invoke(GetComponent<PlayerController>().GetPlayerId());
+        GameObject.FindObjectOfType<GameMode>().LoseLife(GetComponent<PlayerController>().GetPlayerId());
     }
 }

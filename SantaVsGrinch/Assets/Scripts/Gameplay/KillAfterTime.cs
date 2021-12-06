@@ -1,9 +1,11 @@
 using System.Collections;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class KillAfterTime : MonoBehaviour
 {
-    [SerializeField] private float dieAfterTime = 5f;
+    [SerializeField] private float lifetime = 1f;
+    [SerializeField] private UnityEvent onDeathEvent;
     
     private void Awake()
     {
@@ -12,12 +14,13 @@ public class KillAfterTime : MonoBehaviour
     
     private IEnumerator DieAfterTime()
     {
-        yield return new WaitForSeconds(dieAfterTime);
+        yield return new WaitForSeconds(lifetime);
         Die();
     }
 
     private void Die()
     {
+        onDeathEvent?.Invoke();
         Destroy(gameObject);
     }
 }

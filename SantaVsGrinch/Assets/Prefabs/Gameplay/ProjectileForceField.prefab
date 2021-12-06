@@ -97,7 +97,7 @@ GameObject:
   - component: {fileID: 4753150519862638354}
   - component: {fileID: 5213915107234778786}
   m_Layer: 0
-  m_Name: Projectile
+  m_Name: ProjectileForceField
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -218,7 +218,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e6540466065e4c1dad131b9a3f204cda, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  damage: 20
+  damage: 1
   radius: 10
   radialDamageCurve:
     serializedVersion: 2
@@ -300,7 +300,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 72f690090bc84bf2982ad64b19cca7cf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  objectToSpawn: {fileID: 2711238035710250997, guid: 7e0de05009fab5146bbeac274526a1d2, type: 3}
+  objectToSpawn: {fileID: 3293304309789363939, guid: d20ba392807562845a612cacd68d31de, type: 3}
 --- !u!1 &8308177975595350285
 GameObject:
   m_ObjectHideFlags: 0
