@@ -17,10 +17,7 @@ public class Damageable : MonoBehaviour
 
     private void Start()
     {
-        if (smashMode)
-            Health = 0;
-        else
-            Health = maxHealth;
+        Respawn();
     }
     
     public void TakeDamage(float damage)
@@ -37,6 +34,14 @@ public class Damageable : MonoBehaviour
                 Die();
             }
         }
+    }
+
+    public void Respawn()
+    {
+        if (smashMode)
+            Health = 0;
+        else
+            Health = maxHealth;
     }
 
     public void Die()

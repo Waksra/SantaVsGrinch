@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using Cinemachine;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.SceneManagement;
@@ -81,7 +82,7 @@ public class CharSelectionManager : MonoBehaviour
 
     private void JoinPlayerInMatch(PlayerInput playerInput)
     {
-        
+        GameObject.FindObjectOfType<CinemachineTargetGroup>().AddMember(playerInput.transform, 0.5f, 1f);
     }
     
     private void SetDeviceIcon(int playerIndex, int deviceIndex)
