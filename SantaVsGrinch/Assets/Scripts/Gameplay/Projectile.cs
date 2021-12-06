@@ -1,5 +1,6 @@
 using System;
 using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 
@@ -15,12 +16,16 @@ namespace Gameplay
         [SerializeField] private UnityEvent onDeathEvent;
 
         private Rigidbody body;
+        private new Collider collider;
 
         private int instigatorPlayerId;
+
+        public Collider Collider => collider;
     
         private void Awake()
         {
             body = GetComponent<Rigidbody>();
+            collider = GetComponent<Collider>();
 
             if (lifeTime >= 0)
                 StartCoroutine(DieAfterTime(lifeTime));
@@ -28,12 +33,36 @@ namespace Gameplay
 
         public void Fire()
         {
-            body.AddForce(initialVelocity * transform.forward, ForceMode.VelocityChange);
+            Fire(initialVelocity);
         }
-        
+
         public void Fire(float initialVelocity)
         {
             body.AddForce(initialVelocity * transform.forward, ForceMode.VelocityChange);
+        }
+
+        public void Fire(ref List<Collider> ignoreColliders)
+        {
+            foreach (Collider ignoreCollider in ignoreColliders)
+            {
+                Physics.IgnoreCollision(collider, ignoreCollider);
+            }
+
+            ignoreColliders.Add(collider);
+            
+            Fire();
+        }
+        
+        public void Fire(float initialVelocity, ref List<Collider> ignoreColliders)
+        {
+            foreach (Collider ignoreCollider in ignoreColliders)
+            {
+                Physics.IgnoreCollision(collider, ignoreCollider);
+            }
+
+            ignoreColliders.Add(collider);
+            
+            Fire(initialVelocity);
         }
 
         private void OnTriggerEnter(Collider other)
@@ -62,6 +91,11 @@ namespace Gameplay
         {
             onDeathEvent?.Invoke();
             Destroy(gameObject);
+        }
+
+        public void SubscribeToDeathEvent(UnityAction response)
+        {
+            onDeathEvent.AddListener(response);
         }
     }
 }
