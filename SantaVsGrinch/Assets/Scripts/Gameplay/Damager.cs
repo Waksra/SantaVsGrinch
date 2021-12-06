@@ -13,9 +13,9 @@ namespace Gameplay
         [FoldoutGroup("Radial")]
         [SerializeField] private LayerMask layerMask = default;
         
-        public void ProjectileDealDamage(Collision collision)
+        public void ProjectileDealDamage(Collider other)
         {
-            if(collision.collider.TryGetComponent(out Damageable damageable))
+            if(other.TryGetComponent(out Damageable damageable))
                 DealDamage(damageable);
         }
         

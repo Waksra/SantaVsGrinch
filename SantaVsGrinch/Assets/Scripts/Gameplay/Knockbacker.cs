@@ -21,9 +21,9 @@ namespace Gameplay
             body = GetComponent<Rigidbody>();
         }
 
-        public void KnockbackAlongVelocity(Collision collision)
+        public void KnockbackAlongVelocity(Collider other)
         {
-            if(!collision.collider.TryGetComponent(out Knockbackable knockbackable))
+            if(!other.TryGetComponent(out Knockbackable knockbackable))
                 return;
 
             Vector3 velocity = body.velocity;

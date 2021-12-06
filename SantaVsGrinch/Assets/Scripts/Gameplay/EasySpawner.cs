@@ -11,7 +11,7 @@ namespace Gameplay
             Instantiate(objectToSpawn, transform.position, Quaternion.identity);
         }
         
-        public void SpawnObject(Collision collision)
+        public void SpawnObject(Collider other)
         {
             Instantiate(objectToSpawn, transform.position, Quaternion.identity);
         }

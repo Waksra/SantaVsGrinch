@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using UnityEngine;
 using UnityEngine.Events;
@@ -10,7 +11,7 @@ namespace Gameplay
         [SerializeField, Range(0, 5)] private float deathDelay = 0f;
         [SerializeField] private bool ignoreInstigator = true;
         [SerializeField, Range(-1, 60)] private float lifeTime = -1;
-        [SerializeField] private UnityEvent<Collision> onHitEvent;
+        [SerializeField] private UnityEvent<Collider> onHitEvent;
         [SerializeField] private UnityEvent onDeathEvent;
 
         private Rigidbody body;
@@ -35,9 +36,9 @@ namespace Gameplay
             body.AddForce(initialVelocity * transform.forward, ForceMode.VelocityChange);
         }
 
-        private void OnCollisionEnter(Collision collision)
+        private void OnTriggerEnter(Collider other)
         {
-            onHitEvent?.Invoke(collision);
+            onHitEvent?.Invoke(other);
             if (deathDelay > 0)
             {
                 StartCoroutine(DieAfterTime(deathDelay));
