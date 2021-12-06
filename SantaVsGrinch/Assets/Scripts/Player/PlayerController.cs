@@ -13,7 +13,6 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private GameObject projectilePrefab = default;
     [Tooltip("Fire rate in shots per second. \nExample: \n  '3' would fire three times per second while \n  '0.25' would fire once every four seconds.")]
     [SerializeField] private float fireRate = 2f;
-    [SerializeField] private float firePower = 100f;
     
     private Vector3 aimInput;
     private bool isFiring;

@@ -46,41 +46,32 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   onAwake: 1
-  strength: -45.5
+  strength: -50
   angle: 337
   forceFieldType: 0
-  radius: 5
+  radius: 2.5
   box: {x: 10, y: 10, z: 10}
   forceStrengthCurve:
     serializedVersion: 2
     m_Curve:
     - serializedVersion: 3
       time: 0
-      value: 1
-      inSlope: 0
-      outSlope: 0
+      value: 0
+      inSlope: 2.723077
+      outSlope: 2.723077
       tangentMode: 0
       weightedMode: 0
       inWeight: 0
-      outWeight: 0
-    - serializedVersion: 3
-      time: 0.8256738
-      value: 0.6770061
-      inSlope: -0.9999999
-      outSlope: -0.9999999
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0.33333334
-      outWeight: 0.33333334
+      outWeight: 0.056497168
     - serializedVersion: 3
       time: 1
-      value: 0
-      inSlope: -1
-      outSlope: -1
+      value: 1
+      inSlope: -0.008546588
+      outSlope: -0.008546588
       tangentMode: 0
       weightedMode: 0
-      inWeight: 0
-      outWeight: 0
+      inWeight: 0.33333343
+      outWeight: 0.33333334
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
@@ -130,7 +121,7 @@ Transform:
   m_GameObject: {fileID: 3957007825150526281}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 10, y: 10, z: 10}
+  m_LocalScale: {x: 5, y: 5, z: 5}
   m_Children: []
   m_Father: {fileID: 3965965044404620910}
   m_RootOrder: 0

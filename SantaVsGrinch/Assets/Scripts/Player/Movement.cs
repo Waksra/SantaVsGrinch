@@ -37,6 +37,8 @@ namespace Player
 
         private bool IsGround => contactCount > 0;
 
+        public float GetMaxAcceleration() => maxAcceleration;
+
         #region Input
 
         public void SetMove(InputAction.CallbackContext context)

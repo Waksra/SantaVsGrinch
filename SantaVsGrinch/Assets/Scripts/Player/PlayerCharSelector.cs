@@ -7,9 +7,9 @@ public class PlayerCharSelector : MonoBehaviour
 
     #region AudioClips
 
-    [SerializeField] private AudioClip buttonConfirmClip = default;
-    [SerializeField] private AudioClip buttonCancelClip = default;
-    [SerializeField] private AudioClip moveButtonClip = default;
+    // [SerializeField] private AudioClip buttonConfirmClip = default;
+    // [SerializeField] private AudioClip buttonCancelClip = default;
+    // [SerializeField] private AudioClip moveButtonClip = default;
 
     #endregion
 

@@ -1,55 +1,32 @@
 using System.Collections.Generic;
-using Cinemachine;
 using UnityEngine;
 using UnityEngine.InputSystem;
-using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class CharSelectionManager : MonoBehaviour
 {
     private PlayerInputManager pim;
-    private List<PlayerProfile> playerProfiles = new List<PlayerProfile>();
-
-    private List<PlayerCharSelector> playerCharSelectors = new List<PlayerCharSelector>(); // Player input class in Character Selection Scene
+    private GameManager gameManager;
+    
     private List<PlayerStateProfile> playerStateProfiles = new List<PlayerStateProfile>(); // Player device and character selection data
+    private List<PlayerCharSelector> playerCharSelectors = new List<PlayerCharSelector>(); // Player input class in Character Selection Scene
     
     [SerializeField] private int maxPlayerAmount = 2;
-    [SerializeField] private Transform canvas = default;
     [SerializeField] private GameObject[] deviceIcons = default;
     [SerializeField] private Sprite[] deviceSprite = default;
     [SerializeField] private GameObject[] helpTexts = default;
 
-    [SerializeField] private GameObject[] characters = default;
     [SerializeField] private float deviceIconOffset = 100f;
 
     private void Start()
     {
-        DontDestroyOnLoad(gameObject);
         pim = PlayerInputManager.instance;
-
-        playerProfiles.Clear();
+        gameManager = FindObjectOfType<GameManager>();
+        
+        gameManager.ResetForNewMatch();
     }
 
-    private void OnPlayerJoined(PlayerInput playerInput)
-    {
-        switch (SceneManager.GetActiveScene().buildIndex)
-        {
-            case 0:
-                Debug.LogWarning("Trying to join player at buildIndex 0. Is this not the Main Menu?");
-                break;
-            case 1:
-                JoinPlayerInCharSelection(playerInput);
-                break;
-            case 2:
-                Debug.LogWarning("Trying to join player at buildIndex 2. Is this not the Post-Match?");
-                break;
-            default:
-                JoinPlayerInMatch(playerInput);
-                break;
-        }
-    }
-
-    private void JoinPlayerInCharSelection(PlayerInput playerInput)
+    public void JoinPlayerInCharSelection(PlayerInput playerInput)
     {
         if (pim.playerCount >= maxPlayerAmount)
             pim.joinBehavior = PlayerJoinBehavior.JoinPlayersManually;
@@ -65,7 +42,7 @@ public class CharSelectionManager : MonoBehaviour
             id = playerInput.playerIndex,
         };
         
-        playerProfiles.Add(playerProfile);
+        gameManager.AddPlayer(playerProfile);
         playerCharSelectors.Add(playerInput.GetComponent<PlayerCharSelector>());
         playerStateProfiles.Add(playerStateProfile);
 
@@ -78,11 +55,6 @@ public class CharSelectionManager : MonoBehaviour
         else if (controlScheme == "Gamepad")
             deviceIndex = 1;
         SetDeviceIcon(playerInput.playerIndex, deviceIndex);
-    }
-
-    private void JoinPlayerInMatch(PlayerInput playerInput)
-    {
-        GameObject.FindObjectOfType<CinemachineTargetGroup>().AddMember(playerInput.transform, 0.5f, 1f);
     }
     
     private void SetDeviceIcon(int playerIndex, int deviceIndex)
@@ -120,11 +92,7 @@ public class CharSelectionManager : MonoBehaviour
             return;
         }
 
-        // Set characterId to setup for JoinPlayers when match starts
-        foreach (PlayerProfile player in playerProfiles)
-        {
-            player.characterId = playerStateProfiles[player.id].teamIndex - 1;
-        }
+        gameManager.LockPlayerSelections(playerStateProfiles);
 
         StartMatch();
     }
@@ -135,8 +103,7 @@ public class CharSelectionManager : MonoBehaviour
         {
             Destroy(playerCharSelectors[i].gameObject);
         }
-        Debug.Log("Starting Match.");
-        SceneManager.LoadScene(3);
+        gameManager.StartMatch();
     }
 
     private void OnConfirm(PlayerCharSelector playerCharSelector)
@@ -184,30 +151,13 @@ public class CharSelectionManager : MonoBehaviour
         playerStateProfiles[playerIndex].teamIndex = teamIndex;
         deviceIcons[playerIndex].transform.localPosition += deviceIconOffset * Vector3.right;
     }
-
-    // When match starts (once the scene is loaded and players are ready to play)
-    public void JoinPlayers()
-    {
-        foreach (PlayerProfile p in playerProfiles)
-        {
-            pim.playerPrefab = characters[p.characterId];
-            pim.JoinPlayer(p.id, p.id, null, p.devices);
-        }
-    }
-
+    
     private enum TeamSelectionIndex
     {
         Neutral = 0,
         Team1 = 1,
         Team2 = 2,
     }
-}
-
-public class PlayerProfile
-{
-    public int id { get; set; }
-    public InputDevice[] devices { get; set; }
-    public int characterId { get; set; }
 }
 
 public class PlayerStateProfile

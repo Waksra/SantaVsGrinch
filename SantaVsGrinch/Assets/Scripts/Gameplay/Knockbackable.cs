@@ -19,7 +19,7 @@ public class Knockbackable : MonoBehaviour
 
     public void KnockbackConstant(Vector3 force)
     {
-        body.AddForce(force, ForceMode.Acceleration);
+        float knockback = damageable.Health < 100f ? 1f : damageable.Health * 0.01f;
+        body.AddForce(force * knockback, ForceMode.Acceleration);
     }
-
 }

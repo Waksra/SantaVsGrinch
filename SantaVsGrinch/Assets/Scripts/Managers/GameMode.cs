@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.SceneManagement;
 
 public class GameMode : MonoBehaviour
 {
@@ -18,7 +19,7 @@ public class GameMode : MonoBehaviour
         playerScores.Add(new PlayerScore(0, maxLives));
         playerScores.Add(new PlayerScore(1, maxLives));
         
-        GameObject.FindGameObjectWithTag("GameController").GetComponent<CharSelectionManager>().JoinPlayers();
+        FindObjectOfType<GameManager>().JoinPlayers();
         PlayerInput[] foundInputs = GameObject.FindObjectsOfType<PlayerInput>();
         foreach (var foundInput in foundInputs) playerInputs[foundInput.playerIndex] = foundInput;
         foreach (var playerInput in playerInputs) AddPlayer(playerInput.playerIndex);
@@ -36,6 +37,9 @@ public class GameMode : MonoBehaviour
     private void EndMatch()
     {
         Debug.Log("Game finished.");
+        //TODO: Go to results scene
+        PlayerInputManager.instance.joinBehavior = PlayerJoinBehavior.JoinPlayersWhenButtonIsPressed;
+        SceneManager.LoadScene(1);
     }
 
     private void AddPlayer(int playerIndex)

@@ -1,3 +1,4 @@
+using Player;
 using Sirenix.OdinInspector;
 using UnityEngine;
 
@@ -44,9 +45,16 @@ public class ForceField : MonoBehaviour
         foreach (var collider in colliders)
         {
             Vector3 vector = collider.transform.position - transform.position;
-            float knockbackMagnitude = strength * forceStrengthCurve.Evaluate(vector.magnitude / radius);
+            float t = vector.magnitude / radius;
+            float knockbackMagnitude = strength * forceStrengthCurve.Evaluate(t);
             Vector3 dir = new Vector3(vector.x, 0f, vector.z).normalized;
-            collider.GetComponent<Knockbackable>().KnockbackConstant(dir * knockbackMagnitude);
+            Vector3 force = dir * knockbackMagnitude;
+            
+            Rigidbody body = collider.GetComponent<Rigidbody>();
+            if (Vector3.Dot(force, body.velocity) < 0)
+                body.AddForce(force, ForceMode.Acceleration);
+            else
+                body.AddForce(force.normalized * t * collider.GetComponent<Movement>().GetMaxAcceleration());
         }
     }
 
