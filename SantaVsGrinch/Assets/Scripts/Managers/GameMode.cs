@@ -13,6 +13,8 @@ public class GameMode : MonoBehaviour
     [SerializeField] private Transform[] spawnPoints = default;
 
     private PlayerInput[] playerInputs = new PlayerInput[2];
+    public PlayerInput[] GetPlayerInputs() => playerInputs;
+    public List<PlayerScore> GetPlayerScores() => playerScores;
     
     private void Start()
     {

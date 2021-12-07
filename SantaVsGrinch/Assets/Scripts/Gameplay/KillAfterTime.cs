@@ -4,10 +4,17 @@ using UnityEngine.Events;
 
 public class KillAfterTime : MonoBehaviour
 {
+    [SerializeField] private bool onAwake = false;
     [SerializeField] private float lifetime = 1f;
     [SerializeField] private UnityEvent onDeathEvent;
     
     private void Awake()
+    {
+        if (onAwake)
+            StartTimer();
+    }
+
+    public void StartTimer()
     {
         StartCoroutine(DieAfterTime());
     }
@@ -20,7 +27,7 @@ public class KillAfterTime : MonoBehaviour
 
     private void Die()
     {
-        onDeathEvent?.Invoke();
+        onDeathEvent.Invoke();
         Destroy(gameObject);
     }
 }

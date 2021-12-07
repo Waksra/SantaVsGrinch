@@ -1,10 +1,13 @@
-﻿using Sirenix.OdinInspector;
+﻿using System;
+using Sirenix.OdinInspector;
 using UnityEngine;
 
 namespace Gameplay
 {
     public class Damager : MonoBehaviour
     {
+        private Collider myCollider;
+        
         [SerializeField] private float damage = 1f;
         [FoldoutGroup("Radial")]
         [SerializeField, Range(0, 50)] private float radius = 10f;
@@ -12,7 +15,12 @@ namespace Gameplay
         [SerializeField] private AnimationCurve radialDamageCurve = AnimationCurve.Linear(0f, 1f, 1f, 0f);
         [FoldoutGroup("Radial")]
         [SerializeField] private LayerMask layerMask = default;
-        
+
+        private void Awake()
+        {
+            myCollider = GetComponent<Collider>();
+        }
+
         public void ProjectileDealDamage(Collider other)
         {
             if(other.TryGetComponent(out Damageable damageable))
@@ -31,10 +39,11 @@ namespace Gameplay
 
             foreach (var collider in colliders)
             {
+                if (collider == myCollider) return;
+                
                 Vector3 vector = collider.transform.position - transform.position;
-                float knockbackMagnitude = damage * radialDamageCurve.Evaluate(vector.magnitude / radius);
-                Vector3 dir = new Vector3(vector.x, 0f, vector.z);
-                collider.GetComponent<Knockbackable>().Knockback(dir * knockbackMagnitude);
+                float damageMagnitude = damage * radialDamageCurve.Evaluate(vector.magnitude / radius);
+                collider.GetComponent<Damageable>().TakeDamage(damageMagnitude);
             }
         }
     }
