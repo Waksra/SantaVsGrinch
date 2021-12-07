@@ -5,7 +5,8 @@ public class Damageable : MonoBehaviour
 {
     [SerializeField] public bool smashMode = false;
     [SerializeField] private bool isPlayer = false;
-    
+
+    [SerializeField] private UnityEvent<float> damageEvent;
     [SerializeField] private UnityEvent deathEvent;
     
     [SerializeField] private float maxHealth = 1f;
@@ -24,6 +25,8 @@ public class Damageable : MonoBehaviour
     public void TakeDamage(float damage)
     {
         if (Health <= 0f) return;
+        
+        damageEvent?.Invoke(damage);
         
         if (smashMode)
         {
@@ -51,7 +54,7 @@ public class Damageable : MonoBehaviour
     public void Die()
     {
         Debug.Log($"{gameObject.name} died.");
-        deathEvent.Invoke();
+        deathEvent?.Invoke();
         if (isPlayer)
             GameObject.FindObjectOfType<GameMode>().AddDeath(GetComponent<PlayerController>().GetPlayerId());
     }

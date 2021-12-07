@@ -17,7 +17,7 @@ public class Knockbackable : MonoBehaviour
         
         if (!GetComponent<Damageable>().smashMode)
             knockback = 1f;
-        body.AddForce(force * knockback, ForceMode.Impulse);
+        body.velocity += force * knockback / body.mass; //, ForceMode.Impulse);
     }
 
     public void KnockbackConstant(Vector3 force)

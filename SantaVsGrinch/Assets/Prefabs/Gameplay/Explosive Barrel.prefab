@@ -83,12 +83,15 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   smashMode: 0
   isPlayer: 0
+  damageEvent:
+    m_PersistentCalls:
+      m_Calls: []
   deathEvent:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: -9033696667298355448}
-        m_TargetAssemblyTypeName: Gameplay.Damager, Assembly-CSharp
-        m_MethodName: DealDamageRadial
+      - m_Target: {fileID: -8137184589979669764}
+        m_TargetAssemblyTypeName: Gameplay.Knockbacker, Assembly-CSharp
+        m_MethodName: KnockbackRadial
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -98,9 +101,9 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: -8137184589979669764}
-        m_TargetAssemblyTypeName: Gameplay.Knockbacker, Assembly-CSharp
-        m_MethodName: KnockbackRadial
+      - m_Target: {fileID: -9033696667298355448}
+        m_TargetAssemblyTypeName: Gameplay.Damager, Assembly-CSharp
+        m_MethodName: DealDamageRadial
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}

@@ -98,6 +98,7 @@ GameObject:
   - component: {fileID: 1647139824798315745}
   - component: {fileID: 1647139824798315772}
   - component: {fileID: 1647139824798315773}
+  - component: {fileID: -1754662024240512686}
   m_Layer: 7
   m_Name: Player 1
   m_TagString: Player
@@ -226,6 +227,10 @@ MonoBehaviour:
       m_Calls: []
     m_ActionId: 8754ec2f-b67f-46b4-9b7f-0f5492b0780d
     m_ActionName: CharSelection/Cancel
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 90d32869-7654-43cf-9dac-0c8ec6981539
+    m_ActionName: Scoreboard/BackToMenu[/Keyboard/anyKey,/DualShock4GamepadHID/buttonSouth,/DualShock4GamepadHID/buttonEast]
   m_NeverAutoSwitchControlSchemes: 1
   m_DefaultControlScheme: 
   m_DefaultActionMap: Game
@@ -369,6 +374,21 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   smashMode: 0
   isPlayer: 1
+  damageEvent:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: -1754662024240512686}
+        m_TargetAssemblyTypeName: Gameplay.Freezeable, Assembly-CSharp
+        m_MethodName: FreezeDamage
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   deathEvent:
     m_PersistentCalls:
       m_Calls:
@@ -385,6 +405,49 @@ MonoBehaviour:
           m_BoolArgument: 0
         m_CallState: 2
   maxHealth: 100
+--- !u!114 &-1754662024240512686
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1647139824798315748}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 49f9b98a3b9acc74fbd10e3c626f99fa, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  useRealTime: 1
+  freezeCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0.01
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 0.5
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 136
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  frozenEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  unfrozenEvent:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!1 &1647139825504062608
 GameObject:
   m_ObjectHideFlags: 0
