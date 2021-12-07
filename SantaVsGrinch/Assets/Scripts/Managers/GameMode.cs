@@ -9,18 +9,21 @@ public class GameMode : MonoBehaviour
 {
     private List<PlayerScore> playerScores = new List<PlayerScore>();
     [SerializeField] private int maxLives = 3;
+    [SerializeField] private float respawnDelay = 1f;
 
     [SerializeField] private Transform[] spawnPoints = default;
 
     private PlayerInput[] playerInputs = new PlayerInput[2];
     public PlayerInput[] GetPlayerInputs() => playerInputs;
     public List<PlayerScore> GetPlayerScores() => playerScores;
-    
+
+    private void Awake()
+    {
+        DontDestroyOnLoad(this);
+    }
+
     private void Start()
     {
-        playerScores.Add(new PlayerScore(0, maxLives));
-        playerScores.Add(new PlayerScore(1, maxLives));
-        
         FindObjectOfType<GameManager>().JoinPlayers();
         PlayerInput[] foundInputs = GameObject.FindObjectsOfType<PlayerInput>();
         foreach (var foundInput in foundInputs) playerInputs[foundInput.playerIndex] = foundInput;
@@ -31,25 +34,26 @@ public class GameMode : MonoBehaviour
 
     private void CheckGameState()
     {
+        // Maximum game length (time) would be added here, or any other criteria.
         foreach (var playerScore in playerScores) 
-            if (playerScore.lives <= 0)
+            if (playerScore.deaths >= maxLives)
                 EndMatch();
     }
 
     private void EndMatch()
     {
+        StopAllCoroutines();
+        
         Debug.Log("Game finished.");
-        //TODO: Go to results scene
-        PlayerInputManager.instance.joinBehavior = PlayerJoinBehavior.JoinPlayersWhenButtonIsPressed;
-        SceneManager.LoadScene(1);
+        GameManager.instance.StartScoreboard();
     }
 
     private void AddPlayer(int playerIndex)
     {
-        playerScores.Add(new PlayerScore(playerIndex, maxLives));
+        playerScores.Add(new PlayerScore(playerIndex));
     }
 
-    public void LoseLife(int playerIndex)
+    public void AddDeath(int playerIndex)
     {
         Debug.Log($"player {playerIndex} lost a life.");
         for (int i = 0; i < playerScores.Count; i++)
@@ -57,7 +61,7 @@ public class GameMode : MonoBehaviour
             if (playerScores[i].playerId == playerIndex)
             {
                 PlayerScore playerScore = playerScores[i];
-                playerScore.lives--;
+                playerScore.deaths++;
                 playerScores[i] = playerScore;
             }
         }
@@ -101,7 +105,7 @@ public class GameMode : MonoBehaviour
 
     private IEnumerator RespawnAfterTime(int playerIndex)
     {
-        yield return new WaitForSecondsRealtime(2f);
+        yield return new WaitForSecondsRealtime(respawnDelay);
         RespawnPlayer(playerIndex);
     }
 }
@@ -109,11 +113,19 @@ public class GameMode : MonoBehaviour
 public struct PlayerScore
 {
     public int playerId;
-    public int lives;
-
-    public PlayerScore(int playerId, int lives)
+    public int kills;
+    public int deaths;
+    // public int suicides;
+    public float damageDealt;
+    // public float damageTaken;
+    // public int dashes;
+    // public float accuracy;
+    
+    public PlayerScore(int playerId)
     {
         this.playerId = playerId;
-        this.lives = lives;
+        kills = 0;
+        deaths = 0;
+        damageDealt = 0;
     }
 }

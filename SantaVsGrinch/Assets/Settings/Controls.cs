@@ -429,6 +429,56 @@ public partial class @Controls : IInputActionCollection2, IDisposable
                     ""isPartOfComposite"": false
                 }
             ]
+        },
+        {
+            ""name"": ""Scoreboard"",
+            ""id"": ""c3cd7171-9fef-4467-b15b-8366fb23534f"",
+            ""actions"": [
+                {
+                    ""name"": ""BackToMenu"",
+                    ""type"": ""Button"",
+                    ""id"": ""90d32869-7654-43cf-9dac-0c8ec6981539"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                }
+            ],
+            ""bindings"": [
+                {
+                    ""name"": """",
+                    ""id"": ""3e457aa5-8346-4ba8-9bc1-751aea919f44"",
+                    ""path"": ""<Keyboard>/anyKey"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""KB/M"",
+                    ""action"": ""BackToMenu"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""3c0c098b-6c90-45f3-8617-f35e9af84288"",
+                    ""path"": ""<Gamepad>/buttonSouth"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Gamepad"",
+                    ""action"": ""BackToMenu"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""23205f96-81aa-4462-9829-f4aa25a33922"",
+                    ""path"": ""<Gamepad>/buttonEast"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""BackToMenu"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                }
+            ]
         }
     ],
     ""controlSchemes"": [
@@ -473,6 +523,9 @@ public partial class @Controls : IInputActionCollection2, IDisposable
         m_CharSelection_MoveRight = m_CharSelection.FindAction("MoveRight", throwIfNotFound: true);
         m_CharSelection_Confirm = m_CharSelection.FindAction("Confirm", throwIfNotFound: true);
         m_CharSelection_Cancel = m_CharSelection.FindAction("Cancel", throwIfNotFound: true);
+        // Scoreboard
+        m_Scoreboard = asset.FindActionMap("Scoreboard", throwIfNotFound: true);
+        m_Scoreboard_BackToMenu = m_Scoreboard.FindAction("BackToMenu", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -642,6 +695,39 @@ public partial class @Controls : IInputActionCollection2, IDisposable
         }
     }
     public CharSelectionActions @CharSelection => new CharSelectionActions(this);
+
+    // Scoreboard
+    private readonly InputActionMap m_Scoreboard;
+    private IScoreboardActions m_ScoreboardActionsCallbackInterface;
+    private readonly InputAction m_Scoreboard_BackToMenu;
+    public struct ScoreboardActions
+    {
+        private @Controls m_Wrapper;
+        public ScoreboardActions(@Controls wrapper) { m_Wrapper = wrapper; }
+        public InputAction @BackToMenu => m_Wrapper.m_Scoreboard_BackToMenu;
+        public InputActionMap Get() { return m_Wrapper.m_Scoreboard; }
+        public void Enable() { Get().Enable(); }
+        public void Disable() { Get().Disable(); }
+        public bool enabled => Get().enabled;
+        public static implicit operator InputActionMap(ScoreboardActions set) { return set.Get(); }
+        public void SetCallbacks(IScoreboardActions instance)
+        {
+            if (m_Wrapper.m_ScoreboardActionsCallbackInterface != null)
+            {
+                @BackToMenu.started -= m_Wrapper.m_ScoreboardActionsCallbackInterface.OnBackToMenu;
+                @BackToMenu.performed -= m_Wrapper.m_ScoreboardActionsCallbackInterface.OnBackToMenu;
+                @BackToMenu.canceled -= m_Wrapper.m_ScoreboardActionsCallbackInterface.OnBackToMenu;
+            }
+            m_Wrapper.m_ScoreboardActionsCallbackInterface = instance;
+            if (instance != null)
+            {
+                @BackToMenu.started += instance.OnBackToMenu;
+                @BackToMenu.performed += instance.OnBackToMenu;
+                @BackToMenu.canceled += instance.OnBackToMenu;
+            }
+        }
+    }
+    public ScoreboardActions @Scoreboard => new ScoreboardActions(this);
     private int m_KBMSchemeIndex = -1;
     public InputControlScheme KBMScheme
     {
@@ -673,5 +759,9 @@ public partial class @Controls : IInputActionCollection2, IDisposable
         void OnMoveRight(InputAction.CallbackContext context);
         void OnConfirm(InputAction.CallbackContext context);
         void OnCancel(InputAction.CallbackContext context);
+    }
+    public interface IScoreboardActions
+    {
+        void OnBackToMenu(InputAction.CallbackContext context);
     }
 }

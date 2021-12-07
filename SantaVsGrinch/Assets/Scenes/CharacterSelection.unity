@@ -511,10 +511,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0cd44c1031e13a943bb63640046fad76, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_UiScaleMode: 0
+  m_UiScaleMode: 1
   m_ReferencePixelsPerUnit: 100
   m_ScaleFactor: 1
-  m_ReferenceResolution: {x: 800, y: 600}
+  m_ReferenceResolution: {x: 1920, y: 1080}
   m_ScreenMatchMode: 0
   m_MatchWidthOrHeight: 0
   m_PhysicalUnit: 3
@@ -980,7 +980,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &1193995740
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1052,9 +1052,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   charSelectorPrefab: {fileID: 5540500757211780401, guid: 57589a818f293764d8557a06133c1a6f, type: 3}
+  playerScoreboardPrefab: {fileID: 0}
   characters:
   - {fileID: 1647139824798315748, guid: 20f97c324a5075f49aa5c0dd3632fd43, type: 3}
   - {fileID: 1647139824798315748, guid: a157e85b1ed97f04798324da765dbada, type: 3}
+  characterNames:
+  - Santa
+  - Grinch
 --- !u!1 &1554048760
 GameObject:
   m_ObjectHideFlags: 0

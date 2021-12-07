@@ -407,6 +407,56 @@
                     "isPartOfComposite": false
                 }
             ]
+        },
+        {
+            "name": "Scoreboard",
+            "id": "c3cd7171-9fef-4467-b15b-8366fb23534f",
+            "actions": [
+                {
+                    "name": "BackToMenu",
+                    "type": "Button",
+                    "id": "90d32869-7654-43cf-9dac-0c8ec6981539",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "",
+                    "id": "3e457aa5-8346-4ba8-9bc1-751aea919f44",
+                    "path": "<Keyboard>/anyKey",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "KB/M",
+                    "action": "BackToMenu",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "3c0c098b-6c90-45f3-8617-f35e9af84288",
+                    "path": "<Gamepad>/buttonSouth",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Gamepad",
+                    "action": "BackToMenu",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "23205f96-81aa-4462-9829-f4aa25a33922",
+                    "path": "<Gamepad>/buttonEast",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "BackToMenu",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                }
+            ]
         }
     ],
     "controlSchemes": [

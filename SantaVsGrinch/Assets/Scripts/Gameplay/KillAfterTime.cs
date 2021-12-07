@@ -27,7 +27,7 @@ public class KillAfterTime : MonoBehaviour
 
     private void Die()
     {
-        onDeathEvent.Invoke();
+        onDeathEvent?.Invoke();
         Destroy(gameObject);
     }
 }

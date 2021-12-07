@@ -33,7 +33,7 @@ namespace Gameplay
 
         public void KnockbackRadial()
         {
-            Collider[] colliders = Physics.OverlapSphere(transform.position, radius, layerMask);
+            Collider[] colliders = Physics.OverlapSphere(transform.position, radius, layerMask.value);
             if (colliders.Length <= 0) return;
 
             foreach (var collider in colliders)

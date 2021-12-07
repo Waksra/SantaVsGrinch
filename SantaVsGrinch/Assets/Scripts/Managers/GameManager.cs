@@ -1,5 +1,3 @@
-using System;
-using System.Collections;
 using System.Collections.Generic;
 using Cinemachine;
 using UnityEngine;
@@ -10,10 +8,14 @@ public class GameManager : MonoBehaviour
 {
     public static GameManager instance;
     private PlayerInputManager pim;
+    private GameMode gameMode;
     
     private List<PlayerProfile> playerProfiles = new List<PlayerProfile>();
+    public List<PlayerProfile> GetPlayerProfiles() => playerProfiles;
     [SerializeField] private GameObject charSelectorPrefab = default;
+    [SerializeField] private GameObject playerScoreboardPrefab = default;
     [SerializeField] private GameObject[] characters = default;
+    [SerializeField] private string[] characterNames = default;
 
     private void Awake()
     {
@@ -24,12 +26,16 @@ public class GameManager : MonoBehaviour
         
         DontDestroyOnLoad(gameObject);
         pim = GetComponent<PlayerInputManager>();
+
+        if (SceneManager.GetActiveScene().buildIndex == 0)
+            SceneManager.LoadScene(1);
     }
 
     public void StartMatch()
     {
         Debug.Log("Starting Match.");
         SceneManager.LoadScene(3);
+        gameMode = FindObjectOfType<GameMode>();
     }
     
     private void OnPlayerJoined(PlayerInput playerInput)
@@ -37,17 +43,29 @@ public class GameManager : MonoBehaviour
         switch (SceneManager.GetActiveScene().buildIndex)
         {
             case 0:
-                Debug.LogWarning("Trying to join player at buildIndex 0. Is this not the Main Menu?");
+                Debug.LogWarning("Trying to join player at buildIndex 0. Aren't we in the Preload scene?");
                 break;
             case 1:
-                FindObjectOfType<CharSelectionManager>().JoinPlayerInCharSelection(playerInput);
+                Debug.LogWarning("Trying to join player at buildIndex 1. Is this not the Main Menu?");
                 break;
             case 2:
-                Debug.LogWarning("Trying to join player at buildIndex 2. Is this not the Post-Match?");
+                FindObjectOfType<CharSelectionManager>().JoinPlayerInCharSelection(playerInput);
+                break;
+            case 3:
+                Debug.Log("Trying to join player at Scoreboard, haven't we joined them already?");
                 break;
             default:
                 JoinPlayerInMatch(playerInput);
                 break;
+        }
+    }
+    
+    private void JoinPlayersInScoreboard()
+    {
+        foreach (PlayerProfile p in playerProfiles)
+        {
+            pim.playerPrefab = playerScoreboardPrefab;
+            pim.JoinPlayer(p.id, p.id, null, p.devices);
         }
     }
 
@@ -60,7 +78,6 @@ public class GameManager : MonoBehaviour
     {
         foreach (PlayerProfile p in playerProfiles)
         {
-            Debug.Log(p.characterId);
             pim.playerPrefab = characters[p.characterId];
             pim.JoinPlayer(p.id, p.id, null, p.devices);
         }
@@ -85,6 +102,24 @@ public class GameManager : MonoBehaviour
         playerProfiles.Clear();
         pim.joinBehavior = PlayerJoinBehavior.JoinPlayersWhenButtonIsPressed;
         pim.playerPrefab = charSelectorPrefab;
+    }
+
+    public void StartCharacterSelection()
+    {
+        SceneManager.LoadScene("CharacterSelection");
+        if (gameMode != null)
+            Destroy(gameMode.gameObject);
+    }
+
+    public void StartScoreboard()
+    {
+        SceneManager.LoadScene("Scoreboard");
+        JoinPlayersInScoreboard();
+    }
+
+    public string GetCharacterNameById(int id)
+    {
+        return characterNames[id];
     }
 }
 

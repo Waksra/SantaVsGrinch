@@ -6,14 +6,17 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
+    path: Assets/Scenes/PreLoadScene.unity
+    guid: d321a7c8b9612a943ba4751149ebcc6c
+  - enabled: 1
     path: Assets/Scenes/MainMenu.unity
     guid: df39ae5a491bed4449e5e8b4078f661a
   - enabled: 1
     path: Assets/Scenes/CharacterSelection.unity
     guid: d66538c70528fd74e818c03916bf339b
   - enabled: 1
-    path: Assets/Scenes/Wiktor.unity
-    guid: e65a247947ca66d4d9420cc850d9c084
+    path: Assets/Scenes/Scoreboard.unity
+    guid: 0fcb2a566f9086448b9733311e7b5ac9
   - enabled: 1
     path: Assets/Scenes/Scene_01.unity
     guid: 9fc0d4010bbf28b4594072e72b8655ab
