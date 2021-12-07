@@ -23,6 +23,8 @@ public class Damageable : MonoBehaviour
     
     public void TakeDamage(float damage)
     {
+        if (Health <= 0f) return;
+        
         if (smashMode)
         {
             Health += damage;
@@ -32,6 +34,7 @@ public class Damageable : MonoBehaviour
             Health -= damage;
             if (Health <= 0f)
             {
+                Health = 0f;
                 Die();
             }
         }

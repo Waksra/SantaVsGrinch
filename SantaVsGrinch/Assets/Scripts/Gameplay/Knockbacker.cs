@@ -5,7 +5,9 @@ namespace Gameplay
 {
     public class Knockbacker : MonoBehaviour
     {
-        [SerializeField, Range(-50, 50)] private float knockback = 10f;
+        private Collider myCollider;
+        
+        [SerializeField, Range(-500, 500)] private float knockback = 100f;
         
         [FoldoutGroup("Radial")]
         [SerializeField, Range(0, 50)] private float radius = 10f;
@@ -19,6 +21,7 @@ namespace Gameplay
         private void Awake()
         {
             body = GetComponent<Rigidbody>();
+            myCollider = GetComponent<Collider>();
         }
 
         public void KnockbackAlongVelocity(Collider other)
@@ -36,8 +39,10 @@ namespace Gameplay
             Collider[] colliders = Physics.OverlapSphere(transform.position, radius, layerMask.value);
             if (colliders.Length <= 0) return;
 
-            foreach (var collider in colliders)
+            foreach (Collider collider in colliders)
             {
+                if (collider == myCollider) continue;
+                
                 Vector3 vector = collider.transform.position - transform.position;
                 float knockbackMagnitude = knockback * radialKnockbackCurve.Evaluate(vector.magnitude / radius);
                 Vector3 dir = new Vector3(vector.x, 0f, vector.z).normalized;

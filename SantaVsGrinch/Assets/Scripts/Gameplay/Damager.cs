@@ -37,13 +37,13 @@ namespace Gameplay
             Collider[] colliders = Physics.OverlapSphere(transform.position, radius, layerMask.value);
             if (colliders.Length <= 0) return;
 
-            foreach (var collider in colliders)
+            for (int i = colliders.Length - 1; i >= 0; i--)
             {
-                if (collider == myCollider) return;
+                if (colliders[i] == myCollider) continue;
                 
-                Vector3 vector = collider.transform.position - transform.position;
-                float damageMagnitude = damage * radialDamageCurve.Evaluate(vector.magnitude / radius);
-                collider.GetComponent<Damageable>().TakeDamage(damageMagnitude);
+                float distance = Vector3.Distance(colliders[i].transform.position, transform.position);
+                float damageMagnitude = damage * radialDamageCurve.Evaluate(distance / radius);
+                colliders[i].GetComponent<Damageable>().TakeDamage(damageMagnitude);
             }
         }
     }

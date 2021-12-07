@@ -7,7 +7,7 @@ public class Killzone : MonoBehaviour
         if (other.CompareTag("Player"))
         {
             other.TryGetComponent(out Damageable damageable);
-            damageable.Die();
+            damageable.TakeDamage(Mathf.Infinity);
         }
     }
 }

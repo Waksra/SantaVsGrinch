@@ -28,13 +28,13 @@ public class GameManager : MonoBehaviour
         pim = GetComponent<PlayerInputManager>();
 
         if (SceneManager.GetActiveScene().buildIndex == 0)
-            SceneManager.LoadScene(1);
+            SceneManager.LoadScene(2);
     }
 
     public void StartMatch()
     {
         Debug.Log("Starting Match.");
-        SceneManager.LoadScene(3);
+        SceneManager.LoadScene("Scene_01");
         gameMode = FindObjectOfType<GameMode>();
     }
     
@@ -52,7 +52,7 @@ public class GameManager : MonoBehaviour
                 FindObjectOfType<CharSelectionManager>().JoinPlayerInCharSelection(playerInput);
                 break;
             case 3:
-                Debug.Log("Trying to join player at Scoreboard, haven't we joined them already?");
+                Debug.Log("Joined players at Scoreboard.");
                 break;
             default:
                 JoinPlayerInMatch(playerInput);
@@ -60,7 +60,7 @@ public class GameManager : MonoBehaviour
         }
     }
     
-    private void JoinPlayersInScoreboard()
+    public void JoinPlayersInScoreboard()
     {
         foreach (PlayerProfile p in playerProfiles)
         {
@@ -107,14 +107,11 @@ public class GameManager : MonoBehaviour
     public void StartCharacterSelection()
     {
         SceneManager.LoadScene("CharacterSelection");
-        if (gameMode != null)
-            Destroy(gameMode.gameObject);
     }
 
     public void StartScoreboard()
     {
         SceneManager.LoadScene("Scoreboard");
-        JoinPlayersInScoreboard();
     }
 
     public string GetCharacterNameById(int id)

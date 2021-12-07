@@ -9788,6 +9788,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e2f4c1c39b8bbe74d94575a7fa6d31ff, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  onAwake: 1
   lifetime: 1
   onDeathEvent:
     m_PersistentCalls:

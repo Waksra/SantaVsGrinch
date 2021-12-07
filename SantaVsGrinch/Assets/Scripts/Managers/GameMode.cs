@@ -3,13 +3,15 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
-using UnityEngine.SceneManagement;
 
 public class GameMode : MonoBehaviour
 {
+    public static GameMode instance;
     private List<PlayerScore> playerScores = new List<PlayerScore>();
     [SerializeField] private int maxLives = 3;
+    public int MaxLives => maxLives;
     [SerializeField] private float respawnDelay = 1f;
+    [SerializeField] private float matchEndDelay = 1f;
 
     [SerializeField] private Transform[] spawnPoints = default;
 
@@ -19,16 +21,24 @@ public class GameMode : MonoBehaviour
 
     private void Awake()
     {
+        if (instance != null)
+        {
+            Destroy(instance.gameObject);
+            instance = this;
+        }
+        else
+            instance = this;
+        
         DontDestroyOnLoad(this);
-    }
-
-    private void Start()
-    {
+        
         FindObjectOfType<GameManager>().JoinPlayers();
         PlayerInput[] foundInputs = GameObject.FindObjectsOfType<PlayerInput>();
         foreach (var foundInput in foundInputs) playerInputs[foundInput.playerIndex] = foundInput;
         foreach (var playerInput in playerInputs) AddPlayer(playerInput.playerIndex);
+    }
 
+    private void Start()
+    {
         SpawnPlayers();
     }
 
@@ -37,7 +47,7 @@ public class GameMode : MonoBehaviour
         // Maximum game length (time) would be added here, or any other criteria.
         foreach (var playerScore in playerScores) 
             if (playerScore.deaths >= maxLives)
-                EndMatch();
+                StartCoroutine(EndMatchAfterTime());
     }
 
     private void EndMatch()
@@ -107,6 +117,12 @@ public class GameMode : MonoBehaviour
     {
         yield return new WaitForSecondsRealtime(respawnDelay);
         RespawnPlayer(playerIndex);
+    }
+    
+    private IEnumerator EndMatchAfterTime()
+    {
+        yield return new WaitForSecondsRealtime(matchEndDelay);
+        EndMatch();
     }
 }
 

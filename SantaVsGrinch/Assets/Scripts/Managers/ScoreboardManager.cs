@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
@@ -12,6 +13,11 @@ public class ScoreboardManager : MonoBehaviour
     [SerializeField] private TextMeshProUGUI[] deathsTexts = default;
     [SerializeField] private TextMeshProUGUI[] damageDealtTexts = default;
 
+    private void Awake()
+    {
+        FindObjectOfType<GameManager>().JoinPlayersInScoreboard();
+    }
+
     private void Start()
     {
         playerProfiles = FindObjectOfType<GameManager>().GetPlayerProfiles();
@@ -23,7 +29,6 @@ public class ScoreboardManager : MonoBehaviour
     {
         for (int i = 0; i < playerProfiles.Count; i++)
         {
-            Debug.Log("Index" + i);
             characterNameTexts[i].text = GameManager.instance.GetCharacterNameById(playerProfiles[i].characterId);
             killsTexts[i].text = playerScores[i].kills.ToString();
             deathsTexts[i].text = playerScores[i].deaths.ToString();

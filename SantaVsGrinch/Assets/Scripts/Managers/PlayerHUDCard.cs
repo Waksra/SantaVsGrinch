@@ -1,18 +1,21 @@
-using System.Collections;
-using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 
 public class PlayerHUDCard : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+    [SerializeField] private TextMeshProUGUI healthText = default;
+    [SerializeField] private GameObject[] lifeIcons = default;
+    
+    public void UpdateCard(float health, int remainingLives)
     {
+        healthText.text = Mathf.CeilToInt(health).ToString();
         
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
+        for (int i = 0; i < lifeIcons.Length; i++)
+        {
+            if (i < remainingLives) 
+                lifeIcons[i].SetActive(true);
+            else
+                lifeIcons[i].SetActive(false);
+        }
     }
 }

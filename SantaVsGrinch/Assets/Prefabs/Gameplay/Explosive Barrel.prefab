@@ -159,8 +159,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e6540466065e4c1dad131b9a3f204cda, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  damage: 250
-  radius: 12
+  damage: 120
+  radius: 6
   radialDamageCurve:
     serializedVersion: 2
     m_Curve:
@@ -200,8 +200,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 85f0e71e0aa14c759c276e2fc6b4eb5c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  knockback: 10
-  radius: 12
+  knockback: 250
+  radius: 6
   radialKnockbackCurve:
     serializedVersion: 2
     m_Curve:
