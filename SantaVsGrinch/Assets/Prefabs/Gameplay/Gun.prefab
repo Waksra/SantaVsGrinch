@@ -45,12 +45,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   projectile: {fileID: 5203613507369053276, guid: f2a3c870ad5406149891257f66df5421, type: 3}
   inputBuffer: 3
-  shotsPerSecond: 10
+  shotsPerSecond: 60
   knockback: 1
-  isAutomatic: 0
-  isMultiShot: 0
-  isBurst: 0
+  isAutomatic: 1
+  isMultiShot: 1
+  isBurst: 1
   spread: 90
-  multiProjectiles: 3
+  multiProjectiles: 30
   burstProjectiles: 3
-  burstDelay: 0.5
+  burstDelay: 0.36

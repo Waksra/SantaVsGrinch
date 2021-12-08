@@ -39,7 +39,7 @@ namespace Player
         //General
         private float timeBetweenShots;
         private float timeOfNextShot;
-        private List<Collider> firedColliders = new List<Collider>();
+        //private List<Collider> firedColliders = new List<Collider>();
         private int poolIndex;
         private bool delayedFireRunning;
 
@@ -187,8 +187,9 @@ namespace Player
             if(owner)
                 newProjectile.SetInstigator(owner.PlayerIndex);
             
-            newProjectile.Fire(ref firedColliders);
-            newProjectile.SubscribeToDeathEvent(() => RemoveFromColliders(newProjectile.Collider));
+            newProjectile.Fire();
+            // newProjectile.Fire(ref firedColliders);
+            // newProjectile.SubscribeToDeathEvent(() => RemoveFromColliders(newProjectile.Collider));
         }
 
         private IEnumerator AutoRoutine()
@@ -239,10 +240,10 @@ namespace Player
             isBursting = false;
         }
 
-        private void RemoveFromColliders(Collider coll)
-        {
-            firedColliders.Remove(coll);
-        }
+        // private void RemoveFromColliders(Collider coll)
+        // {
+        //     firedColliders.Remove(coll);
+        // }
     }
 }
 

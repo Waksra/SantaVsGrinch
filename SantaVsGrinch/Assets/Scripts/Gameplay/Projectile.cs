@@ -79,11 +79,11 @@ namespace Gameplay
 
         private void OnTriggerEnter(Collider other)
         {
-            // if (TryGetComponent(out PlayerInput player) && player.playerIndex == instigatorPlayerId)
-            //     return;
-            //     
-            // if(TryGetComponent(out Projectile otherProjectile) && otherProjectile.instigatorPlayerId == instigatorPlayerId)
-            //     return;
+            if (other.TryGetComponent(out PlayerInput player) && player.playerIndex == instigatorPlayerId)
+                return;
+                
+            if(other.TryGetComponent(out Projectile otherProjectile) && otherProjectile.instigatorPlayerId == instigatorPlayerId)
+                return;
             
             onHitEvent?.Invoke(other);
             if (deathDelay > 0)

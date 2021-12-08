@@ -95,9 +95,9 @@ GameObject:
   - component: {fileID: 1647139824798315747}
   - component: {fileID: 1647139824798315744}
   - component: {fileID: 9055373115926828474}
-  - component: {fileID: 1647139824798315745}
   - component: {fileID: 1647139824798315772}
   - component: {fileID: 1647139824798315773}
+  - component: {fileID: 3544057890345666121}
   m_Layer: 7
   m_Name: Player 1
   m_TagString: Player
@@ -180,9 +180,9 @@ MonoBehaviour:
     m_ActionName: Game/Aim[/Mouse/position]
   - m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1647139824798315745}
-        m_TargetAssemblyTypeName: PlayerController, Assembly-CSharp
-        m_MethodName: SetFireInput
+      - m_Target: {fileID: 3544057890345666121}
+        m_TargetAssemblyTypeName: Player.ProjectileGun, Assembly-CSharp
+        m_MethodName: OnFireInput
         m_Mode: 0
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -333,20 +333,6 @@ MonoBehaviour:
   aimLayer:
     serializedVersion: 2
     m_Bits: 64
---- !u!114 &1647139824798315745
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1647139824798315748}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 51480da120a8508408b219efd880e19b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  projectilePrefab: {fileID: 5203613507369053277, guid: f2a3c870ad5406149891257f66df5421, type: 3}
-  fireRate: 2
 --- !u!114 &1647139824798315772
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -404,6 +390,29 @@ MonoBehaviour:
           m_BoolArgument: 0
         m_CallState: 2
   maxHealth: 100
+--- !u!114 &3544057890345666121
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1647139824798315748}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 702116fc147b48d1a71aaf34680c3442, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  projectile: {fileID: 5203613507369053276, guid: f2a3c870ad5406149891257f66df5421, type: 3}
+  inputBuffer: 3
+  shotsPerSecond: 10
+  knockback: 1
+  isAutomatic: 0
+  isMultiShot: 1
+  isBurst: 1
+  spread: 90
+  multiProjectiles: 3
+  burstProjectiles: 3
+  burstDelay: 0.5
 --- !u!1 &1647139825504062608
 GameObject:
   m_ObjectHideFlags: 0

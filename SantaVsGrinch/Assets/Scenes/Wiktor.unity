@@ -813,7 +813,7 @@ GameObject:
   - component: {fileID: 1461528192525260595}
   - component: {fileID: 9167236519207876213}
   - component: {fileID: 9167236519207876212}
-  - component: {fileID: 9167236519207876209}
+  - component: {fileID: 9167236519207876208}
   m_Layer: 7
   m_Name: Player 1
   m_TagString: Player
@@ -880,7 +880,7 @@ MonoBehaviour:
     m_ActionName: Game/Aim[/Mouse/position]
   - m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 9167236519207876209}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: Player.EquipmentHolder, Assembly-CSharp
         m_MethodName: OnFireInput1
         m_Mode: 0
@@ -951,7 +951,7 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &9167236519207876209
+--- !u!114 &9167236519207876208
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -960,11 +960,20 @@ MonoBehaviour:
   m_GameObject: {fileID: 9167236519207876205}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6baac64abbd74adaa88ed8bd2f73d0ce, type: 3}
+  m_Script: {fileID: 11500000, guid: 702116fc147b48d1a71aaf34680c3442, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  slot1: {fileID: 1066029104611227149, guid: bc40d951501dbdb488ce1cc12edc2547, type: 3}
-  slot2: {fileID: 1066029104611227149, guid: bc40d951501dbdb488ce1cc12edc2547, type: 3}
+  projectile: {fileID: 5203613507369053276, guid: f2a3c870ad5406149891257f66df5421, type: 3}
+  inputBuffer: 3
+  shotsPerSecond: 10
+  knockback: 1
+  isAutomatic: 0
+  isMultiShot: 1
+  isBurst: 1
+  spread: 90
+  multiProjectiles: 3
+  burstProjectiles: 3
+  burstDelay: 0.5
 --- !u!114 &9167236519207876212
 MonoBehaviour:
   m_ObjectHideFlags: 0
