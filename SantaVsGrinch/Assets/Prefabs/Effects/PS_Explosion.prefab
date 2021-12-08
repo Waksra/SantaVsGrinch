@@ -9,7 +9,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7513075268149387981}
-  - component: {fileID: 4801983649332196381}
+  - component: {fileID: 1347519719272610995}
+  - component: {fileID: 3619235212955702854}
   m_Layer: 0
   m_Name: PS_Explosion
   m_TagString: Untagged
@@ -34,7 +35,7 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &4801983649332196381
+--- !u!114 &1347519719272610995
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -47,10 +48,25 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   onAwake: 1
+  disable: 1
   lifetime: 1
   onDeathEvent:
     m_PersistentCalls:
       m_Calls: []
+--- !u!114 &3619235212955702854
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2711238035710250997}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e86177cd8381444fb0a3cf2567d6b3ef, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  initialPoolSize: 5
+  repoolOnDisable: 1
 --- !u!1 &2833845222299767311
 GameObject:
   m_ObjectHideFlags: 0

@@ -5,10 +5,11 @@ using UnityEngine.Events;
 public class KillAfterTime : MonoBehaviour
 {
     [SerializeField] private bool onAwake = false;
+    [SerializeField] private bool disable = false;
     [SerializeField] private float lifetime = 1f;
     [SerializeField] private UnityEvent onDeathEvent;
     
-    private void Awake()
+    private void OnEnable()
     {
         if (onAwake)
             StartTimer();
@@ -28,6 +29,10 @@ public class KillAfterTime : MonoBehaviour
     private void Die()
     {
         onDeathEvent?.Invoke();
-        Destroy(gameObject);
+        
+        if(disable)
+            gameObject.SetActive(false);
+        else
+            Destroy(gameObject);
     }
 }

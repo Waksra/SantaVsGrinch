@@ -1,8 +1,10 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using Managers;
 using UnityEngine;
 using UnityEngine.Events;
+using UnityEngine.InputSystem;
 
 namespace Gameplay
 {
@@ -12,6 +14,7 @@ namespace Gameplay
         [SerializeField, Range(0, 5)] private float deathDelay = 0f;
         [SerializeField] private bool ignoreInstigator = true;
         [SerializeField, Range(-1, 60)] private float lifeTime = -1;
+        [SerializeField, Range(1, 100)] private int initialPoolAmount = 10;
         [SerializeField] private UnityEvent<Collider> onHitEvent;
         [SerializeField] private UnityEvent onDeathEvent;
 
@@ -21,6 +24,9 @@ namespace Gameplay
         private int instigatorPlayerId;
 
         public Collider Collider => collider;
+        public int InitialPoolAmount => initialPoolAmount;
+
+        public int PoolIndex { get; set; } = -1;
     
         private void Awake()
         {
@@ -29,6 +35,12 @@ namespace Gameplay
 
             if (lifeTime >= 0)
                 StartCoroutine(DieAfterTime(lifeTime));
+        }
+
+        public void Reset()
+        {
+            body.velocity = Vector3.zero;
+            body.angularVelocity = Vector3.zero;
         }
 
         public void Fire()
@@ -67,6 +79,12 @@ namespace Gameplay
 
         private void OnTriggerEnter(Collider other)
         {
+            // if (TryGetComponent(out PlayerInput player) && player.playerIndex == instigatorPlayerId)
+            //     return;
+            //     
+            // if(TryGetComponent(out Projectile otherProjectile) && otherProjectile.instigatorPlayerId == instigatorPlayerId)
+            //     return;
+            
             onHitEvent?.Invoke(other);
             if (deathDelay > 0)
             {
@@ -90,12 +108,20 @@ namespace Gameplay
         private void Die()
         {
             onDeathEvent?.Invoke();
-            Destroy(gameObject);
+            if(PoolIndex == -1)
+                Destroy(gameObject);
+            else
+                gameObject.SetActive(false);
         }
 
         public void SubscribeToDeathEvent(UnityAction response)
         {
             onDeathEvent.AddListener(response);
+        }
+
+        private void OnDisable()
+        {
+            ProjectilePooler.ReturnToPool(this, PoolIndex);
         }
     }
 }

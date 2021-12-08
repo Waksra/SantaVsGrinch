@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 1189778139371030802}
   - component: {fileID: 1189778139371030801}
   - component: {fileID: 1189778139371030807}
+  - component: {fileID: 2347044520921233404}
   m_Layer: 0
   m_Name: BarrelExplosion
   m_TagString: Untagged
@@ -95,7 +96,22 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   onAwake: 1
+  disable: 1
   lifetime: 0.2
   onDeathEvent:
     m_PersistentCalls:
       m_Calls: []
+--- !u!114 &2347044520921233404
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1189778139371030806}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e86177cd8381444fb0a3cf2567d6b3ef, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  initialPoolSize: 5
+  repoolOnDisable: 1

@@ -1,6 +1,8 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using Gameplay;
+using Managers;
 using Sirenix.OdinInspector;
 using UnityEngine;
 using UnityEngine.InputSystem;
@@ -38,6 +40,8 @@ namespace Player
         private float timeBetweenShots;
         private float timeOfNextShot;
         private List<Collider> firedColliders = new List<Collider>();
+        private int poolIndex;
+        private bool delayedFireRunning;
 
         //Auto
         private bool isAutoing;
@@ -61,12 +65,19 @@ namespace Player
         {
             OnValidate();
             transform = GetComponent<Transform>();
-            knockbackable = GetComponent<Knockbackable>();
+        }
+
+        private void Start()
+        {
+            poolIndex = ProjectilePooler.GetIndex(projectile.name);
+            if (poolIndex == -1)
+                poolIndex = ProjectilePooler.AddProjectile(projectile);
         }
 
         public void Equip(EquipmentHolder owner)
         {
             this.owner = owner;
+            knockbackable = owner.GetComponent<Knockbackable>();
         }
 
         public void OnFireInput(InputAction.CallbackContext context)
@@ -81,7 +92,7 @@ namespace Player
         {
             if ((timeOfNextShot <= Time.time || isAutomatic) && !isBursting)
                 ShootWithFireMode();
-            else if(timeOfNextShot - Time.time < inputBuffer)
+            else if(timeOfNextShot - Time.time < inputBuffer && !delayedFireRunning)
                 StartCoroutine(DelayedFire(timeOfNextShot - Time.time));
         }
 
@@ -94,9 +105,11 @@ namespace Player
 
         private IEnumerator DelayedFire(float delay)
         {
+            delayedFireRunning = true;
             yield return new WaitForSeconds(delay);
             
             ShootWithFireMode();
+            delayedFireRunning = false;
         }
 
         private void ShootWithFireMode()
@@ -160,15 +173,20 @@ namespace Player
         private void FireBurst()
         {
             timeOfNextShot = Time.time + timeBetweenShots * (burstProjectiles - 1) + burstDelay;
-            Debug.Log($"Current time: {Time.time}\nNext shot time: {timeOfNextShot}");
             StartCoroutine(BurstRoutine());
         }
 
         private void FireProjectileDirection(Vector3 direction)
         {
-            Projectile newProjectile = Instantiate(projectile, transform.position + direction * 1.5f, Quaternion.LookRotation(direction));
+            Projectile newProjectile = ProjectilePooler.GetProjectile(poolIndex);
+
+            newProjectile.transform.position = transform.position + direction * 1.5f;
+            newProjectile.transform.rotation = Quaternion.LookRotation(direction);
+            newProjectile.gameObject.SetActive(true);
+            
             if(owner)
                 newProjectile.SetInstigator(owner.PlayerIndex);
+            
             newProjectile.Fire(ref firedColliders);
             newProjectile.SubscribeToDeathEvent(() => RemoveFromColliders(newProjectile.Collider));
         }
