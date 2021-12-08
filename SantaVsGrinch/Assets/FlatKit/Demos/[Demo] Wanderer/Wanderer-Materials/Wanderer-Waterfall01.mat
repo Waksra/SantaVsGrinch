@@ -9,7 +9,7 @@ Material:
   m_PrefabAsset: {fileID: 0}
   m_Name: Wanderer-Waterfall01
   m_Shader: {fileID: 4800000, guid: 0daa94f23f43f498b822cfbfc22c6689, type: 3}
-  m_ShaderKeywords: DR_GRADIENT_ON DR_RIM_ON _ALLOWALPHAOVERFLOW_OFF _CELPRIMARYMODE_SINGLE
+  m_ShaderKeywords: DR_GRADIENT_ON _ALLOWALPHAOVERFLOW_OFF _CELPRIMARYMODE_SINGLE
     _FLAT_SHADOWS_ENABLED _FLAT_SPECULAR_ENABLED _UNITYSHADOWMODE_MULTIPLY
   m_LightmapFlags: 4
   m_EnableInstancingVariants: 0
@@ -102,7 +102,7 @@ Material:
     - _GlossMapScale: 1
     - _Glossiness: 0
     - _GlossyReflections: 1
-    - _GradientAngle: 208
+    - _GradientAngle: 185
     - _GradientCenterX: 0
     - _GradientCenterY: 143.5
     - _GradientEnabled: 1
@@ -125,7 +125,7 @@ Material:
     - _Parallax: 0.02
     - _QueueOffset: 0
     - _ReceiveShadows: 1
-    - _RimEnabled: 1
+    - _RimEnabled: 0
     - _SecondaryColor: 1
     - _SecondaryColorEnabled: 1
     - _SelfShadingSize: 0
@@ -150,15 +150,15 @@ Material:
     - _VertexColorsEnabled: 0
     - _ZWrite: 1
     m_Colors:
-    - _Color: {r: 0.5613208, g: 0.8010114, b: 1, a: 1}
+    - _Color: {r: 0.56078434, g: 0.69015384, b: 1, a: 1}
     - _Color1: {r: 0, g: 0.7, b: 0.74, a: 0}
     - _Color2: {r: 0.97, g: 0.67, b: 0.51, a: 0}
     - _ColorCelShadow: {r: 0.49056602, g: 0.34478462, b: 0.4476891, a: 1}
-    - _ColorDim: {r: 1, g: 0.5896226, b: 0.9998321, a: 1}
+    - _ColorDim: {r: 0.5882353, g: 0.6424516, b: 1, a: 1}
     - _ColorDimCurve: {r: 0.85, g: 0.85, b: 0.85, a: 0.85}
     - _ColorDimExtra: {r: 0.003921591, g: 0.5615122, b: 0.7921569, a: 0.85}
     - _ColorDimSteps: {r: 0.85, g: 0.85, b: 0.85, a: 0.85}
-    - _ColorGradient: {r: 0.8396226, g: 0.35248306, b: 0.35248306, a: 1}
+    - _ColorGradient: {r: 0.6367924, g: 0.955383, b: 1, a: 1}
     - _ColorSecondary: {r: 1, g: 0.55879205, b: 0, a: 1}
     - _ColorShadow: {r: 0.5, g: 0.5, b: 0.5, a: 1}
     - _ColorShadows: {r: 0.5471698, g: 0.37346402, b: 0.26584196, a: 1}
