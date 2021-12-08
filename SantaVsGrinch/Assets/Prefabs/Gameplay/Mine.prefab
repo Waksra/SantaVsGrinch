@@ -109,6 +109,7 @@ GameObject:
   - component: {fileID: 8365464193159682475}
   - component: {fileID: 3345769734818814761}
   - component: {fileID: 606993411474042409}
+  - component: {fileID: -5116473064142329593}
   m_Layer: 0
   m_Name: Mine
   m_TagString: Untagged
@@ -312,3 +313,27 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: -5116473064142329593}
+        m_TargetAssemblyTypeName: Traumatiser, Assembly-CSharp
+        m_MethodName: AddTrauma
+        m_Mode: 4
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0.5
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+--- !u!114 &-5116473064142329593
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8365464193159682485}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3a12dd7293fdae942b336417ba1af8ce, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

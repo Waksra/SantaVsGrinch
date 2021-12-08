@@ -28,6 +28,8 @@ public class Damageable : MonoBehaviour
         
         damageEvent?.Invoke(damage);
         
+        CameraController.AddTrauma(damage * 0.01f);
+        
         if (smashMode)
         {
             Health += damage;
