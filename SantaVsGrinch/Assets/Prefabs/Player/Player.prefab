@@ -98,7 +98,6 @@ GameObject:
   - component: {fileID: 1647139824798315745}
   - component: {fileID: 1647139824798315772}
   - component: {fileID: 1647139824798315773}
-  - component: {fileID: 3677615820111027049}
   m_Layer: 7
   m_Name: Player
   m_TagString: Player
@@ -346,7 +345,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 51480da120a8508408b219efd880e19b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  projectilePrefab: {fileID: 5203613507369053277, guid: f2a3c870ad5406149891257f66df5421, type: 3}
+  projectilePrefab: {fileID: 5203613507369053277, guid: d1b26c6226644414c939aabc960f61e3, type: 3}
   fireRate: 2
 --- !u!114 &1647139824798315772
 MonoBehaviour:
@@ -377,7 +376,7 @@ MonoBehaviour:
   damageEvent:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 3677615820111027049}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: Gameplay.Freezeable, Assembly-CSharp
         m_MethodName: FreezeDamage
         m_Mode: 0
@@ -405,49 +404,6 @@ MonoBehaviour:
           m_BoolArgument: 0
         m_CallState: 2
   maxHealth: 100
---- !u!114 &3677615820111027049
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1647139824798315748}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 49f9b98a3b9acc74fbd10e3c626f99fa, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  useRealTime: 1
-  freezeCurve:
-    serializedVersion: 2
-    m_Curve:
-    - serializedVersion: 3
-      time: 0
-      value: 0.01
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0.33333334
-      outWeight: 0.33333334
-    - serializedVersion: 3
-      time: 1
-      value: 0.5
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 136
-      weightedMode: 0
-      inWeight: 0.33333334
-      outWeight: 0.33333334
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 4
-  frozenEvent:
-    m_PersistentCalls:
-      m_Calls: []
-  unfrozenEvent:
-    m_PersistentCalls:
-      m_Calls: []
 --- !u!1 &1647139825504062608
 GameObject:
   m_ObjectHideFlags: 0

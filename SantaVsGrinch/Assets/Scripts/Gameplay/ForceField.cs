@@ -42,7 +42,7 @@ public class ForceField : MonoBehaviour
 
         if (colliders.Length <= 0) return;
 
-        foreach (var collider in colliders)
+        foreach (Collider collider in colliders)
         {
             Vector3 vector = collider.transform.position - transform.position;
             float t = vector.magnitude / radius;

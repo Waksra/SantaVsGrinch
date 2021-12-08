@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &1731616620958503528
+--- !u!1 &3867540252024800949
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -8,10 +8,10 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 6612952717666211631}
-  - component: {fileID: 1392623036136022229}
-  - component: {fileID: 3076820803276960238}
-  - component: {fileID: 521474242743763317}
+  - component: {fileID: 8533861766254330866}
+  - component: {fileID: 4537416479892288520}
+  - component: {fileID: 511338063176705331}
+  - component: {fileID: 3068945266574906792}
   m_Layer: 0
   m_Name: Cube
   m_TagString: Untagged
@@ -19,35 +19,35 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &6612952717666211631
+--- !u!4 &8533861766254330866
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1731616620958503528}
+  m_GameObject: {fileID: 3867540252024800949}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 0.5, y: 0.5, z: 0.5}
   m_Children: []
-  m_Father: {fileID: 6463696974043024751}
+  m_Father: {fileID: 8365464193159682482}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!33 &1392623036136022229
+--- !u!33 &4537416479892288520
 MeshFilter:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1731616620958503528}
+  m_GameObject: {fileID: 3867540252024800949}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
---- !u!23 &3076820803276960238
+--- !u!23 &511338063176705331
 MeshRenderer:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1731616620958503528}
+  m_GameObject: {fileID: 3867540252024800949}
   m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
@@ -82,20 +82,20 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!65 &521474242743763317
+--- !u!65 &3068945266574906792
 BoxCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1731616620958503528}
+  m_GameObject: {fileID: 3867540252024800949}
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
---- !u!1 &6463696974043024744
+--- !u!1 &8365464193159682485
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -103,96 +103,65 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 6463696974043024751}
-  - component: {fileID: -199456810835451802}
-  - component: {fileID: 6463696974043024745}
-  - component: {fileID: 271690022081695732}
-  - component: {fileID: 2722366811453258484}
+  - component: {fileID: 8365464193159682482}
+  - component: {fileID: 5805369082174551227}
+  - component: {fileID: 8365464193159682484}
+  - component: {fileID: 8365464193159682475}
+  - component: {fileID: 3345769734818814761}
+  - component: {fileID: 606993411474042409}
   m_Layer: 0
-  m_Name: TimeBomb
+  m_Name: Mine
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &6463696974043024751
+--- !u!4 &8365464193159682482
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6463696974043024744}
+  m_GameObject: {fileID: 8365464193159682485}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 1, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
-  - {fileID: 6612952717666211631}
+  - {fileID: 8533861766254330866}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &-199456810835451802
+--- !u!114 &5805369082174551227
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6463696974043024744}
+  m_GameObject: {fileID: 8365464193159682485}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: e6540466065e4c1dad131b9a3f204cda, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  damage: 1
+  damage: 50
   radius: 10
   radialDamageCurve:
-    serializedVersion: 2
-    m_Curve: []
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 4
-  layerMask:
-    serializedVersion: 2
-    m_Bits: 640
---- !u!114 &6463696974043024745
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6463696974043024744}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 85f0e71e0aa14c759c276e2fc6b4eb5c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  knockback: 20
-  radius: 5
-  radialKnockbackCurve:
     serializedVersion: 2
     m_Curve:
     - serializedVersion: 3
       time: 0
       value: 1
-      inSlope: -0.06100117
-      outSlope: -0.06100117
-      tangentMode: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 136
       weightedMode: 0
-      inWeight: 0
-      outWeight: 0.2995042
-    - serializedVersion: 3
-      time: 0.5372009
-      value: 0.64458466
-      inSlope: -1.2377604
-      outSlope: -1.2377604
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0.10357825
+      inWeight: 0.33333334
       outWeight: 0.33333334
     - serializedVersion: 3
       time: 1
       value: 0
-      inSlope: -1.3927959
-      outSlope: -1.3927959
+      inSlope: -1
+      outSlope: -1
       tangentMode: 34
       weightedMode: 0
       inWeight: 0.33333334
@@ -202,38 +171,112 @@ MonoBehaviour:
     m_RotationOrder: 4
   layerMask:
     serializedVersion: 2
-    m_Bits: 640
---- !u!114 &271690022081695732
+    m_Bits: 128
+--- !u!114 &8365464193159682484
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6463696974043024744}
+  m_GameObject: {fileID: 8365464193159682485}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 85f0e71e0aa14c759c276e2fc6b4eb5c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  knockback: 150
+  radius: 10
+  radialKnockbackCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 136
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 0
+      inSlope: -1
+      outSlope: -1
+      tangentMode: 34
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  layerMask:
+    serializedVersion: 2
+    m_Bits: 128
+--- !u!114 &8365464193159682475
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8365464193159682485}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4d6d78b3c4020624ca5afba6617bdf54, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  isLever: 0
+  cooldown: 1
+  onTriggeredEvent:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 606993411474042409}
+        m_TargetAssemblyTypeName: KillAfterTime, Assembly-CSharp
+        m_MethodName: StartTimer
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  radius: 2.5
+  layerMask:
+    serializedVersion: 2
+    m_Bits: 128
+--- !u!114 &3345769734818814761
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8365464193159682485}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 72f690090bc84bf2982ad64b19cca7cf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   objectToSpawn: {fileID: 7416750430319858421, guid: 6b4dae50d401fcb41bfef3bdc09865f4, type: 3}
---- !u!114 &2722366811453258484
+--- !u!114 &606993411474042409
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6463696974043024744}
+  m_GameObject: {fileID: 8365464193159682485}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: e2f4c1c39b8bbe74d94575a7fa6d31ff, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  onAwake: 1
+  onAwake: 0
   lifetime: 1
   onDeathEvent:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: -199456810835451802}
+      - m_Target: {fileID: 5805369082174551227}
         m_TargetAssemblyTypeName: Gameplay.Damager, Assembly-CSharp
         m_MethodName: DealDamageRadial
         m_Mode: 1
@@ -245,7 +288,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 6463696974043024745}
+      - m_Target: {fileID: 8365464193159682484}
         m_TargetAssemblyTypeName: Gameplay.Knockbacker, Assembly-CSharp
         m_MethodName: KnockbackRadial
         m_Mode: 1
@@ -257,7 +300,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 271690022081695732}
+      - m_Target: {fileID: 3345769734818814761}
         m_TargetAssemblyTypeName: Gameplay.EasySpawner, Assembly-CSharp
         m_MethodName: SpawnObject
         m_Mode: 1
