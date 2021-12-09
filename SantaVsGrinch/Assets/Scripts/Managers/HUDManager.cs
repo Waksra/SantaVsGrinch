@@ -31,4 +31,9 @@ public class HUDManager : MonoBehaviour
             playerHUDCards[i].UpdateCard(playerDamageables[i].Health, remainingLives);
         }
     }
+    
+    public void UpdateWeapon(int playerIndex, WeaponInfo info)
+    {
+        playerHUDCards[playerIndex].UpdateWeapon(info.SlotIndex, info.HUDIcon);
+    }
 }
