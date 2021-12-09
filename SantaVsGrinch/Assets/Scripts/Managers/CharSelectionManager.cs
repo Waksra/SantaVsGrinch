@@ -59,6 +59,7 @@ public class CharSelectionManager : MonoBehaviour
     
     private void SetDeviceIcon(int playerIndex, int deviceIndex)
     {
+        deviceIcons[playerIndex].GetComponent<Image>().enabled = true;
         deviceIcons[playerIndex].GetComponent<Image>().sprite = deviceSprite[deviceIndex];
         helpTexts[playerIndex].SetActive(false);
     }

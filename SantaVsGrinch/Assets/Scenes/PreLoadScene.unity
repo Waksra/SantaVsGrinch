@@ -153,6 +153,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9485d1a4dd92a294a86141b6af22b79a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  playerMainMenuPrefab: {fileID: 2625256596428279016, guid: e8d29544348596b49af6466ab07fab8f, type: 3}
   charSelectorPrefab: {fileID: 5540500757211780401, guid: 57589a818f293764d8557a06133c1a6f, type: 3}
   playerScoreboardPrefab: {fileID: 3797227660543480420, guid: daf25cf9fdbed6042a3b67c8af1e9d82, type: 3}
   characters:
@@ -195,7 +196,7 @@ MonoBehaviour:
       m_SingletonActionBindings: []
       m_Flags: 0
     m_Reference: {fileID: 0}
-  m_PlayerPrefab: {fileID: 5540500757211780401, guid: 57589a818f293764d8557a06133c1a6f, type: 3}
+  m_PlayerPrefab: {fileID: 2625256596428279016, guid: e8d29544348596b49af6466ab07fab8f, type: 3}
   m_SplitScreen: 0
   m_MaintainAspectRatioInSplitScreen: 0
   m_FixedNumberOfSplitScreens: -1

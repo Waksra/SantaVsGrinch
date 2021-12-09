@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using Cinemachine;
+using Managers;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.SceneManagement;
@@ -12,6 +13,7 @@ public class GameManager : MonoBehaviour
     
     private List<PlayerProfile> playerProfiles = new List<PlayerProfile>();
     public List<PlayerProfile> GetPlayerProfiles() => playerProfiles;
+    [SerializeField] private GameObject playerMainMenuPrefab = default;
     [SerializeField] private GameObject charSelectorPrefab = default;
     [SerializeField] private GameObject playerScoreboardPrefab = default;
     [SerializeField] private GameObject[] characters = default;
@@ -28,7 +30,11 @@ public class GameManager : MonoBehaviour
         pim = GetComponent<PlayerInputManager>();
 
         if (SceneManager.GetActiveScene().buildIndex == 0)
-            SceneManager.LoadScene(2);
+            SceneManager.LoadScene(1);
+        
+        SoundManager.SetGlobalVolume(0.5f);
+        SoundManager.SetSFXVolume(1f);
+        SoundManager.SetBGMVolume(1f);
     }
 
     public void StartMatch()
@@ -57,6 +63,15 @@ public class GameManager : MonoBehaviour
             default:
                 JoinPlayerInMatch(playerInput);
                 break;
+        }
+    }
+    
+    public void JoinPlayersInMainMenu()
+    {
+        foreach (PlayerProfile p in playerProfiles)
+        {
+            pim.playerPrefab = playerMainMenuPrefab;
+            pim.JoinPlayer(p.id, p.id, null, p.devices);
         }
     }
     
