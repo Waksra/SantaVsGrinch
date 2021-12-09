@@ -258,6 +258,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   onAwake: 0
+  disable: 0
   lifetime: 0
   onDeathEvent:
     m_PersistentCalls:
@@ -274,7 +275,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 72f690090bc84bf2982ad64b19cca7cf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  objectToSpawn: {fileID: 1189778139371030806, guid: 73f81fa475e342b4d90b2867779d4b52, type: 3}
+  objectToSpawn: {fileID: 7416750430319858421, guid: 8b214f6448ed5d444ae9d9db339219a7, type: 3}
 --- !u!114 &5761366956325282843
 MonoBehaviour:
   m_ObjectHideFlags: 0
