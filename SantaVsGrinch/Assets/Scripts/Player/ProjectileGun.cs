@@ -1,6 +1,4 @@
-﻿using System;
-using System.Collections;
-using System.Collections.Generic;
+﻿using System.Collections;
 using Gameplay;
 using Managers;
 using Sirenix.OdinInspector;
@@ -13,16 +11,32 @@ namespace Player
     {
         [SerializeField] private Projectile projectile;
         [SerializeField, Range(0, 3)] private float inputBuffer;
-        [SerializeField, Range(0, 60)] private float shotsPerSecond;
         [SerializeField, Range(0, 20)] private float knockback;
+        
+        [Space]
+        
+        [SerializeField, Range(0, 60)] private float rps;
+        [SerializeField, Range(0, 60)] private float bulletSpread;
 
         [SerializeField, FoldoutGroup("Firing Modes")] private bool isAutomatic;
         [SerializeField, FoldoutGroup("Firing Modes")] private bool isMultiShot;
         [SerializeField, FoldoutGroup("Firing Modes")] private bool isBurst;
+        
+        [ShowIfGroup("isAutomatic")]
+        
+        [FoldoutGroup("isAutomatic/Automatic")]
+        [SerializeField] private bool useRpsCurve;
+        [ShowIfGroup("isAutomatic/Automatic/useRpsCurve")]
+        [SerializeField] private AnimationCurve rpsCurve;
+        [Space]
+        [FoldoutGroup("isAutomatic/Automatic")]
+        [SerializeField] private bool useSpreadCurve;
+        [ShowIfGroup("isAutomatic/Automatic/useSpreadCurve")]
+        [SerializeField] private AnimationCurve bulletSpreadCurve;
 
         [ShowIfGroup("isMultiShot")]
         [FoldoutGroup("isMultiShot/Multi Shot")]
-        [SerializeField, Range(0, 360)] private float spread;
+        [SerializeField, Range(0, 360)] private float arc;
         [FoldoutGroup("isMultiShot/Multi Shot")]
         [SerializeField, Range(0, 30)] private int multiProjectiles = 1;
 
@@ -39,7 +53,6 @@ namespace Player
         //General
         private float timeBetweenShots;
         private float timeOfNextShot;
-        //private List<Collider> firedColliders = new List<Collider>();
         private int poolIndex;
         private bool delayedFireRunning;
 
@@ -48,6 +61,8 @@ namespace Player
         private Coroutine autoRoutine;
         private bool hasFired;
         private bool endAuto;
+        private float autoSpread;
+        private float autoRps;
         
         //Multishot
         private float angleSpacing;
@@ -57,8 +72,13 @@ namespace Player
 
         private void OnValidate()
         {
-            timeBetweenShots = 1 / shotsPerSecond;
-            angleSpacing = spread / multiProjectiles;
+            CalculateTimeBetween();
+            angleSpacing = arc / multiProjectiles;
+        }
+
+        private void CalculateTimeBetween()
+        {
+            timeBetweenShots = 1 / (isAutomatic && useRpsCurve ? autoRps : rps);
         }
 
         private void Awake()
@@ -159,7 +179,7 @@ namespace Player
             }
             else
             {
-                float startAngle = -(spread / 2);
+                float startAngle = -(arc / 2);
                 for (int i = 0; i < multiProjectiles; i++)
                 {
                     Vector3 fireDirection = Quaternion.Euler(0, startAngle + angleSpacing * i, 0) * forward;
@@ -181,6 +201,9 @@ namespace Player
         {
             Projectile newProjectile = ProjectilePooler.GetProjectile(poolIndex);
 
+            float spread = isAutomatic && useSpreadCurve ? autoSpread : bulletSpread;
+            direction = Quaternion.Euler(0, Random.Range(-spread / 2, spread / 2), 0) * direction;
+
             newProjectile.transform.position = transform.position + direction * 1.5f;
             newProjectile.transform.rotation = Quaternion.LookRotation(direction);
             newProjectile.gameObject.SetActive(true);
@@ -189,8 +212,6 @@ namespace Player
                 newProjectile.SetInstigator(owner.PlayerIndex);
             
             newProjectile.Fire();
-            // newProjectile.Fire(ref firedColliders);
-            // newProjectile.SubscribeToDeathEvent(() => RemoveFromColliders(newProjectile.Collider));
         }
 
         private IEnumerator AutoRoutine()
@@ -203,9 +224,21 @@ namespace Player
             
 
             WaitForSeconds shotGap = new WaitForSeconds(isBurst ? burstDelay : timeBetweenShots);
+            float startTime = Time.time;
 
             while (true)
             {
+                if (useRpsCurve)
+                {
+                    float rpsCurveEvaluation = rpsCurve.Evaluate(Time.time - startTime);
+                    autoRps = rpsCurveEvaluation * rps;
+                    CalculateTimeBetween();
+                    
+                    shotGap = new WaitForSeconds(isBurst ? burstDelay * rpsCurveEvaluation : timeBetweenShots);
+                }
+                if (useSpreadCurve)
+                    autoSpread = bulletSpreadCurve.Evaluate(Time.time - startTime) * bulletSpread;
+                
                 if(isBurst)
                     FireBurst();
                 else
@@ -240,48 +273,5 @@ namespace Player
 
             isBursting = false;
         }
-
-        // private void RemoveFromColliders(Collider coll)
-        // {
-        //     firedColliders.Remove(coll);
-        // }
     }
 }
-
-// private Projectile FireProjectileDirection(Vector3 direction, List<Collider> ignore)
-// {
-//     Projectile newProjectile = FireProjectileDirection(direction);
-//     Collider projectileCollider = newProjectile.GetComponent<Collider>();
-//
-//     foreach (Collider coll in ignore)
-//     {
-//         Physics.IgnoreCollision(projectileCollider, coll);
-//     }
-//
-//     return newProjectile;
-// }
-
-// private void Fire(ref List<Collider> colliders)
-// {
-//     Vector3 forward = transform.forward;
-//     
-//     if (!isMultiShot)
-//     {
-//         FireProjectileDirection(forward);
-//
-//         knockbackable.Knockback(-forward * knockback);
-//     }
-//     else
-//     {
-//         float startAngle = -(spread / 2);
-//         for (int i = 0; i < multiProjectiles; i++)
-//         {
-//             Vector3 fireDirection = Quaternion.Euler(0, startAngle + angleSpacing * i, 0) * forward;
-//             Projectile newProjectile = FireProjectileDirection(fireDirection, colliders);
-//             
-//             colliders.Add(newProjectile.GetComponent<Collider>());
-//         }
-//         
-//         knockbackable.Knockback(-forward * knockback);
-//     }
-// }

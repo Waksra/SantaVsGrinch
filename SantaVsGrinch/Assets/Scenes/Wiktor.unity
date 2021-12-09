@@ -880,9 +880,9 @@ MonoBehaviour:
     m_ActionName: Game/Aim[/Mouse/position]
   - m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: Player.EquipmentHolder, Assembly-CSharp
-        m_MethodName: OnFireInput1
+      - m_Target: {fileID: 9167236519207876208}
+        m_TargetAssemblyTypeName: Player.ProjectileGun, Assembly-CSharp
+        m_MethodName: OnFireInput
         m_Mode: 0
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -930,6 +930,30 @@ MonoBehaviour:
       m_Calls: []
     m_ActionId: 90d32869-7654-43cf-9dac-0c8ec6981539
     m_ActionName: Scoreboard/BackToMenu[/Keyboard/anyKey]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: c247762a-59c6-44ff-8e69-a38ca3db8c70
+    m_ActionName: MainMenu/MoveLeft[/Keyboard/a,/Keyboard/leftArrow]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 968bb7a6-db92-4a08-9abe-40cc6d634360
+    m_ActionName: MainMenu/MoveRight[/Keyboard/d,/Keyboard/rightArrow]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 56c43440-4e6f-4c6c-9476-6fe3dec21d73
+    m_ActionName: MainMenu/MoveDown[/Keyboard/s,/Keyboard/downArrow]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 76445a7b-142b-4464-8380-e74f18273132
+    m_ActionName: MainMenu/MoveUp[/Keyboard/w,/Keyboard/upArrow]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: af9c4fe4-b438-4938-ac69-b7ec8345c055
+    m_ActionName: MainMenu/Confirm[/Keyboard/space,/Keyboard/enter,/Mouse/leftButton]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: bba47f97-365b-4533-af05-7629dfb5531f
+    m_ActionName: MainMenu/Cancel[/Keyboard/escape,/Mouse/rightButton]
   m_NeverAutoSwitchControlSchemes: 1
   m_DefaultControlScheme: 
   m_DefaultActionMap: Game
@@ -965,12 +989,63 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   projectile: {fileID: 5203613507369053276, guid: f2a3c870ad5406149891257f66df5421, type: 3}
   inputBuffer: 3
-  shotsPerSecond: 10
-  knockback: 1
-  isAutomatic: 0
-  isMultiShot: 1
-  isBurst: 1
-  spread: 90
+  knockback: 0.7
+  rps: 5
+  bulletSpread: 10
+  isAutomatic: 1
+  isMultiShot: 0
+  isBurst: 0
+  useRpsCurve: 1
+  rpsCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: -0.01271952
+      outSlope: -0.01271952
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0.09888746
+    - serializedVersion: 3
+      time: 5
+      value: 5
+      inSlope: 2.3972948
+      outSlope: 2.3972948
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.04013958
+      outWeight: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  useSpreadCurve: 1
+  bulletSpreadCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: -0.01271952
+      outSlope: -0.01271952
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0.09888746
+    - serializedVersion: 3
+      time: 5
+      value: 5
+      inSlope: 2.3972948
+      outSlope: 2.3972948
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.04013958
+      outWeight: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  arc: 0
   multiProjectiles: 3
   burstProjectiles: 3
   burstDelay: 0.5
