@@ -24,7 +24,11 @@ public class CameraController : MonoBehaviour
     private void FixedUpdate()
     {
         if (trauma <= 0f)
+        {
+            if (noise.m_AmplitudeGain < 0f)
+                noise.m_AmplitudeGain = 0f;
             return;
+        }
         trauma -= Time.fixedDeltaTime * traumaDecay;
         noise.m_AmplitudeGain = trauma * amplitudeMultiplier;
     }

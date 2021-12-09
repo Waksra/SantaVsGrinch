@@ -5,6 +5,7 @@ using UnityEngine;
 
 public class ScoreboardManager : MonoBehaviour
 {
+    private GameManager gameManager;
     private List<PlayerProfile> playerProfiles;
     private List<PlayerScore> playerScores;
     
@@ -15,13 +16,14 @@ public class ScoreboardManager : MonoBehaviour
 
     private void Awake()
     {
-        FindObjectOfType<GameManager>().JoinPlayersInScoreboard();
+        gameManager = FindObjectOfType<GameManager>();
+        gameManager.JoinPlayersInScoreboard();
     }
 
     private void Start()
     {
-        playerProfiles = FindObjectOfType<GameManager>().GetPlayerProfiles();
-        playerScores = FindObjectOfType<GameMode>().GetPlayerScores();
+        playerProfiles = gameManager.GetPlayerProfiles();
+        playerScores = gameManager.GetPlayerScores();
         SetTexts();
     }
 

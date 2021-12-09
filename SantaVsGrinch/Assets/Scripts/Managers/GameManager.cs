@@ -13,6 +13,9 @@ public class GameManager : MonoBehaviour
     
     private List<PlayerProfile> playerProfiles = new List<PlayerProfile>();
     public List<PlayerProfile> GetPlayerProfiles() => playerProfiles;
+    private List<PlayerScore> playerScores = new List<PlayerScore>();
+    public void SetPlayerScores(List<PlayerScore> value) => playerScores = value;
+    public List<PlayerScore> GetPlayerScores() => playerScores;
     [SerializeField] private GameObject playerMainMenuPrefab = default;
     [SerializeField] private GameObject charSelectorPrefab = default;
     [SerializeField] private GameObject playerScoreboardPrefab = default;
@@ -117,6 +120,11 @@ public class GameManager : MonoBehaviour
         playerProfiles.Clear();
         pim.joinBehavior = PlayerJoinBehavior.JoinPlayersWhenButtonIsPressed;
         pim.playerPrefab = charSelectorPrefab;
+    }
+
+    public void StartMenu()
+    {
+        SceneManager.LoadScene("MainMenu");
     }
 
     public void StartCharacterSelection()

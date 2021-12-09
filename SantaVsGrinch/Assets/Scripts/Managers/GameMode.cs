@@ -29,8 +29,6 @@ public class GameMode : MonoBehaviour
         else
             instance = this;
         
-        DontDestroyOnLoad(this);
-        
         FindObjectOfType<GameManager>().JoinPlayers();
         PlayerInput[] foundInputs = GameObject.FindObjectsOfType<PlayerInput>();
         foreach (var foundInput in foundInputs) playerInputs[foundInput.playerIndex] = foundInput;
@@ -55,6 +53,7 @@ public class GameMode : MonoBehaviour
         StopAllCoroutines();
         
         Debug.Log("Game finished.");
+        GameManager.instance.SetPlayerScores(playerScores);
         GameManager.instance.StartScoreboard();
     }
 
