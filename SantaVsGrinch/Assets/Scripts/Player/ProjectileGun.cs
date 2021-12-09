@@ -65,6 +65,7 @@ namespace Player
         {
             OnValidate();
             transform = GetComponent<Transform>();
+            knockbackable = GetComponent<Knockbackable>();
         }
 
         private void Start()

@@ -1,5 +1,6 @@
 using UnityEngine;
 using UnityEngine.Events;
+using UnityEngine.InputSystem;
 
 public class Damageable : MonoBehaviour
 {
@@ -58,6 +59,6 @@ public class Damageable : MonoBehaviour
         Debug.Log($"{gameObject.name} died.");
         deathEvent?.Invoke();
         if (isPlayer)
-            GameObject.FindObjectOfType<GameMode>().AddDeath(GetComponent<PlayerController>().GetPlayerId());
+            FindObjectOfType<GameMode>().AddDeath(GetComponent<PlayerInput>().playerIndex);
     }
 }
