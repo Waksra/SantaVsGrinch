@@ -45,12 +45,27 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   projectile: {fileID: 5203613507369053276, guid: f2a3c870ad5406149891257f66df5421, type: 3}
   inputBuffer: 3
-  shotsPerSecond: 60
   knockback: 1
+  rps: 10
+  bulletSpread: 0
   isAutomatic: 1
   isMultiShot: 1
   isBurst: 1
-  spread: 90
-  multiProjectiles: 30
+  useRpsCurve: 0
+  rpsCurve:
+    serializedVersion: 2
+    m_Curve: []
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  useSpreadCurve: 0
+  bulletSpreadCurve:
+    serializedVersion: 2
+    m_Curve: []
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  arc: 90
+  multiProjectiles: 3
   burstProjectiles: 3
-  burstDelay: 0.36
+  burstDelay: 0.5

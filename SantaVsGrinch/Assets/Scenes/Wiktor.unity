@@ -881,8 +881,8 @@ MonoBehaviour:
   - m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 9167236519207876208}
-        m_TargetAssemblyTypeName: Player.ProjectileGun, Assembly-CSharp
-        m_MethodName: OnFireInput
+        m_TargetAssemblyTypeName: Player.EquipmentHolder, Assembly-CSharp
+        m_MethodName: OnFireInput1
         m_Mode: 0
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -954,6 +954,22 @@ MonoBehaviour:
       m_Calls: []
     m_ActionId: bba47f97-365b-4533-af05-7629dfb5531f
     m_ActionName: MainMenu/Cancel[/Keyboard/escape,/Mouse/rightButton]
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 9167236519207876208}
+        m_TargetAssemblyTypeName: Player.EquipmentHolder, Assembly-CSharp
+        m_MethodName: OnFireInput2
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: a2c29473-fdbb-42a6-9076-dbd4b92a2765
+    m_ActionName: Game/Fire2[/Mouse/rightButton]
   m_NeverAutoSwitchControlSchemes: 1
   m_DefaultControlScheme: 
   m_DefaultActionMap: Game
@@ -984,71 +1000,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 9167236519207876205}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 702116fc147b48d1a71aaf34680c3442, type: 3}
+  m_Script: {fileID: 11500000, guid: 6baac64abbd74adaa88ed8bd2f73d0ce, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  projectile: {fileID: 5203613507369053276, guid: f2a3c870ad5406149891257f66df5421, type: 3}
-  inputBuffer: 3
-  knockback: 0.7
-  rps: 5
-  bulletSpread: 10
-  isAutomatic: 1
-  isMultiShot: 0
-  isBurst: 0
-  useRpsCurve: 1
-  rpsCurve:
-    serializedVersion: 2
-    m_Curve:
-    - serializedVersion: 3
-      time: 0
-      value: 1
-      inSlope: -0.01271952
-      outSlope: -0.01271952
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0
-      outWeight: 0.09888746
-    - serializedVersion: 3
-      time: 5
-      value: 5
-      inSlope: 2.3972948
-      outSlope: 2.3972948
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0.04013958
-      outWeight: 0
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 4
-  useSpreadCurve: 1
-  bulletSpreadCurve:
-    serializedVersion: 2
-    m_Curve:
-    - serializedVersion: 3
-      time: 0
-      value: 1
-      inSlope: -0.01271952
-      outSlope: -0.01271952
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0
-      outWeight: 0.09888746
-    - serializedVersion: 3
-      time: 5
-      value: 5
-      inSlope: 2.3972948
-      outSlope: 2.3972948
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0.04013958
-      outWeight: 0
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 4
-  arc: 0
-  multiProjectiles: 3
-  burstProjectiles: 3
-  burstDelay: 0.5
+  slot1: {fileID: 1066029104611227149, guid: bc40d951501dbdb488ce1cc12edc2547, type: 3}
+  slot2: {fileID: 1066029104611227149, guid: bc40d951501dbdb488ce1cc12edc2547, type: 3}
 --- !u!114 &9167236519207876212
 MonoBehaviour:
   m_ObjectHideFlags: 0

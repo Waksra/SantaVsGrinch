@@ -23,16 +23,15 @@ namespace Player
             
             playerIndex = GetComponent<PlayerInput>().playerIndex;
 
-            GameObject slot1Go = Instantiate(slot1, transform.position, Quaternion.identity);
-            slot1Go.transform.parent = transform;
-            equippable1 = slot1Go.GetComponent<IEquippable>();
+            if(slot1 != null)
+            {
+                Equip(slot1, 1);
+            }
             
-            GameObject slot2Go = Instantiate(slot2, transform.position, Quaternion.identity);
-            slot2Go.transform.parent = transform;
-            equippable2 = slot2Go.GetComponent<IEquippable>();
-            
-            equippable1?.Equip(this);
-            equippable2?.Equip(this);
+            if(slot2 != null)
+            {
+                Equip(slot2, 2);
+            }
         }
         
         public void OnFireInput1(InputAction.CallbackContext context)
@@ -77,17 +76,21 @@ namespace Player
             }
         }
 
-        public void Equip(IEquippable equippable, int index)
+        public void Equip(GameObject equippable, int index)
         {
             switch (index)
             {
                case 1:
-                   equippable1 = equippable;
-                   equippable1.Equip(this);
+                   GameObject slot1Go = Instantiate(equippable, transform.position, Quaternion.identity);
+                   slot1Go.transform.parent = transform;
+                   equippable1 = slot1Go.GetComponent<IEquippable>();
+                   equippable1?.Equip(this);
                    break;
                case 2:
-                   equippable2 = equippable;
-                   equippable2.Equip(this);
+                   GameObject slot2Go = Instantiate(equippable, transform.position, Quaternion.identity);
+                   slot2Go.transform.parent = transform;
+                   equippable2 = slot2Go.GetComponent<IEquippable>();
+                   equippable2?.Equip(this);
                    break;
             }
         }

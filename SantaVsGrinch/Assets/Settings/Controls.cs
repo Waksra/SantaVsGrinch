@@ -55,6 +55,15 @@ public partial class @Controls : IInputActionCollection2, IDisposable
                     ""initialStateCheck"": false
                 },
                 {
+                    ""name"": ""Fire2"",
+                    ""type"": ""Button"",
+                    ""id"": ""a2c29473-fdbb-42a6-9076-dbd4b92a2765"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
                     ""name"": ""Dash"",
                     ""type"": ""Button"",
                     ""id"": ""03ce2753-b652-4ba4-9c5e-641fff4885b1"",
@@ -216,6 +225,39 @@ public partial class @Controls : IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""groups"": """",
                     ""action"": ""Dash"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""b989df59-0e24-4ae4-b2ca-284a0385e49e"",
+                    ""path"": ""<Mouse>/rightButton"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Fire2"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""76d75bc6-bf24-4cdb-ae3e-8d0a5243e501"",
+                    ""path"": ""<Gamepad>/leftTrigger"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Fire2"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""e7c586f8-c122-47b2-84b5-f28d7a722970"",
+                    ""path"": ""<Gamepad>/buttonWest"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Fire2"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -831,6 +873,7 @@ public partial class @Controls : IInputActionCollection2, IDisposable
         m_Game_Move = m_Game.FindAction("Move", throwIfNotFound: true);
         m_Game_Aim = m_Game.FindAction("Aim", throwIfNotFound: true);
         m_Game_Fire = m_Game.FindAction("Fire", throwIfNotFound: true);
+        m_Game_Fire2 = m_Game.FindAction("Fire2", throwIfNotFound: true);
         m_Game_Dash = m_Game.FindAction("Dash", throwIfNotFound: true);
         // CharSelection
         m_CharSelection = asset.FindActionMap("CharSelection", throwIfNotFound: true);
@@ -911,6 +954,7 @@ public partial class @Controls : IInputActionCollection2, IDisposable
     private readonly InputAction m_Game_Move;
     private readonly InputAction m_Game_Aim;
     private readonly InputAction m_Game_Fire;
+    private readonly InputAction m_Game_Fire2;
     private readonly InputAction m_Game_Dash;
     public struct GameActions
     {
@@ -919,6 +963,7 @@ public partial class @Controls : IInputActionCollection2, IDisposable
         public InputAction @Move => m_Wrapper.m_Game_Move;
         public InputAction @Aim => m_Wrapper.m_Game_Aim;
         public InputAction @Fire => m_Wrapper.m_Game_Fire;
+        public InputAction @Fire2 => m_Wrapper.m_Game_Fire2;
         public InputAction @Dash => m_Wrapper.m_Game_Dash;
         public InputActionMap Get() { return m_Wrapper.m_Game; }
         public void Enable() { Get().Enable(); }
@@ -938,6 +983,9 @@ public partial class @Controls : IInputActionCollection2, IDisposable
                 @Fire.started -= m_Wrapper.m_GameActionsCallbackInterface.OnFire;
                 @Fire.performed -= m_Wrapper.m_GameActionsCallbackInterface.OnFire;
                 @Fire.canceled -= m_Wrapper.m_GameActionsCallbackInterface.OnFire;
+                @Fire2.started -= m_Wrapper.m_GameActionsCallbackInterface.OnFire2;
+                @Fire2.performed -= m_Wrapper.m_GameActionsCallbackInterface.OnFire2;
+                @Fire2.canceled -= m_Wrapper.m_GameActionsCallbackInterface.OnFire2;
                 @Dash.started -= m_Wrapper.m_GameActionsCallbackInterface.OnDash;
                 @Dash.performed -= m_Wrapper.m_GameActionsCallbackInterface.OnDash;
                 @Dash.canceled -= m_Wrapper.m_GameActionsCallbackInterface.OnDash;
@@ -954,6 +1002,9 @@ public partial class @Controls : IInputActionCollection2, IDisposable
                 @Fire.started += instance.OnFire;
                 @Fire.performed += instance.OnFire;
                 @Fire.canceled += instance.OnFire;
+                @Fire2.started += instance.OnFire2;
+                @Fire2.performed += instance.OnFire2;
+                @Fire2.canceled += instance.OnFire2;
                 @Dash.started += instance.OnDash;
                 @Dash.performed += instance.OnDash;
                 @Dash.canceled += instance.OnDash;
@@ -1147,6 +1198,7 @@ public partial class @Controls : IInputActionCollection2, IDisposable
         void OnMove(InputAction.CallbackContext context);
         void OnAim(InputAction.CallbackContext context);
         void OnFire(InputAction.CallbackContext context);
+        void OnFire2(InputAction.CallbackContext context);
         void OnDash(InputAction.CallbackContext context);
     }
     public interface ICharSelectionActions
