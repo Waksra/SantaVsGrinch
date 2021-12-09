@@ -13,6 +13,8 @@ namespace Player
         private IEquippable equippable1;
         private IEquippable equippable2;
 
+        private HUDManager hudManager;
+
         private int playerIndex;
 
         public int PlayerIndex => playerIndex;
@@ -20,6 +22,8 @@ namespace Player
         private void Awake()
         {
             transform = GetComponent<Transform>();
+
+            hudManager = FindObjectOfType<HUDManager>();
             
             playerIndex = GetComponent<PlayerInput>().playerIndex;
 
@@ -81,19 +85,31 @@ namespace Player
             switch (index)
             {
                case 1:
-                   GameObject slot1Go = Instantiate(equippable, transform);
-                   slot1Go.transform.localPosition = Vector3.zero;
-                   slot1Go.transform.localRotation = Quaternion.identity;
-                   equippable1 = slot1Go.GetComponent<IEquippable>();
+               {
+                   GameObject go = Instantiate(equippable, transform);
+                   go.transform.localPosition = Vector3.zero;
+                   go.transform.localRotation = Quaternion.identity;
+                   equippable1 = go.GetComponent<IEquippable>();
                    equippable1?.Equip(this);
+
+                   if (hudManager != null && go.TryGetComponent(out WeaponInfo weaponInfo))
+                       hudManager.UpdateWeapon(playerIndex, weaponInfo);
+                   
                    break;
+               }
                case 2:
-                   GameObject slot2Go = Instantiate(equippable, transform);
-                   slot2Go.transform.localPosition = Vector3.zero;
-                   slot2Go.transform.localRotation = Quaternion.identity;
-                   equippable2 = slot2Go.GetComponent<IEquippable>();
+               {
+                   GameObject go = Instantiate(equippable, transform);
+                   go.transform.localPosition = Vector3.zero;
+                   go.transform.localRotation = Quaternion.identity;
+                   equippable2 = go.GetComponent<IEquippable>();
                    equippable2?.Equip(this);
+                   
+                   if (hudManager != null && go.TryGetComponent(out WeaponInfo weaponInfo))
+                       hudManager.UpdateWeapon(playerIndex, weaponInfo);
+                   
                    break;
+               }
             }
         }
     }
