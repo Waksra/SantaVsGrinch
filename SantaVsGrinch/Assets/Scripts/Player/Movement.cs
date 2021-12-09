@@ -7,7 +7,10 @@ namespace Player
     {
         [SerializeField, Range(0, 50)] private float maxSpeed = 10f;
         [SerializeField, Range(0, 50)] private float maxAcceleration = 10f;
+        [SerializeField, Range(0, 50)] private float maxIceAcceleration = 5f;
         [SerializeField, Range(0, 90)] private float maxAngle;
+        [SerializeField] private LayerMask groundLayer = -1;
+        [SerializeField] private LayerMask iceLayer = -1;
         
         [Space(10)]
         
@@ -27,6 +30,7 @@ namespace Player
         private float minGroundDot;
         private int contactCount;
         private Vector3 groundNormal;
+        private bool onIce;
 
         private bool dashRequested;
         private bool isDashing;
@@ -89,13 +93,15 @@ namespace Player
             Vector3 xAxis = ProjectDirectionGround(Vector3.right);
             Vector3 zAxis = ProjectDirectionGround(Vector3.forward);
 
+            float acceleration = onIce ? maxIceAcceleration : maxAcceleration;
+
             Vector2 adjustment;
             adjustment.x
                 = inputVector.x * maxSpeed - Vector3.Dot(velocity, xAxis);
             adjustment.y
                 = inputVector.y * maxSpeed - Vector3.Dot(velocity, zAxis);
 
-            adjustment = Vector3.ClampMagnitude(adjustment, maxAcceleration * Time.deltaTime);
+            adjustment = Vector3.ClampMagnitude(adjustment, acceleration * Time.deltaTime);
 
             velocity += xAxis * adjustment.x + zAxis * adjustment.y;
         }
@@ -103,7 +109,7 @@ namespace Player
         private void Dash()
         {
             float curveEvaluation = dashCurve.Evaluate(dashTime);
-            Vector3 desiredVelocity = dashDirection * Mathf.LerpUnclamped(maxSpeed, dashMaxSpeed, curveEvaluation);
+            Vector3 desiredVelocity = ProjectDirectionGround(dashDirection) * Mathf.LerpUnclamped(maxSpeed, dashMaxSpeed, curveEvaluation);
 
             velocity = Vector3.MoveTowards(velocity, desiredVelocity, dashAcceleration * Time.deltaTime);
         }
@@ -154,6 +160,7 @@ namespace Player
         {
             groundNormal = Vector3.zero;
             contactCount = 0;
+            onIce = false;
             
             if (inputVector.sqrMagnitude != 0)
                 lastInput = inputVector;
@@ -161,6 +168,10 @@ namespace Player
 
         private void HandleCollision(Collision collision)
         {
+            int layer = collision.gameObject.layer;
+            if((groundLayer & (1 << layer)) == 0)
+                return;
+            
             for (int i = 0; i < collision.contactCount; i++)
             {
                 Vector3 normal = collision.GetContact(i).normal;
@@ -169,6 +180,8 @@ namespace Player
                 if(upDot < minGroundDot)
                     continue;
 
+                if ((iceLayer & (1 << layer)) != 0)
+                    onIce = true;
                 groundNormal += normal;
                 contactCount++;
             }

@@ -8,6 +8,9 @@ namespace Player
         [SerializeField] private GameObject slot1;
         [SerializeField] private GameObject slot2;
 
+        [SerializeField] private Transform slot1Transform;
+        [SerializeField] private Transform slot2Transform;
+
         private new Transform transform;
         
         private IEquippable equippable1;
@@ -22,6 +25,11 @@ namespace Player
         private void Awake()
         {
             transform = GetComponent<Transform>();
+
+            if (slot1Transform == null)
+                slot1Transform = transform;
+            if (slot2Transform == null)
+                slot2Transform = transform;
 
             hudManager = FindObjectOfType<HUDManager>();
             
@@ -86,7 +94,7 @@ namespace Player
             {
                case 1:
                {
-                   GameObject go = Instantiate(equippable, transform);
+                   GameObject go = Instantiate(equippable, slot1Transform);
                    go.transform.localPosition = Vector3.zero;
                    go.transform.localRotation = Quaternion.identity;
                    equippable1 = go.GetComponent<IEquippable>();
@@ -99,7 +107,7 @@ namespace Player
                }
                case 2:
                {
-                   GameObject go = Instantiate(equippable, transform);
+                   GameObject go = Instantiate(equippable, slot2Transform);
                    go.transform.localPosition = Vector3.zero;
                    go.transform.localRotation = Quaternion.identity;
                    equippable2 = go.GetComponent<IEquippable>();
