@@ -73,7 +73,7 @@ namespace Player
         private void OnValidate()
         {
             CalculateTimeBetween();
-            angleSpacing = arc / multiProjectiles;
+            angleSpacing = arc / (multiProjectiles - 1);
         }
 
         private void CalculateTimeBetween()
@@ -200,11 +200,14 @@ namespace Player
         private void FireProjectileDirection(Vector3 direction)
         {
             Projectile newProjectile = ProjectilePooler.GetProjectile(poolIndex);
+            
+            if(bulletSpread > 0)
+            {
+                float spread = isAutomatic && useSpreadCurve ? autoSpread : bulletSpread;
+                direction = Quaternion.Euler(0, Random.Range(-spread / 2, spread / 2), 0) * direction;
+            }
 
-            float spread = isAutomatic && useSpreadCurve ? autoSpread : bulletSpread;
-            direction = Quaternion.Euler(0, Random.Range(-spread / 2, spread / 2), 0) * direction;
-
-            newProjectile.transform.position = transform.position + direction * 1.5f;
+            newProjectile.transform.position = transform.position;// + direction * 1.5f
             newProjectile.transform.rotation = Quaternion.LookRotation(direction);
             newProjectile.gameObject.SetActive(true);
             

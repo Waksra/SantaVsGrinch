@@ -81,14 +81,16 @@ namespace Player
             switch (index)
             {
                case 1:
-                   GameObject slot1Go = Instantiate(equippable, transform.position, Quaternion.identity);
-                   slot1Go.transform.parent = transform;
+                   GameObject slot1Go = Instantiate(equippable, transform);
+                   slot1Go.transform.localPosition = Vector3.zero;
+                   slot1Go.transform.localRotation = Quaternion.identity;
                    equippable1 = slot1Go.GetComponent<IEquippable>();
                    equippable1?.Equip(this);
                    break;
                case 2:
-                   GameObject slot2Go = Instantiate(equippable, transform.position, Quaternion.identity);
-                   slot2Go.transform.parent = transform;
+                   GameObject slot2Go = Instantiate(equippable, transform);
+                   slot2Go.transform.localPosition = Vector3.zero;
+                   slot2Go.transform.localRotation = Quaternion.identity;
                    equippable2 = slot2Go.GetComponent<IEquippable>();
                    equippable2?.Equip(this);
                    break;
