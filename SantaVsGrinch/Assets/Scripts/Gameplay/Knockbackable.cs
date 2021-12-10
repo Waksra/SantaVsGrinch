@@ -15,8 +15,6 @@ public class Knockbackable : MonoBehaviour
     {
         float knockback = damageable.Health < 100f ? 1f : damageable.Health * 0.01f;
         
-        if (!GetComponent<Damageable>().smashMode)
-            knockback = 1f;
         body.velocity += force * knockback / body.mass; //, ForceMode.Impulse);
     }
 

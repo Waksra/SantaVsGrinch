@@ -48,13 +48,13 @@ MonoBehaviour:
   - pickup: {fileID: 6006817774234743645, guid: 4ceff50c8cbf5e647a70a522195f7132, type: 3}
     weight: 1
   - pickup: {fileID: 6006817774234743645, guid: 4a92a5c9dc809624fb03e90888dae561, type: 3}
-    weight: 2
+    weight: 1
   - pickup: {fileID: 6006817774234743645, guid: 93be9935429797e4ca0665c1020d25ec, type: 3}
     weight: 1
   - pickup: {fileID: 6006817774234743645, guid: 73f11c22cc9fe2f4b8f51b789b9c172d, type: 3}
-    weight: 2
+    weight: 1
   - pickup: {fileID: 6006817774234743645, guid: 726a8a031ac7649439e8782b9c188b93, type: 3}
-    weight: 2
+    weight: 1
   initialMinimumTime: 5
   minTimeBetween: 2
   maxTimeBetween: 10
