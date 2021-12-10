@@ -111,6 +111,7 @@ public class CharSelectionManager : MonoBehaviour
     {
         int index = playerCharSelectors.IndexOf(playerCharSelector);
         playerStateProfiles[index].isReady = true;
+        deviceIcons[index].transform.localScale = Vector3.one * 1.25f;
 
         OnReadyCheck();
     }
@@ -119,7 +120,10 @@ public class CharSelectionManager : MonoBehaviour
     {
         int index = playerCharSelectors.IndexOf(playerCharSelector);
         if (playerStateProfiles[index].isReady)
+        {
             playerStateProfiles[index].isReady = false;
+            deviceIcons[index].transform.localScale = Vector3.one;
+        }
         else
             gameManager.StartMenu();
     }

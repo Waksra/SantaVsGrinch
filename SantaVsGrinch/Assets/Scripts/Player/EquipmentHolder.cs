@@ -150,6 +150,7 @@ namespace Player
                 case 2:
                 {
                     equippable2?.Unequip();
+                    equippable2 = null;
                     if (hudManager != null)
                         hudManager.ClearWeapon(playerIndex, 2);
                     break;
@@ -165,6 +166,7 @@ namespace Player
             else if(equippable2 == equippable)
             {
                 equippable2?.Unequip();
+                equippable2 = null;
                 if (hudManager != null)
                     hudManager.ClearWeapon(playerIndex, 2);
             }

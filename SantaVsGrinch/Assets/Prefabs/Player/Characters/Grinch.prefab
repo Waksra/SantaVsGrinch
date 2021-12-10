@@ -921,11 +921,11 @@ PrefabInstance:
     - target: {fileID: -8557889668626545674, guid: 97d2d885b53977e4dae6aff9253dedfd, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 2100000, guid: 177f794ca38b3e147bef3f3a75fe1cd0, type: 2}
+      objectReference: {fileID: 2100000, guid: a2a24259f1ef12643b8c0b32cb03b690, type: 2}
     - target: {fileID: -8557889668626545674, guid: 97d2d885b53977e4dae6aff9253dedfd, type: 3}
       propertyPath: m_Materials.Array.data[1]
       value: 
-      objectReference: {fileID: 2100000, guid: 67dcbc8249d89e243b33b0e061e59d27, type: 2}
+      objectReference: {fileID: 2100000, guid: a585db11a45a5e44bb9ff85c20e8d58f, type: 2}
     - target: {fileID: -7013148173607727782, guid: 97d2d885b53977e4dae6aff9253dedfd, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
       value: -0.7077811
