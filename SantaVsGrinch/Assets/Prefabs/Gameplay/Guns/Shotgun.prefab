@@ -108,7 +108,7 @@ MonoBehaviour:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
-  arc: 60
+  arc: 45
   multiProjectiles: 13
   burstProjectiles: 3
   burstDelay: 0.5
