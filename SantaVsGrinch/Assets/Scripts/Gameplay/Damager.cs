@@ -26,6 +26,12 @@ namespace Gameplay
             if(other.TryGetComponent(out Damageable damageable))
                 DealDamage(damageable);
         }
+
+        public void DealDamage(Collision collision)
+        {
+            if (collision.gameObject.TryGetComponent(out Damageable damageable))
+                DealDamage(damageable);
+        }
         
         public void DealDamage(Damageable damageable)
         {
