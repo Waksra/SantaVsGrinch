@@ -25,6 +25,6 @@ public class PlayerHUDCard : MonoBehaviour
 
     public void UpdateWeapon(int slotIndex, Sprite icon)
     {
-        weaponSlotIcons[slotIndex].sprite = icon;
+        weaponSlotIcons[slotIndex - 1].sprite = icon;
     }
 }

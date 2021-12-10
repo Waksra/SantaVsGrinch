@@ -7,17 +7,16 @@ namespace Gameplay
     public class Pickup : MonoBehaviour
     {
         [SerializeField] private GameObject gunPickup;
-        [SerializeField, Range(1, 2)] private int slot = 1;
         [SerializeField] private LayerMask layerMask = 128;
 
         [SerializeField] private UnityEvent<Pickup> onPickup;
 
-        private bool isValidGun;
+        private int slot;
 
         private void Awake()
         {
             if (gunPickup.TryGetComponent(out IEquippable equippable))
-                isValidGun = true;
+                slot = gunPickup.GetComponent<WeaponInfo>().SlotIndex;
             else
                 Debug.LogError($"{name} pickup has no valid gun set.");
         }
@@ -29,9 +28,6 @@ namespace Gameplay
 
         private void OnTriggerEnter(Collider other)
         {
-            if (!isValidGun)
-                return;
-            
             if (layerMask == (layerMask | (1 << other.gameObject.layer)) && other.TryGetComponent(out EquipmentHolder holder))
             {
                 holder.Equip(gunPickup, slot);

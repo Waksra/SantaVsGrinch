@@ -11,10 +11,13 @@ namespace Gameplay
     public class Projectile : MonoBehaviour
     {
         [SerializeField, Range(0, 50)] private float initialVelocity = 20f;
+        [SerializeField, Range(0, 2)] private float gravityScale = 1f;
+        [Space(10)]
         [SerializeField, Range(0, 5)] private float deathDelay = 0f;
         [SerializeField] private bool ignoreInstigator = true;
         [SerializeField, Range(-1, 60)] private float lifeTime = -1;
         [SerializeField, Range(1, 100)] private int initialPoolAmount = 10;
+        [Space(10)]
         [SerializeField] private UnityEvent<Collider> onHitEvent;
         [SerializeField] private UnityEvent onDeathEvent;
 
@@ -31,10 +34,16 @@ namespace Gameplay
         private void Awake()
         {
             body = GetComponent<Rigidbody>();
+            body.useGravity = false;
             collider = GetComponent<Collider>();
 
             if (lifeTime >= 0)
                 StartCoroutine(DieAfterTime(lifeTime));
+        }
+
+        private void FixedUpdate()
+        {
+            body.AddForce(Physics.gravity * gravityScale, ForceMode.Acceleration);
         }
 
         public void Reset()

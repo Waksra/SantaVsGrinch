@@ -3,7 +3,7 @@ using UnityEngine;
 public class WeaponInfo : MonoBehaviour
 {
     [SerializeField] private string title = default;
-    [SerializeField] private int slotIndex = default;
+    [SerializeField, Range(1, 2)] private int slotIndex = 1;
     [SerializeField] private Sprite hudIcon = default;
 
     public string Title => title;

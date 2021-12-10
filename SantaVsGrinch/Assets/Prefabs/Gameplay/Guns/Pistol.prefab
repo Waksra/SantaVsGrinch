@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &1066029104611227149
+--- !u!1 &8595040609037088291
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -8,23 +8,23 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 4645882633185114544}
-  - component: {fileID: 569403939321399090}
-  - component: {fileID: 7726730630508211958}
+  - component: {fileID: 1737211908836513779}
+  - component: {fileID: 1642199936708304656}
+  - component: {fileID: -2279529879705381078}
   m_Layer: 0
-  m_Name: Gun
+  m_Name: Pistol
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &4645882633185114544
+--- !u!4 &1737211908836513779
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1066029104611227149}
+  m_GameObject: {fileID: 8595040609037088291}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
@@ -32,26 +32,26 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &569403939321399090
+--- !u!114 &1642199936708304656
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1066029104611227149}
+  m_GameObject: {fileID: 8595040609037088291}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 702116fc147b48d1a71aaf34680c3442, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  projectile: {fileID: 5203613507369053276, guid: f2a3c870ad5406149891257f66df5421, type: 3}
-  inputBuffer: 3
+  projectile: {fileID: 5203613507369053276, guid: ee6ef3e254bd2eb439f05913bd3d5197, type: 3}
+  inputBuffer: 1
   knockback: 1
-  rps: 10
+  rps: 2
   bulletSpread: 0
   isAutomatic: 1
-  isMultiShot: 1
-  isBurst: 1
+  isMultiShot: 0
+  isBurst: 0
   useRpsCurve: 0
   rpsCurve:
     serializedVersion: 2
@@ -106,18 +106,18 @@ MonoBehaviour:
   multiProjectiles: 3
   burstProjectiles: 3
   burstDelay: 0.5
---- !u!114 &7726730630508211958
+--- !u!114 &-2279529879705381078
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1066029104611227149}
+  m_GameObject: {fileID: 8595040609037088291}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 68333e5021203b3448506b3a9141416f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  title: 
+  title: Pistol
   slotIndex: 1
   hudIcon: {fileID: 0}
