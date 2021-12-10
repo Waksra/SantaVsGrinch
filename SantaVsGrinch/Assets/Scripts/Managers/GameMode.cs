@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using Player;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -109,6 +110,9 @@ public class GameMode : MonoBehaviour
         playerInputs[playerIndex].GetComponent<Rigidbody>().position = furthestSpawnPoint.position;
         playerInputs[playerIndex].GetComponent<Rigidbody>().rotation = furthestSpawnPoint.rotation;
         playerInputs[playerIndex].GetComponent<Damageable>().Respawn();
+        EquipmentHolder holder = playerInputs[playerIndex].GetComponent<EquipmentHolder>();
+        // holder.Deactivate(1);
+        // holder.Deactivate(2);
     }
 
     private IEnumerator RespawnAfterTime(int playerIndex)

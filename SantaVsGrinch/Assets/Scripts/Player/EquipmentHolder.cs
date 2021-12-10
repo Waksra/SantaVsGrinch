@@ -20,6 +20,9 @@ namespace Player
 
         private int playerIndex;
 
+        private bool isFire1;
+        private bool isFire2;
+
         public int PlayerIndex => playerIndex;
 
         private void Awake()
@@ -49,9 +52,13 @@ namespace Player
         public void OnFireInput1(InputAction.CallbackContext context)
         {
             if(context.performed)
+            {
                 Activate(1);
+            }
             else if(context.canceled)
                 Deactivate(1);
+
+            isFire1 = context.performed;
         }
         
         public void OnFireInput2(InputAction.CallbackContext context)
@@ -60,6 +67,8 @@ namespace Player
                 Activate(2);
             else if(context.canceled)
                 Deactivate(2);
+
+            isFire2 = context.performed;
         }
 
         public void Activate(int index)
@@ -94,11 +103,15 @@ namespace Player
             {
                case 1:
                {
+                   equippable1?.OnDeactivate();
+                   equippable1?.Unequip();
                    GameObject go = Instantiate(equippable, slot1Transform);
                    go.transform.localPosition = Vector3.zero;
                    go.transform.localRotation = Quaternion.identity;
                    equippable1 = go.GetComponent<IEquippable>();
                    equippable1?.Equip(this);
+                   if(isFire1)
+                       equippable1?.OnActivate();
 
                    if (hudManager != null && go.TryGetComponent(out WeaponInfo weaponInfo))
                        hudManager.UpdateWeapon(playerIndex, weaponInfo);
@@ -107,12 +120,16 @@ namespace Player
                }
                case 2:
                {
+                   equippable2?.OnDeactivate();
+                   equippable2?.Unequip();
                    GameObject go = Instantiate(equippable, slot2Transform);
                    go.transform.localPosition = Vector3.zero;
                    go.transform.localRotation = Quaternion.identity;
                    equippable2 = go.GetComponent<IEquippable>();
                    equippable2?.Equip(this);
-                   
+                   if(isFire2)
+                       equippable2?.OnActivate();
+
                    if (hudManager != null && go.TryGetComponent(out WeaponInfo weaponInfo))
                        hudManager.UpdateWeapon(playerIndex, weaponInfo);
                    

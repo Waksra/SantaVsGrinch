@@ -18,6 +18,10 @@ namespace Player
         [SerializeField, Range(0, 60)] private float rps;
         [SerializeField, Range(0, 60)] private float bulletSpread;
 
+        [Space] 
+        
+        [SerializeField] private AudioClip fireSound;
+
         [SerializeField, FoldoutGroup("Firing Modes")] private bool isAutomatic;
         [SerializeField, FoldoutGroup("Firing Modes")] private bool isMultiShot;
         [SerializeField, FoldoutGroup("Firing Modes")] private bool isBurst;
@@ -70,6 +74,9 @@ namespace Player
         //Burst
         private bool isBursting;
 
+        public bool IsActive => isAutoing;
+
+
         private void OnValidate()
         {
             CalculateTimeBetween();
@@ -99,6 +106,11 @@ namespace Player
         {
             this.owner = owner;
             knockbackable = owner.GetComponent<Knockbackable>();
+        }
+
+        public void Unequip()
+        {
+            Destroy(gameObject);
         }
 
         public void OnFireInput(InputAction.CallbackContext context)
@@ -171,11 +183,11 @@ namespace Player
             if(!isBursting)
                 timeOfNextShot = Time.time + timeBetweenShots;
             
+            
+            
             if (!isMultiShot)
             {
                 FireProjectileDirection(forward);
-
-                knockbackable.Knockback(-forward * knockback);
             }
             else
             {
@@ -186,9 +198,12 @@ namespace Player
                     FireProjectileDirection(fireDirection);
                     
                 }
-                
-                knockbackable.Knockback(-forward * knockback);
             }
+            
+            knockbackable.Knockback(-forward * knockback);
+            
+            if(fireSound != null)
+                SoundManager.PlaySFXRandomized(fireSound, transform.position);
         }
 
         private void FireBurst()

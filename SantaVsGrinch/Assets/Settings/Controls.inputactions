@@ -153,17 +153,6 @@
                 },
                 {
                     "name": "",
-                    "id": "0c6ce821-b120-46e3-b6ea-432946294b88",
-                    "path": "<Gamepad>/buttonSouth",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "Gamepad",
-                    "action": "Fire",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
                     "id": "620651d0-81aa-410b-8e98-5e7ef00c343c",
                     "path": "<Gamepad>/rightTrigger",
                     "interactions": "",
@@ -187,21 +176,10 @@
                 {
                     "name": "",
                     "id": "320fe8bf-6610-4d23-83e3-8d66a83873ed",
-                    "path": "<Gamepad>/buttonEast",
+                    "path": "<Gamepad>/buttonSouth",
                     "interactions": "",
                     "processors": "",
                     "groups": "Gamepad",
-                    "action": "Dash",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "bcc78168-56db-4501-8129-7dfa36f3f2a6",
-                    "path": "<Gamepad>/leftTrigger",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
                     "action": "Dash",
                     "isComposite": false,
                     "isPartOfComposite": false
@@ -221,17 +199,6 @@
                     "name": "",
                     "id": "76d75bc6-bf24-4cdb-ae3e-8d0a5243e501",
                     "path": "<Gamepad>/leftTrigger",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "Fire2",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "e7c586f8-c122-47b2-84b5-f28d7a722970",
-                    "path": "<Gamepad>/buttonWest",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
