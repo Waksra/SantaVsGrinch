@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 6006817774234743644}
   - component: {fileID: 6006817774234743645}
   m_Layer: 0
-  m_Name: Pickup
+  m_Name: PickupShotgun
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -58,8 +58,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 703804643caf4bdc854c9bfe009ec6b9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gunPickup: {fileID: 1066029104611227149, guid: bc40d951501dbdb488ce1cc12edc2547, type: 3}
-  slot: 2
+  gunPickup: {fileID: 8595040609037088291, guid: 1ec90a4672a49ad4c98856b58a3b1073, type: 3}
   layerMask:
     serializedVersion: 2
     m_Bits: 128

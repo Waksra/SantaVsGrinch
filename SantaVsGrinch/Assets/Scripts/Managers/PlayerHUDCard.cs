@@ -13,7 +13,8 @@ public class PlayerHUDCard : MonoBehaviour
     {
         foreach (var weaponSlotIcon in weaponSlotIcons)
         {
-            weaponSlotIcon.enabled = false;
+            if(weaponSlotIcon.sprite == null)
+                weaponSlotIcon.enabled = false;
         }
     }
 
