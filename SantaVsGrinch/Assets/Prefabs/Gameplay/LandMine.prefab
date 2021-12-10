@@ -165,7 +165,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 72f690090bc84bf2982ad64b19cca7cf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  objectToSpawn: {fileID: 7416750430319858421, guid: 6b4dae50d401fcb41bfef3bdc09865f4, type: 3}
+  objectToSpawn: {fileID: 4536345256129784952, guid: a6cb16eb9bc808741a2648fa0d923863, type: 3}
 --- !u!114 &606993411474042409
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -180,7 +180,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   onAwake: 0
   disable: 0
-  lifetime: 1
+  lifetime: 0.5
   onDeathEvent:
     m_PersistentCalls:
       m_Calls:
