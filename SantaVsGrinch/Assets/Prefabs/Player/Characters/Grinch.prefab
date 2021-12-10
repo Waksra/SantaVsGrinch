@@ -324,10 +324,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxSpeed: 10
-  maxDeepSnowSpeed: 3
-  maxAcceleration: 20
+  maxDeepSnowSpeed: 2.7
+  maxAcceleration: 22
   maxDeepSnowAcceleration: 25
-  maxIceAcceleration: 5
+  maxIceAcceleration: 4.5
   maxAngle: 30
   groundLayer:
     serializedVersion: 2
