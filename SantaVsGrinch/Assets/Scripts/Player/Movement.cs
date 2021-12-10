@@ -21,8 +21,7 @@ namespace Player
         [SerializeField, Range(0, 2)] private float dashRequestBuffer = 0.5f;
         [SerializeField] private AnimationCurve dashCurve;
 
-        [SerializeField] private Animator bodyAnimator;
-        [SerializeField] private Animator gunAnimator;
+        private AnimatorHelper animatorHelper;
         
         private Rigidbody body;
 
@@ -74,6 +73,7 @@ namespace Player
         {
             OnValidate();
             body = GetComponent<Rigidbody>();
+            animatorHelper = GetComponent<AnimatorHelper>();
             
             if(dashCurve.length == 0)
                 Debug.LogError(gameObject.name + " has no dash curve set.");
@@ -82,8 +82,7 @@ namespace Player
         private void Update()
         {
             float speed = velocity.magnitude / maxSpeed;
-            bodyAnimator.SetFloat("Speed", speed);
-            gunAnimator.SetFloat("Speed", speed);
+            animatorHelper.SetAnimatorFloat("Speed", speed);
         }
 
         private void FixedUpdate()

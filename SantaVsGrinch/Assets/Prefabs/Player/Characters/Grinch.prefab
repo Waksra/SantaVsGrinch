@@ -100,6 +100,7 @@ GameObject:
   - component: {fileID: 1027292855941397936}
   - component: {fileID: -7947423832025417409}
   - component: {fileID: 4161694049256839418}
+  - component: {fileID: 8889357232051365275}
   m_Layer: 7
   m_Name: Grinch
   m_TagString: Player
@@ -369,8 +370,6 @@ MonoBehaviour:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
-  bodyAnimator: {fileID: 2104177911653795803}
-  gunAnimator: {fileID: 4693487284321998334}
 --- !u!114 &9055373115926828474
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -416,9 +415,9 @@ MonoBehaviour:
   damageEvent:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: Gameplay.Freezeable, Assembly-CSharp
-        m_MethodName: FreezeDamage
+      - m_Target: {fileID: 8889357232051365275}
+        m_TargetAssemblyTypeName: AnimatorHelper, Assembly-CSharp
+        m_MethodName: SetHitFloat
         m_Mode: 0
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -488,6 +487,20 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerAvatar: {fileID: 7903985867314534745}
   clothing: {fileID: 919132149155446097, guid: c982fe0ec95ae574bacac07862379d0e, type: 3}
+--- !u!114 &8889357232051365275
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1647139824798315748}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 184795a2baa25cb4a81206d2a56f630c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  animators: []
+  hurtDecay: 100
 --- !u!1 &1647139825504062608
 GameObject:
   m_ObjectHideFlags: 0

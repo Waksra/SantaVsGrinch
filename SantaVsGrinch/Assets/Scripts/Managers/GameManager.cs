@@ -22,6 +22,9 @@ public class GameManager : MonoBehaviour
     [SerializeField] private GameObject[] characters = default;
     [SerializeField] private string[] characterNames = default;
 
+    [SerializeField] private AudioClip menuMusic = default;
+    [SerializeField] private AudioClip gameMusic = default;
+
     private void Awake()
     {
         if (instance != null)
@@ -38,12 +41,14 @@ public class GameManager : MonoBehaviour
         SoundManager.SetGlobalVolume(0.5f);
         SoundManager.SetSFXVolume(1f);
         SoundManager.SetBGMVolume(1f);
+        SoundManager.PlayBGM(menuMusic, true, 1f);
     }
 
     public void StartMatch()
     {
         Debug.Log("Starting Match.");
         SceneManager.LoadScene("Scene_01");
+        SoundManager.PlayBGM(gameMusic, true, 1f);
         gameMode = FindObjectOfType<GameMode>();
     }
     
@@ -125,16 +130,19 @@ public class GameManager : MonoBehaviour
     public void StartMenu()
     {
         SceneManager.LoadScene("MainMenu");
+        SoundManager.PlayBGM(menuMusic, true, 1f);
     }
 
     public void StartCharacterSelection()
     {
         SceneManager.LoadScene("CharacterSelection");
+        // SoundManager.PlayBGM(menuMusic, true, 1f);
     }
 
     public void StartScoreboard()
     {
         SceneManager.LoadScene("Scoreboard");
+        SoundManager.PlayBGM(gameMusic, true, 1f);
     }
 
     public string GetCharacterNameById(int id)

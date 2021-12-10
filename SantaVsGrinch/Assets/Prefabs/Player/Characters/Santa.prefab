@@ -100,6 +100,7 @@ GameObject:
   - component: {fileID: 1027292855941397936}
   - component: {fileID: -7947423832025417409}
   - component: {fileID: 4161694049256839418}
+  - component: {fileID: -998832463425133194}
   m_Layer: 7
   m_Name: Santa
   m_TagString: Player
@@ -488,6 +489,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerAvatar: {fileID: 7903985867314534745}
   clothing: {fileID: 919132149155446097, guid: c982fe0ec95ae574bacac07862379d0e, type: 3}
+--- !u!114 &-998832463425133194
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1647139824798315748}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 184795a2baa25cb4a81206d2a56f630c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1647139825504062608
 GameObject:
   m_ObjectHideFlags: 0

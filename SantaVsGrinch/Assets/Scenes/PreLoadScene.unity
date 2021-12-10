@@ -162,6 +162,8 @@ MonoBehaviour:
   characterNames:
   - Santa
   - Grinch
+  menuMusic: {fileID: 8300000, guid: e7607cd10f145544da1d2aeb42b9baa0, type: 3}
+  gameMusic: {fileID: 8300000, guid: 72b5c82af3c2e2741ad33ef121d54098, type: 3}
 --- !u!114 &1346168791
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -21,6 +21,8 @@ namespace Gameplay
         [SerializeField] private UnityEvent<Collider> onHitEvent;
         [SerializeField] private UnityEvent onDeathEvent;
 
+        [SerializeField] private AudioClip onHitClip = default;
+        
         private Rigidbody body;
         private new Collider collider;
 
@@ -90,11 +92,12 @@ namespace Gameplay
         {
             if (other.TryGetComponent(out PlayerInput player) && player.playerIndex == instigatorPlayerId)
                 return;
-                
             if(other.TryGetComponent(out Projectile otherProjectile) && otherProjectile.instigatorPlayerId == instigatorPlayerId)
                 return;
             
             onHitEvent?.Invoke(other);
+            if (onHitClip != null)
+                SoundManager.PlaySFXRandomized(onHitClip, transform.position);
             if (deathDelay > 0)
             {
                 StartCoroutine(DieAfterTime(deathDelay));

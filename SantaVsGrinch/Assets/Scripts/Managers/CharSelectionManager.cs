@@ -118,7 +118,7 @@ public class CharSelectionManager : MonoBehaviour
     private void OnCancel(PlayerCharSelector playerCharSelector)
     {
         int index = playerCharSelectors.IndexOf(playerCharSelector);
-        if (!playerStateProfiles[index].isReady)
+        if (playerStateProfiles[index].isReady)
             playerStateProfiles[index].isReady = false;
         else
             gameManager.StartMenu();
