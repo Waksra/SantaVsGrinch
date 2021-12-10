@@ -80,12 +80,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5c559cddc8e5c5843ba8ceb781c24966, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  initialVelocity: 20
-  gravityScale: 0.5
+  initialVelocity: 30
+  gravityScale: 0.3
   deathDelay: 0
   ignoreInstigator: 1
   lifeTime: -1
-  initialPoolAmount: 10
+  initialPoolAmount: 25
   onHitEvent:
     m_PersistentCalls:
       m_Calls:

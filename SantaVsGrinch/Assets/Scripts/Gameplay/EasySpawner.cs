@@ -32,6 +32,19 @@ namespace Gameplay
             else
                 Instantiate(objectToSpawn, transform.position, Quaternion.identity);
         }
+
+        public void SpawnObject(Transform location)
+        {
+            if (isPoolable)
+            {
+                GameObject go = ObjectPooler.GetObject(poolIndex);
+                go.transform.position = location.position;
+                go.transform.rotation = location.rotation;
+                go.SetActive(true);
+            }
+            else
+                Instantiate(objectToSpawn, location.position, location.rotation);
+        }
         
         public void SpawnObject(Collider other)
         {

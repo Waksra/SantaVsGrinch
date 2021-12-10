@@ -49,6 +49,7 @@ MonoBehaviour:
   knockback: 2
   rps: 10
   bulletSpread: 5
+  fireSound: {fileID: 8300000, guid: 858e1d133c0b3044299eddb5e0f59214, type: 3}
   isAutomatic: 1
   isMultiShot: 0
   isBurst: 1

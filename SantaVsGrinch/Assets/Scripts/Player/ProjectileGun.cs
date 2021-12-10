@@ -3,6 +3,7 @@ using Gameplay;
 using Managers;
 using Sirenix.OdinInspector;
 using UnityEngine;
+using UnityEngine.Events;
 using UnityEngine.InputSystem;
 
 namespace Player
@@ -21,6 +22,7 @@ namespace Player
         [Space] 
         
         [SerializeField] private AudioClip fireSound;
+        [SerializeField] private UnityEvent<Transform> onShoot;
 
         [SerializeField, FoldoutGroup("Firing Modes")] private bool isAutomatic;
         [SerializeField, FoldoutGroup("Firing Modes")] private bool isMultiShot;
@@ -201,7 +203,8 @@ namespace Player
             }
             
             knockbackable.Knockback(-forward * knockback);
-            
+
+            onShoot?.Invoke(transform);
             if(fireSound != null)
                 SoundManager.PlaySFXRandomized(fireSound, transform.position);
         }
