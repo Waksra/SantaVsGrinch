@@ -8,6 +8,7 @@ public class PlayerHUDCard : MonoBehaviour
     [SerializeField] private TextMeshProUGUI healthText = default;
     [SerializeField] private GameObject[] lifeIcons = default;
     [SerializeField] private Image[] weaponSlotIcons = default;
+    [SerializeField] private Image characterIcon = default;
 
     private void Start()
     {
@@ -31,6 +32,11 @@ public class PlayerHUDCard : MonoBehaviour
             else
                 lifeIcons[i].SetActive(false);
         }
+    }
+
+    public void SetIcon(Sprite icon)
+    {
+        characterIcon.sprite = icon;
     }
 
     public void UpdateWeapon(int slotIndex, Sprite icon)

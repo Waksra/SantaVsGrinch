@@ -24,6 +24,13 @@ public class GameManager : MonoBehaviour
 
     [SerializeField] private AudioClip menuMusic = default;
     [SerializeField] private AudioClip gameMusic = default;
+    
+    [SerializeField] private Sprite[] characterIcons = default;
+
+    public Sprite GetCharacterIconByPlayerIndex(int i)
+    {
+        return characterIcons[playerProfiles[i].characterId];
+    }
 
     private void Awake()
     {

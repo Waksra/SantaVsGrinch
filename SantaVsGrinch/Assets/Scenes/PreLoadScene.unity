@@ -164,6 +164,9 @@ MonoBehaviour:
   - Grinch
   menuMusic: {fileID: 8300000, guid: e7607cd10f145544da1d2aeb42b9baa0, type: 3}
   gameMusic: {fileID: 8300000, guid: 72b5c82af3c2e2741ad33ef121d54098, type: 3}
+  characterIcons:
+  - {fileID: 21300000, guid: 0a81c134d32b0284eb43c3a37626f636, type: 3}
+  - {fileID: 21300000, guid: 2a5a1175754809b46875a3e6a6dc7878, type: 3}
 --- !u!114 &1346168791
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -556,6 +556,7 @@ MonoBehaviour:
   weaponSlotIcons:
   - {fileID: 2942405399265371538}
   - {fileID: 2942405400172076270}
+  characterIcon: {fileID: 2942405400678156823}
 --- !u!1 &2942405400527298228
 GameObject:
   m_ObjectHideFlags: 0

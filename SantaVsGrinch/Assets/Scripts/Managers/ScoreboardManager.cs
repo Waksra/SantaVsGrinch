@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class ScoreboardManager : MonoBehaviour
 {
@@ -9,6 +10,8 @@ public class ScoreboardManager : MonoBehaviour
     private List<PlayerProfile> playerProfiles;
     private List<PlayerScore> playerScores;
     
+    [SerializeField] private Sprite[] characterIcons = default;
+    [SerializeField] private Image[] characterImages = default;
     [SerializeField] private TextMeshProUGUI[] characterNameTexts = default;
     [SerializeField] private TextMeshProUGUI[] killsTexts = default;
     [SerializeField] private TextMeshProUGUI[] deathsTexts = default;
@@ -31,6 +34,7 @@ public class ScoreboardManager : MonoBehaviour
     {
         for (int i = 0; i < playerProfiles.Count; i++)
         {
+            characterImages[i].sprite = characterIcons[playerProfiles[i].characterId];
             characterNameTexts[i].text = GameManager.instance.GetCharacterNameById(playerProfiles[i].characterId);
             killsTexts[i].text = playerScores[i].kills.ToString();
             deathsTexts[i].text = playerScores[i].deaths.ToString();

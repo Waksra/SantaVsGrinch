@@ -29,6 +29,8 @@ public class HUDManager : MonoBehaviour
         {
             int remainingLives = gameMode.MaxLives - playerScores[i].deaths;
             playerHUDCards[i].UpdateCard(playerDamageables[i].Health, remainingLives);
+            
+            playerHUDCards[i].SetIcon(GameManager.instance.GetCharacterIconByPlayerIndex(i));
         }
     }
     
