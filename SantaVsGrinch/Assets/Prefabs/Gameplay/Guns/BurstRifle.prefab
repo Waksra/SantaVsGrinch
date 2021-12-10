@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 1642199936708304656}
   - component: {fileID: -2279529879705381078}
   m_Layer: 0
-  m_Name: Pistol
+  m_Name: BurstRifle
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -44,14 +44,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 702116fc147b48d1a71aaf34680c3442, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  projectile: {fileID: 5203613507369053276, guid: ee6ef3e254bd2eb439f05913bd3d5197, type: 3}
+  projectile: {fileID: 5203613507369053276, guid: 475fea9267a705046918378373e33a86, type: 3}
   inputBuffer: 1
-  knockback: 1
-  rps: 2
-  bulletSpread: 10
+  knockback: 2
+  rps: 10
+  bulletSpread: 5
   isAutomatic: 1
   isMultiShot: 0
-  isBurst: 0
+  isBurst: 1
   useRpsCurve: 0
   rpsCurve:
     serializedVersion: 2
@@ -118,6 +118,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 68333e5021203b3448506b3a9141416f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  title: Pistol
+  title: BurstRifle
   slotIndex: 1
-  hudIcon: {fileID: 0}
+  hudIcon: {fileID: 21300000, guid: 8ccee955aa05e7641b67348496886c91, type: 3}

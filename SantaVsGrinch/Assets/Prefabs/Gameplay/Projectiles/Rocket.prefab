@@ -97,7 +97,7 @@ GameObject:
   - component: {fileID: 4753150519862638354}
   - component: {fileID: 5213915107234778786}
   m_Layer: 0
-  m_Name: ProjectileMine
+  m_Name: Rocket
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -181,20 +181,8 @@ MonoBehaviour:
         m_CallState: 2
       - m_Target: {fileID: 4753150519862638354}
         m_TargetAssemblyTypeName: Gameplay.Knockbacker, Assembly-CSharp
-        m_MethodName: KnockbackAlongVelocity
-        m_Mode: 0
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-      - m_Target: {fileID: 5213915107234778786}
-        m_TargetAssemblyTypeName: Gameplay.EasySpawner, Assembly-CSharp
-        m_MethodName: SpawnObject
-        m_Mode: 0
+        m_MethodName: KnockbackRadial
+        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -205,7 +193,19 @@ MonoBehaviour:
         m_CallState: 2
   onDeathEvent:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 5213915107234778786}
+        m_TargetAssemblyTypeName: Gameplay.EasySpawner, Assembly-CSharp
+        m_MethodName: SpawnObject
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &6780594736950524374
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -242,16 +242,34 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   knockback: 10
-  radius: 10
+  radius: 5
   radialKnockbackCurve:
     serializedVersion: 2
-    m_Curve: []
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: -1
+      outSlope: -1
+      tangentMode: 34
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 0
+      inSlope: -1
+      outSlope: -1
+      tangentMode: 34
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
   layerMask:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 128
 --- !u!114 &5213915107234778786
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -264,7 +282,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 72f690090bc84bf2982ad64b19cca7cf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  objectToSpawn: {fileID: 8365464193159682485, guid: 44bc958712c6cd84c978672a41893dad, type: 3}
+  objectToSpawn: {fileID: 7416750430319858421, guid: 6b4dae50d401fcb41bfef3bdc09865f4, type: 3}
 --- !u!1 &8308177975595350285
 GameObject:
   m_ObjectHideFlags: 0

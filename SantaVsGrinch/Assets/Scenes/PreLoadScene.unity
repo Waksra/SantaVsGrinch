@@ -157,7 +157,7 @@ MonoBehaviour:
   charSelectorPrefab: {fileID: 5540500757211780401, guid: 57589a818f293764d8557a06133c1a6f, type: 3}
   playerScoreboardPrefab: {fileID: 3797227660543480420, guid: daf25cf9fdbed6042a3b67c8af1e9d82, type: 3}
   characters:
-  - {fileID: 1647139824798315748, guid: 20f97c324a5075f49aa5c0dd3632fd43, type: 3}
+  - {fileID: 1647139824798315748, guid: c20f4b39c6b81914bbd6f62bec93d924, type: 3}
   - {fileID: 1647139824798315748, guid: a157e85b1ed97f04798324da765dbada, type: 3}
   characterNames:
   - Santa
