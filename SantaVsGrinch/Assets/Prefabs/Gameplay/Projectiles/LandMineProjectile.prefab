@@ -166,7 +166,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 85f0e71e0aa14c759c276e2fc6b4eb5c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  knockback: 100
+  knockback: 500
   radius: 10
   radialKnockbackCurve:
     serializedVersion: 2

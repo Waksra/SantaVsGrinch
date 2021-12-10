@@ -31,22 +31,26 @@ namespace Player
 
         public void SetAimInput(InputAction.CallbackContext context)
         {
-            if (context.control.device.description.deviceClass.Equals("Mouse"))
-            {
-                Vector3 mouseInput = context.ReadValue<Vector2>();
-                if (!Physics.Raycast(camera.ScreenPointToRay(mouseInput), out RaycastHit hit, Mathf.Infinity, aimLayer))
-                    return;
-
-                mouseWorldPosition = hit.point;
-                isMouseAim = true;
-                CalculateAimFromMouse();
-            }
-            else
-            {
-                Vector2 joystickInput = context.ReadValue<Vector2>();
-                aimInput = new Vector3(joystickInput.x, 0f, joystickInput.y).normalized;
-                isMouseAim = false;
-            }
+            // if (context.control.device.description.deviceClass.Equals("Mouse"))
+            // {
+            //     Vector3 mouseInput = context.ReadValue<Vector2>();
+            //     if (!Physics.Raycast(camera.ScreenPointToRay(mouseInput), out RaycastHit hit, Mathf.Infinity, aimLayer))
+            //         return;
+            //
+            //     mouseWorldPosition = hit.point;
+            //     isMouseAim = true;
+            //     CalculateAimFromMouse();
+            // }
+            // else
+            // {
+            //     Vector2 joystickInput = context.ReadValue<Vector2>();
+            //     aimInput = new Vector3(joystickInput.x, 0f, joystickInput.y).normalized;
+            //     isMouseAim = false;
+            // }
+            
+            Vector2 joystickInput = context.ReadValue<Vector2>();
+            aimInput = new Vector3(joystickInput.x, 0f, joystickInput.y).normalized;
+            isMouseAim = false;
         }
         
         private void HandleRotation()

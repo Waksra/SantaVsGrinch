@@ -46,7 +46,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   projectile: {fileID: 5203613507369053276, guid: 475fea9267a705046918378373e33a86, type: 3}
   inputBuffer: 1
-  knockback: 14
+  knockback: 25
   rps: 5
   bulletSpread: 5
   useAmmunition: 1

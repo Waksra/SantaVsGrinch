@@ -13,9 +13,7 @@ public class Knockbackable : MonoBehaviour
 
     public void Knockback(Vector3 force)
     {
-        float knockback = damageable.Health < 100f ? 1f : damageable.Health * 0.01f;
-        
-        body.velocity += force * knockback / body.mass; //, ForceMode.Impulse);
+        body.velocity += force / body.mass; //, ForceMode.Impulse);
     }
 
     public void KnockbackConstant(Vector3 force)
