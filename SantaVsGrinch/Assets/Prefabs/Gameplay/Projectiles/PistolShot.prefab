@@ -85,7 +85,7 @@ MonoBehaviour:
   deathDelay: 0
   ignoreInstigator: 1
   lifeTime: -1
-  initialPoolAmount: 25
+  initialPoolAmount: 10
   onHitEvent:
     m_PersistentCalls:
       m_Calls:

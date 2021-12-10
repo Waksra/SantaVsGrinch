@@ -48,9 +48,12 @@ MonoBehaviour:
   inputBuffer: 1
   knockback: 4
   rps: 1
-  bulletSpread: 30
+  bulletSpread: 0
   fireSound: {fileID: 8300000, guid: 858e1d133c0b3044299eddb5e0f59214, type: 3}
-  isAutomatic: 0
+  onShoot:
+    m_PersistentCalls:
+      m_Calls: []
+  isAutomatic: 1
   isMultiShot: 1
   isBurst: 0
   useRpsCurve: 0
@@ -103,8 +106,8 @@ MonoBehaviour:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
-  arc: 90
-  multiProjectiles: 6
+  arc: 60
+  multiProjectiles: 7
   burstProjectiles: 3
   burstDelay: 0.5
 --- !u!114 &-2279529879705381078

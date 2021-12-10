@@ -49,6 +49,10 @@ MonoBehaviour:
   knockback: 4
   rps: 2
   bulletSpread: 8
+  fireSound: {fileID: 0}
+  onShoot:
+    m_PersistentCalls:
+      m_Calls: []
   isAutomatic: 1
   isMultiShot: 0
   isBurst: 0
