@@ -99,7 +99,6 @@ namespace Player
         {
             UpdateState();
 
-            Debug.Log(onIce);
             if (isDashing)
                 Dash();
             else
