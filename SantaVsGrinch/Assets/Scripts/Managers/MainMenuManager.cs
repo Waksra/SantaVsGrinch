@@ -1,4 +1,5 @@
 using System.Collections;
+using Managers;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -73,6 +74,12 @@ public class MainMenuManager : MonoBehaviour
                 ChangeButtonIndex(i, true);
     }
 
+    private void SetVolumeSliders()
+    {
+        sliders[0].value = SoundManager.GetSFXVolume();
+        sliders[1].value = SoundManager.GetBGMVolume();
+    }
+
     public void ChangeVolume(int value, bool mouse)
     {
         if (!mouse && onCooldown)
@@ -81,7 +88,9 @@ public class MainMenuManager : MonoBehaviour
         StartCoroutine(Cooldown());
 
         if (buttonIndex < sliders.Length)
+        {
             sliders[buttonIndex].value += value * (sliders[buttonIndex].maxValue - sliders[buttonIndex].minValue) * 0.1f;
+        }
     }
 
     public void Confirm()
@@ -108,7 +117,7 @@ public class MainMenuManager : MonoBehaviour
         {
             switch (buttonIndex)
             {
-                case 3:
+                case 2:
                     BackToMenu();
                     break;
             }
@@ -152,6 +161,8 @@ public class MainMenuManager : MonoBehaviour
 
     private void ShowOptions()
     {
+        SetVolumeSliders();
+        
         optionsPanel.SetActive(true);
         menuPanel.SetActive(false);
         

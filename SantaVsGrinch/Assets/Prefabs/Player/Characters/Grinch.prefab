@@ -98,8 +98,6 @@ GameObject:
   - component: {fileID: 1647139824798315772}
   - component: {fileID: 1647139824798315773}
   - component: {fileID: 1027292855941397936}
-  - component: {fileID: -7947423832025417409}
-  - component: {fileID: 4161694049256839418}
   - component: {fileID: 8889357232051365275}
   m_Layer: 7
   m_Name: Grinch
@@ -440,10 +438,10 @@ MonoBehaviour:
   deathEvent:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: GameMode, Assembly-CSharp
-        m_MethodName: LoseLife
-        m_Mode: 0
+      - m_Target: {fileID: 8889357232051365275}
+        m_TargetAssemblyTypeName: AnimatorHelper, Assembly-CSharp
+        m_MethodName: SetHitFloat
+        m_Mode: 4
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -469,34 +467,6 @@ MonoBehaviour:
   slot2: {fileID: 0}
   slot1Transform: {fileID: 39371138070187354}
   slot2Transform: {fileID: 395472188256258373}
---- !u!114 &-7947423832025417409
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1647139824798315748}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 65dc8bbf92ce39a448fdf3eeb1fdcf51, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  playerAvatar: {fileID: 7903985867314534745}
-  clothing: {fileID: 919132149155446097, guid: 26cea1ab664ece247aa6b528126069bf, type: 3}
---- !u!114 &4161694049256839418
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1647139824798315748}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 65dc8bbf92ce39a448fdf3eeb1fdcf51, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  playerAvatar: {fileID: 7903985867314534745}
-  clothing: {fileID: 919132149155446097, guid: c982fe0ec95ae574bacac07862379d0e, type: 3}
 --- !u!114 &8889357232051365275
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -527,7 +497,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1647139825504062611
 Transform:
   m_ObjectHideFlags: 0

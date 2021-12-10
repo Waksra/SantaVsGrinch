@@ -47,7 +47,7 @@ public class GameManager : MonoBehaviour
     public void StartMatch()
     {
         Debug.Log("Starting Match.");
-        SceneManager.LoadScene("Scene_01");
+        SceneManager.LoadScene("Tess_NewLevel");
         SoundManager.PlayBGM(gameMusic, true, 1f);
         gameMode = FindObjectOfType<GameMode>();
     }
