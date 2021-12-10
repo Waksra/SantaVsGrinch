@@ -81,6 +81,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   initialVelocity: 20
   gravityScale: 1
+  hitMask:
+    serializedVersion: 2
+    m_Bits: 1921
   deathDelay: 0
   ignoreInstigator: 1
   lifeTime: -1
@@ -140,7 +143,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e6540466065e4c1dad131b9a3f204cda, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  damage: 1
+  damage: 30
   radius: 10
   radialDamageCurve:
     serializedVersion: 2
@@ -163,7 +166,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 85f0e71e0aa14c759c276e2fc6b4eb5c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  knockback: 10
+  knockback: 100
   radius: 10
   radialKnockbackCurve:
     serializedVersion: 2

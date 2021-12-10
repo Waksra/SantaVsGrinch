@@ -18,6 +18,9 @@ namespace Player
         
         [SerializeField, Range(0, 60)] private float rps;
         [SerializeField, Range(0, 60)] private float bulletSpread;
+        [SerializeField] private bool useAmmunition = true;
+        [ShowIfGroup("useAmmunition")]
+        [SerializeField, Range(1, 300)] private int ammunition = 1;
 
         [Space] 
         
@@ -61,6 +64,7 @@ namespace Player
         private float timeOfNextShot;
         private int poolIndex;
         private bool delayedFireRunning;
+        private int currentAmmunition;
 
         //Auto
         private bool isAutoing;
@@ -108,6 +112,7 @@ namespace Player
         {
             this.owner = owner;
             knockbackable = owner.GetComponent<Knockbackable>();
+            currentAmmunition = ammunition;
         }
 
         public void Unequip()
@@ -203,6 +208,13 @@ namespace Player
             }
             
             knockbackable.Knockback(-forward * knockback);
+
+            if (useAmmunition)
+            {
+                ammunition--;
+                if (ammunition <= 0) 
+                    owner.Unequip(this);
+            }
 
             onShoot?.Invoke(transform);
             if(fireSound != null)

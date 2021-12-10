@@ -36,4 +36,9 @@ public class HUDManager : MonoBehaviour
     {
         playerHUDCards[playerIndex].UpdateWeapon(info.SlotIndex, info.HUDIcon);
     }
+
+    public void ClearWeapon(int playerIndex, int slot)
+    {
+        playerHUDCards[playerIndex].ClearWeapon(slot);
+    }
 }

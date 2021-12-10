@@ -149,6 +149,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   initialVelocity: 40
   gravityScale: 0.05
+  hitMask:
+    serializedVersion: 2
+    m_Bits: 1921
   deathDelay: 0
   ignoreInstigator: 1
   lifeTime: -1

@@ -38,4 +38,9 @@ public class PlayerHUDCard : MonoBehaviour
         weaponSlotIcons[slotIndex - 1].enabled = true;
         weaponSlotIcons[slotIndex - 1].sprite = icon;
     }
+
+    public void ClearWeapon(int slotIndex)
+    {
+        weaponSlotIcons[slotIndex - 1].enabled = false;
+    }
 }

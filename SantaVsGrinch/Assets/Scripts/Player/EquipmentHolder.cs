@@ -12,7 +12,7 @@ namespace Player
         [SerializeField] private Transform slot2Transform;
 
         private new Transform transform;
-        
+
         private IEquippable equippable1;
         private IEquippable equippable2;
 
@@ -135,6 +135,38 @@ namespace Player
                    
                    break;
                }
+            }
+        }
+
+        public void Unequip(int index)
+        {
+            switch (index)
+            {
+                case 1:
+                {
+                    Equip(slot1, 1);
+                    break;
+                }
+                case 2:
+                {
+                    equippable2?.Unequip();
+                    if (hudManager != null)
+                        hudManager.ClearWeapon(playerIndex, 2);
+                    break;
+                }
+            }
+        }
+
+        public void Unequip(IEquippable equippable)
+        {
+            if(equippable1 == equippable)
+                Equip(slot1, 1);
+            
+            else if(equippable2 == equippable)
+            {
+                equippable2?.Unequip();
+                if (hudManager != null)
+                    hudManager.ClearWeapon(playerIndex, 2);
             }
         }
     }

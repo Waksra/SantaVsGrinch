@@ -12,6 +12,7 @@ namespace Gameplay
     {
         [SerializeField, Range(0, 50)] private float initialVelocity = 20f;
         [SerializeField, Range(0, 2)] private float gravityScale = 1f;
+        [SerializeField] private LayerMask hitMask = 1920;
         [Space(10)]
         [SerializeField, Range(0, 5)] private float deathDelay = 0f;
         [SerializeField] private bool ignoreInstigator = true;
@@ -35,6 +36,7 @@ namespace Gameplay
     
         private void Awake()
         {
+            Debug.Log(hitMask.value);
             body = GetComponent<Rigidbody>();
             body.useGravity = false;
             collider = GetComponent<Collider>();
@@ -90,6 +92,9 @@ namespace Gameplay
 
         private void OnTriggerEnter(Collider other)
         {
+            if ((hitMask & (1 << other.gameObject.layer)) == 0)
+                return;
+            
             if (other.TryGetComponent(out PlayerInput player) && player.playerIndex == instigatorPlayerId)
                 return;
             if(other.TryGetComponent(out Projectile otherProjectile) && otherProjectile.instigatorPlayerId == instigatorPlayerId)

@@ -49,6 +49,8 @@ MonoBehaviour:
   knockback: 10
   rps: 1
   bulletSpread: 3
+  useAmmunition: 1
+  ammunition: 10
   fireSound: {fileID: 8300000, guid: d1675c28d6f05aa47ab50c7bb538b0c3, type: 3}
   onShoot:
     m_PersistentCalls:
