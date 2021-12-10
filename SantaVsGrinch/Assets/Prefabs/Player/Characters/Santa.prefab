@@ -839,7 +839,7 @@ PrefabInstance:
     - target: {fileID: -7511558181221131132, guid: 5ede2fa277cfad946a84db46ddcf9b11, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 2100000, guid: 177f794ca38b3e147bef3f3a75fe1cd0, type: 2}
+      objectReference: {fileID: 2100000, guid: 82ceb33f4727d454f8fe95f5fc2f0c43, type: 2}
     - target: {fileID: 919132149155446097, guid: 5ede2fa277cfad946a84db46ddcf9b11, type: 3}
       propertyPath: m_Name
       value: Run_Gun_Anim

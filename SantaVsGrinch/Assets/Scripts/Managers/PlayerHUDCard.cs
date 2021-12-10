@@ -37,6 +37,10 @@ public class PlayerHUDCard : MonoBehaviour
     public void SetIcon(Sprite icon)
     {
         characterIcon.sprite = icon;
+        foreach (var lifeIcon in lifeIcons)
+        {
+            lifeIcon.GetComponent<Image>().sprite = icon;
+        }
     }
 
     public void UpdateWeapon(int slotIndex, Sprite icon)
