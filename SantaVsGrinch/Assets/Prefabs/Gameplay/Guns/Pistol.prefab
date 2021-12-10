@@ -120,4 +120,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   title: Pistol
   slotIndex: 1
-  hudIcon: {fileID: 0}
+  hudIcon: {fileID: 21300000, guid: 8919dafb0be57604189041e7baf72f89, type: 3}

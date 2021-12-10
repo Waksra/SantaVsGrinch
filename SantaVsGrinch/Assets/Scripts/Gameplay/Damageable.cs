@@ -56,7 +56,6 @@ public class Damageable : MonoBehaviour
 
     public void Die()
     {
-        Debug.Log($"{gameObject.name} died.");
         deathEvent?.Invoke();
         if (isPlayer)
             FindObjectOfType<GameMode>().AddDeath(GetComponent<PlayerInput>().playerIndex);

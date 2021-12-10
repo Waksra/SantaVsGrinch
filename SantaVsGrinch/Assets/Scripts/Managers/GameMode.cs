@@ -64,7 +64,6 @@ public class GameMode : MonoBehaviour
 
     public void AddDeath(int playerIndex)
     {
-        Debug.Log($"player {playerIndex} lost a life.");
         for (int i = 0; i < playerScores.Count; i++)
         {
             if (playerScores[i].playerId == playerIndex)
