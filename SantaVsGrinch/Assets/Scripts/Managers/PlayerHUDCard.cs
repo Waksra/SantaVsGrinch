@@ -1,3 +1,4 @@
+using System;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
@@ -7,7 +8,15 @@ public class PlayerHUDCard : MonoBehaviour
     [SerializeField] private TextMeshProUGUI healthText = default;
     [SerializeField] private GameObject[] lifeIcons = default;
     [SerializeField] private Image[] weaponSlotIcons = default;
-    
+
+    private void Start()
+    {
+        foreach (var weaponSlotIcon in weaponSlotIcons)
+        {
+            weaponSlotIcon.enabled = false;
+        }
+    }
+
     public void UpdateCard(float health, int remainingLives)
     {
         // Health text
@@ -25,6 +34,7 @@ public class PlayerHUDCard : MonoBehaviour
 
     public void UpdateWeapon(int slotIndex, Sprite icon)
     {
+        weaponSlotIcons[slotIndex - 1].enabled = true;
         weaponSlotIcons[slotIndex - 1].sprite = icon;
     }
 }

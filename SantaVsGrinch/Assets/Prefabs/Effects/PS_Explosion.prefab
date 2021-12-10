@@ -49,7 +49,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   onAwake: 1
   disable: 1
-  lifetime: 1
+  lifetime: 4
   onDeathEvent:
     m_PersistentCalls:
       m_Calls: []

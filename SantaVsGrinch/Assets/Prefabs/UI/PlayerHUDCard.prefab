@@ -110,7 +110,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 100, y: 115}
+  m_AnchoredPosition: {x: 22, y: 115}
   m_SizeDelta: {x: 68, y: 68}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &2942405399691044418
@@ -411,7 +411,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 22, y: 115}
+  m_AnchoredPosition: {x: 100, y: 115}
   m_SizeDelta: {x: 68, y: 68}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &2942405400354386537
@@ -553,7 +553,9 @@ MonoBehaviour:
   - {fileID: 2942405400081633153}
   - {fileID: 2942405400824645139}
   - {fileID: 2942405399937123215}
-  weaponSlotIcons: []
+  weaponSlotIcons:
+  - {fileID: 2942405399265371538}
+  - {fileID: 2942405400172076270}
 --- !u!1 &2942405400527298228
 GameObject:
   m_ObjectHideFlags: 0

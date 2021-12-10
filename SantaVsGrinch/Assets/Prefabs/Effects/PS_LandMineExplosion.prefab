@@ -9754,7 +9754,7 @@ GameObject:
   - component: {fileID: 137858106130737437}
   - component: {fileID: -6923949237839631500}
   m_Layer: 0
-  m_Name: PS_TimeBombExplosion
+  m_Name: PS_LandMineExplosion
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -9791,7 +9791,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   onAwake: 1
   disable: 1
-  lifetime: 1
+  lifetime: 4
   onDeathEvent:
     m_PersistentCalls:
       m_Calls: []
