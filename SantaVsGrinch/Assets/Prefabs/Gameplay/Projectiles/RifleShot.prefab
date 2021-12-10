@@ -81,7 +81,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   initialVelocity: 35
-  gravityScale: 0.15
+  gravityScale: 0.07
   hitMask:
     serializedVersion: 2
     m_Bits: 1921

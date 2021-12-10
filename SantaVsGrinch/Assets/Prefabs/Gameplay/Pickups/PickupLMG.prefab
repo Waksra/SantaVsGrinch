@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 6006817774234743647}
   - component: {fileID: 6006817774234743644}
   - component: {fileID: 6006817774234743645}
+  - component: {fileID: 8515122144613735615}
   m_Layer: 0
   m_Name: PickupLMG
   m_TagString: Untagged
@@ -64,7 +65,33 @@ MonoBehaviour:
     m_Bits: 128
   onPickup:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 8515122144613735615}
+        m_TargetAssemblyTypeName: AudioRequester, Assembly-CSharp
+        m_MethodName: RequestPlayAudioRandomized
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+--- !u!114 &8515122144613735615
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6006817774234743642}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b8f144cda85e8f7499d2f819bcaadea2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  volume: 1
+  audioClip: {fileID: 8300000, guid: ef937c67580f73e4aadafff56682c500, type: 3}
 --- !u!1001 &4483575467833193953
 PrefabInstance:
   m_ObjectHideFlags: 0

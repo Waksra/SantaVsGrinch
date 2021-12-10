@@ -535,8 +535,8 @@ MonoBehaviour:
   - {fileID: 21300000, guid: 0a81c134d32b0284eb43c3a37626f636, type: 3}
   - {fileID: 21300000, guid: 2a5a1175754809b46875a3e6a6dc7878, type: 3}
   characterImages:
-  - {fileID: 2029525748}
   - {fileID: 541361187}
+  - {fileID: 2029525748}
   characterNameTexts:
   - {fileID: 1648641832}
   - {fileID: 1616031838}
