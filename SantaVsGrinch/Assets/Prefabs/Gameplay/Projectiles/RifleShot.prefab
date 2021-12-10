@@ -80,8 +80,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5c559cddc8e5c5843ba8ceb781c24966, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  initialVelocity: 30
-  gravityScale: 0.3
+  initialVelocity: 35
+  gravityScale: 0.15
   hitMask:
     serializedVersion: 2
     m_Bits: 1921
