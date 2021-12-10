@@ -255,6 +255,10 @@ MonoBehaviour:
       m_Calls: []
     m_ActionId: bba47f97-365b-4533-af05-7629dfb5531f
     m_ActionName: MainMenu/Cancel[/DualShock4GamepadHID/buttonEast,/Keyboard/escape,/Mouse/rightButton]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: a2c29473-fdbb-42a6-9076-dbd4b92a2765
+    m_ActionName: Game/Fire2[/Mouse/rightButton,/DualShock4GamepadHID/leftTrigger,/DualShock4GamepadHID/buttonWest]
   m_NeverAutoSwitchControlSchemes: 1
   m_DefaultControlScheme: 
   m_DefaultActionMap: Game
@@ -273,7 +277,7 @@ CapsuleCollider:
   m_Radius: 1
   m_Height: 3
   m_Direction: 2
-  m_Center: {x: 0, y: 1, z: 0}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!54 &1647139824798315747
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -304,7 +308,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxSpeed: 10
   maxAcceleration: 20
+  maxIceAcceleration: 5
   maxAngle: 0
+  groundLayer:
+    serializedVersion: 2
+    m_Bits: 2039
+  iceLayer:
+    serializedVersion: 2
+    m_Bits: 2039
   dashMaxSpeed: 30
   dashAcceleration: 500
   dashCooldown: 0.75
@@ -429,12 +440,27 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   projectile: {fileID: 5203613507369053276, guid: c7c4f1b3e212d044db641fdec9c398b8, type: 3}
   inputBuffer: 3
-  shotsPerSecond: 10
   knockback: 1
+  rps: 0
+  bulletSpread: 0
   isAutomatic: 0
   isMultiShot: 1
   isBurst: 1
-  spread: 90
+  useRpsCurve: 0
+  rpsCurve:
+    serializedVersion: 2
+    m_Curve: []
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  useSpreadCurve: 0
+  bulletSpreadCurve:
+    serializedVersion: 2
+    m_Curve: []
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  arc: 0
   multiProjectiles: 3
   burstProjectiles: 3
   burstDelay: 0.5

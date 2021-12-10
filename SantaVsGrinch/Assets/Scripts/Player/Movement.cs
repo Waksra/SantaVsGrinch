@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -20,6 +21,9 @@ namespace Player
         [SerializeField, Range(0, 2)] private float dashRequestBuffer = 0.5f;
         [SerializeField] private AnimationCurve dashCurve;
 
+        [SerializeField] private Animator bodyAnimator;
+        [SerializeField] private Animator gunAnimator;
+        
         private Rigidbody body;
 
         private Vector2 inputVector;
@@ -73,6 +77,13 @@ namespace Player
             
             if(dashCurve.length == 0)
                 Debug.LogError(gameObject.name + " has no dash curve set.");
+        }
+
+        private void Update()
+        {
+            float speed = velocity.magnitude / maxSpeed;
+            bodyAnimator.SetFloat("Speed", speed);
+            gunAnimator.SetFloat("Speed", speed);
         }
 
         private void FixedUpdate()
