@@ -26,6 +26,7 @@ namespace Gameplay
         
         private Rigidbody body;
         private new Collider collider;
+        private TrailRenderer trail;
 
         private int instigatorPlayerId;
 
@@ -40,6 +41,7 @@ namespace Gameplay
             body = GetComponent<Rigidbody>();
             body.useGravity = false;
             collider = GetComponent<Collider>();
+            trail = GetComponentInChildren<TrailRenderer>();
 
             if (lifeTime >= 0)
                 StartCoroutine(DieAfterTime(lifeTime));
@@ -54,6 +56,8 @@ namespace Gameplay
         {
             body.velocity = Vector3.zero;
             body.angularVelocity = Vector3.zero;
+            if(trail != null)
+                trail.Clear();
         }
 
         public void Fire()

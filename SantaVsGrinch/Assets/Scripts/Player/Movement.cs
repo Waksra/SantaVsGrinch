@@ -91,7 +91,7 @@ namespace Player
 
         private void Update()
         {
-            float speed = velocity.magnitude / maxSpeed;
+            float speed = isDashing ? velocity.magnitude / maxSpeed : inputVector.magnitude / 1;
             animatorHelper.SetAnimatorFloat("Speed", speed);
         }
 
