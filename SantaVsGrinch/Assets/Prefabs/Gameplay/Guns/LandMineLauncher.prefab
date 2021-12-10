@@ -46,14 +46,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   projectile: {fileID: 5203613507369053276, guid: d1b26c6226644414c939aabc960f61e3, type: 3}
   inputBuffer: 1
-  knockback: 4
-  rps: 2
-  bulletSpread: 8
-  fireSound: {fileID: 0}
+  knockback: 10
+  rps: 1
+  bulletSpread: 3
+  fireSound: {fileID: 8300000, guid: d1675c28d6f05aa47ab50c7bb538b0c3, type: 3}
   onShoot:
     m_PersistentCalls:
       m_Calls: []
-  isAutomatic: 1
+  isAutomatic: 0
   isMultiShot: 0
   isBurst: 0
   useRpsCurve: 0

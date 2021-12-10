@@ -44,11 +44,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 702116fc147b48d1a71aaf34680c3442, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  projectile: {fileID: 5203613507369053276, guid: 475fea9267a705046918378373e33a86, type: 3}
+  projectile: {fileID: 5203613507369053276, guid: 9cf06eacdb518204aa2b5c67bd0e33ac, type: 3}
   inputBuffer: 1
-  knockback: 4
+  knockback: 50
   rps: 1
-  bulletSpread: 0
+  bulletSpread: 5
   fireSound: {fileID: 8300000, guid: 858e1d133c0b3044299eddb5e0f59214, type: 3}
   onShoot:
     m_PersistentCalls:
@@ -107,7 +107,7 @@ MonoBehaviour:
     m_PostInfinity: 2
     m_RotationOrder: 4
   arc: 60
-  multiProjectiles: 7
+  multiProjectiles: 13
   burstProjectiles: 3
   burstDelay: 0.5
 --- !u!114 &-2279529879705381078

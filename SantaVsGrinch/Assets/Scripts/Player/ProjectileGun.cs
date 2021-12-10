@@ -12,7 +12,7 @@ namespace Player
     {
         [SerializeField] private Projectile projectile;
         [SerializeField, Range(0, 3)] private float inputBuffer;
-        [SerializeField, Range(0, 20)] private float knockback;
+        [SerializeField, Range(0, 100)] private float knockback;
         
         [Space]
         
