@@ -50,7 +50,7 @@ MonoBehaviour:
   rps: 10
   bulletSpread: 10
   useAmmunition: 1
-  ammunition: 50
+  ammunition: 60
   fireSound: {fileID: 8300000, guid: 858e1d133c0b3044299eddb5e0f59214, type: 3}
   onShoot:
     m_PersistentCalls:
@@ -111,7 +111,7 @@ MonoBehaviour:
   arc: 90
   multiProjectiles: 3
   burstProjectiles: 3
-  burstDelay: 1
+  burstDelay: 0.7
 --- !u!114 &-2279529879705381078
 MonoBehaviour:
   m_ObjectHideFlags: 0

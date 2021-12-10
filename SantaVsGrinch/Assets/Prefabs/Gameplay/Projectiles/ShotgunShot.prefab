@@ -80,8 +80,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5c559cddc8e5c5843ba8ceb781c24966, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  initialVelocity: 30
-  gravityScale: 0.35
+  initialVelocity: 45
+  gravityScale: 0.4
   hitMask:
     serializedVersion: 2
     m_Bits: 1921
@@ -440,15 +440,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 4a842b6198f9c334a91c9dcd73d482c6, type: 3}
       propertyPath: m_LocalScale.x
-      value: 0.5
+      value: 0.8
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 4a842b6198f9c334a91c9dcd73d482c6, type: 3}
       propertyPath: m_LocalScale.y
-      value: 0.5
+      value: 0.8
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 4a842b6198f9c334a91c9dcd73d482c6, type: 3}
       propertyPath: m_LocalScale.z
-      value: 0.5
+      value: 0.8
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 4a842b6198f9c334a91c9dcd73d482c6, type: 3}
       propertyPath: m_LocalPosition.x

@@ -35,7 +35,7 @@ Transform:
   m_GameObject: {fileID: 7175941430191732649}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 0.8, z: 1}
+  m_LocalScale: {x: 2.5, y: 2, z: 2.5}
   m_Children:
   - {fileID: 2308988512687609350}
   m_Father: {fileID: 0}
@@ -189,7 +189,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   damage: 120
-  radius: 6
+  radius: 12
   radialDamageCurve:
     serializedVersion: 2
     m_Curve:
@@ -204,7 +204,7 @@ MonoBehaviour:
       outWeight: 0
     - serializedVersion: 3
       time: 1
-      value: 0
+      value: 0.1
       inSlope: -1.9434378
       outSlope: -1.9434378
       tangentMode: 0
@@ -229,29 +229,29 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 85f0e71e0aa14c759c276e2fc6b4eb5c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  knockback: 250
-  radius: 6
+  knockback: 400
+  radius: 12
   radialKnockbackCurve:
     serializedVersion: 2
     m_Curve:
     - serializedVersion: 3
       time: 0
       value: 1
-      inSlope: -0.89148414
-      outSlope: -0.89148414
-      tangentMode: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 136
       weightedMode: 0
-      inWeight: 0
-      outWeight: 0.10546138
+      inWeight: 0.33333334
+      outWeight: 0.33333334
     - serializedVersion: 3
       time: 1
-      value: 0
-      inSlope: -0.5557292
-      outSlope: -0.5557292
+      value: 0.25
+      inSlope: -2.4583273
+      outSlope: -2.4583273
       tangentMode: 0
       weightedMode: 0
-      inWeight: 0.09227884
-      outWeight: 0
+      inWeight: 0.04896432
+      outWeight: 0.33333334
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
@@ -332,7 +332,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 8296da33c560aa94fb13682431b31bb9, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0
+      value: -0.103
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 8296da33c560aa94fb13682431b31bb9, type: 3}
       propertyPath: m_LocalPosition.z
