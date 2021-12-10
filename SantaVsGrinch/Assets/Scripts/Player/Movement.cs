@@ -1,4 +1,3 @@
-using System;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -7,12 +6,20 @@ namespace Player
     public class Movement : MonoBehaviour
     {
         [SerializeField, Range(0, 50)] private float maxSpeed = 10f;
+        [SerializeField, Range(0, 50)] private float maxDeepSnowSpeed = 5f;
         [SerializeField, Range(0, 50)] private float maxAcceleration = 10f;
+        [SerializeField, Range(0, 50)] private float maxDeepSnowAcceleration = 15f;
         [SerializeField, Range(0, 50)] private float maxIceAcceleration = 5f;
         [SerializeField, Range(0, 90)] private float maxAngle;
         [SerializeField] private LayerMask groundLayer = -1;
         [SerializeField] private LayerMask iceLayer = -1;
+        [SerializeField] private LayerMask deepSnowLayer = 0;
+
+        [SerializeField] private LayerMask probeMask = -1;
         
+        [SerializeField, Range(0, 100)] private float maxSnapSpeed = 35f;
+        [SerializeField, Range(0, 10)] private float probeDistance = 1f;
+
         [Space(10)]
         
         [SerializeField, Range(0, 100)] private float dashMaxSpeed = 20f;
@@ -34,6 +41,9 @@ namespace Player
         private int contactCount;
         private Vector3 groundNormal;
         private bool onIce;
+        private bool inDeepSnow;
+
+        private int stepsSinceLastGrounded;
 
         private bool dashRequested;
         private bool isDashing;
@@ -42,7 +52,7 @@ namespace Player
         private float dashTime;
         private float nextDashTime;
 
-        private bool IsGround => contactCount > 0;
+        private bool OnGround => contactCount > 0;
 
         public float GetMaxAcceleration() => maxAcceleration;
 
@@ -103,13 +113,21 @@ namespace Player
             Vector3 xAxis = ProjectDirectionGround(Vector3.right);
             Vector3 zAxis = ProjectDirectionGround(Vector3.forward);
 
-            float acceleration = onIce ? maxIceAcceleration : maxAcceleration;
+            float speed = maxSpeed;
+            float acceleration = maxAcceleration;
+            if (inDeepSnow)
+            {
+                speed = maxDeepSnowSpeed;
+                acceleration = maxDeepSnowAcceleration;
+            }
+            else if (onIce)
+                acceleration = maxIceAcceleration;
 
             Vector2 adjustment;
             adjustment.x
-                = inputVector.x * maxSpeed - Vector3.Dot(velocity, xAxis);
+                = inputVector.x * speed - Vector3.Dot(velocity, xAxis);
             adjustment.y
-                = inputVector.y * maxSpeed - Vector3.Dot(velocity, zAxis);
+                = inputVector.y * speed - Vector3.Dot(velocity, zAxis);
 
             adjustment = Vector3.ClampMagnitude(adjustment, acceleration * Time.deltaTime);
 
@@ -127,9 +145,11 @@ namespace Player
         private void UpdateState()
         {
             velocity = body.velocity;
+            stepsSinceLastGrounded += 1;
             
-            if (IsGround)
+            if (OnGround || SnapToGround())
             {
+                stepsSinceLastGrounded = 0;
                 if(contactCount > 1)
                     groundNormal.Normalize();
             }
@@ -171,9 +191,33 @@ namespace Player
             groundNormal = Vector3.zero;
             contactCount = 0;
             onIce = false;
+            inDeepSnow = false;
             
             if (inputVector.sqrMagnitude != 0)
                 lastInput = inputVector;
+        }
+
+        private bool SnapToGround()
+        {
+            if (stepsSinceLastGrounded > 1)
+                return false;
+            
+            float speed = velocity.magnitude;
+            if (speed > maxSnapSpeed)
+                return false;
+            
+            if (!Physics.Raycast(body.position, Vector3.down, out RaycastHit hit, probeDistance, probeMask))
+                return false;
+            
+            if (hit.normal.y < minGroundDot)
+                return false;
+
+            contactCount = 1;
+            groundNormal = hit.normal;
+            float dot = Vector3.Dot(velocity, hit.normal);
+            if(dot > 0f)
+                velocity = (velocity - hit.normal * dot).normalized * speed;
+            return true;
         }
 
         private void HandleCollision(Collision collision)
@@ -190,8 +234,11 @@ namespace Player
                 if(upDot < minGroundDot)
                     continue;
 
-                if ((iceLayer & (1 << layer)) != 0)
+                if ((deepSnowLayer & (1 << layer)) != 0)
+                    inDeepSnow = true;
+                else if ((iceLayer & (1 << layer)) != 0)
                     onIce = true;
+                
                 groundNormal += normal;
                 contactCount++;
             }
@@ -205,6 +252,12 @@ namespace Player
         private void OnCollisionStay(Collision collision)
         {
             HandleCollision(collision);
+        }
+
+        private void OnTriggerStay(Collider other)
+        {
+            if ((deepSnowLayer & (1 << other.gameObject.layer)) != 0)
+                inDeepSnow = true;
         }
 
         Vector3 ProjectDirectionGround(Vector3 direction)

@@ -324,15 +324,25 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxSpeed: 10
+  maxDeepSnowSpeed: 3
   maxAcceleration: 20
+  maxDeepSnowAcceleration: 25
   maxIceAcceleration: 5
-  maxAngle: 0
+  maxAngle: 30
   groundLayer:
     serializedVersion: 2
-    m_Bits: 2039
+    m_Bits: 1280
   iceLayer:
     serializedVersion: 2
     m_Bits: 1024
+  deepSnowLayer:
+    serializedVersion: 2
+    m_Bits: 2048
+  probeMask:
+    serializedVersion: 2
+    m_Bits: 1280
+  maxSnapSpeed: 35
+  probeDistance: 0.7
   dashMaxSpeed: 30
   dashAcceleration: 500
   dashCooldown: 0.75
