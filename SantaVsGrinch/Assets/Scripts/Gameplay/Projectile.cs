@@ -37,7 +37,6 @@ namespace Gameplay
     
         private void Awake()
         {
-            Debug.Log(hitMask.value);
             body = GetComponent<Rigidbody>();
             body.useGravity = false;
             collider = GetComponent<Collider>();
