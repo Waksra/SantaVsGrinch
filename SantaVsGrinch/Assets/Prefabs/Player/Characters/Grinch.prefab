@@ -321,11 +321,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0da090942b7193c44beb96d2228b2fd7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxSpeed: 10
+  maxSpeed: 15
   maxDeepSnowSpeed: 2.7
   maxAcceleration: 22
   maxDeepSnowAcceleration: 25
-  maxIceAcceleration: 4.5
+  maxIceAcceleration: 6
   maxAngle: 30
   groundLayer:
     serializedVersion: 2
