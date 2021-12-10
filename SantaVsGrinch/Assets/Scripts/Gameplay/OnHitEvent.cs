@@ -5,8 +5,8 @@ namespace Gameplay
 {
     public class OnHitEvent : MonoBehaviour
     {
-        private UnityEvent<Collider> onTrigger;
-        private UnityEvent<Collision> OnCollision;
+        [SerializeField] private UnityEvent<Collider> onTrigger;
+        [SerializeField] private UnityEvent<Collision> OnCollision;
         
         private void OnTriggerEnter(Collider other)
         {
